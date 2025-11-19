@@ -6,6 +6,7 @@ import {
     Dimensions,
     FlatList,
     Image,
+    ImageSourcePropType,
     Platform,
     Pressable,
     StatusBar,
@@ -17,7 +18,7 @@ import {
 import { SafeAreaView } from 'react-native-safe-area-context';
 
 const { width, height } = Dimensions.get('window');
-const HERO_HEIGHT = Math.round(height * 0.50);
+const HERO_HEIGHT = Math.round(height * 0.40);
 
 type Product = {
   id: string;
@@ -36,7 +37,7 @@ const SAMPLE_PRODUCTS: Product[] = [
     short: '1kg • Rose & Madagascan vanilla',
     price: 2499,
     image:
-      'https://images.unsplash.com/photo-1544025162-d76694265947?auto=format&fit=crop&w=800&q=80',
+      require('@/assets/images/pastry/cake1.jpg'),
     tag: 'Bestseller',
     rating: 4.8,
   },
@@ -45,8 +46,7 @@ const SAMPLE_PRODUCTS: Product[] = [
     name: 'Almond Biscotti Gift Box',
     short: '12 pcs • Hand-dipped chocolate',
     price: 899,
-    image:
-      'https://images.unsplash.com/photo-1604908177075-3f3d3f1f6a18?auto=format&fit=crop&w=800&q=80',
+    image: require('@/assets/images/pastry/cake2.jpg'),
     rating: 4.9,
   },
   {
@@ -54,8 +54,7 @@ const SAMPLE_PRODUCTS: Product[] = [
     name: 'Saffron Pistachio Cake',
     short: 'Premium • Real saffron threads',
     price: 3199,
-    image:
-      'https://images.unsplash.com/photo-1622621718357-79a10be1f3b4?auto=format&fit=crop&w=800&q=80',
+   image: require('@/assets/images/pastry/cake3.jpg'),
     tag: 'Limited',
     rating: 5.0,
   },
@@ -64,8 +63,7 @@ const SAMPLE_PRODUCTS: Product[] = [
     name: 'Belgian Chocolate Donuts',
     short: 'Box of 6 • Fresh daily',
     price: 699,
-    image:
-      'https://images.unsplash.com/photo-1551107696-a4b0c5a0d9a2?auto=format&fit=crop&w=800&q=80',
+   image: require('@/assets/images/pastry/cake4.jpg'),
     rating: 4.7,
   },
 ];
@@ -85,19 +83,27 @@ export default function BakeryHomeScreen(){
   const [searchQuery, setSearchQuery] = useState<string>('');
 
   // Animated header opacity (fade in as user scrolls)
-  const headerOpacity = scrollY.interpolate({
-    inputRange: [0, 90],
-    outputRange: [0, 1],
-    extrapolate: 'clamp',
-  });
+ const headerOpacity = scrollY.interpolate({
+  inputRange: [0, 120],
+  outputRange: [1, 0],
+  extrapolate: 'clamp',
+});
+
+
+// const headerOpacity = scrollY.interpolate({
+//   inputRange: [0, 50, 150],
+//   outputRange: [1, 0.4, 0],
+//   extrapolate: 'clamp',
+// });
+
 
   // Hero parallax translate
-  const heroTranslateY = scrollY.interpolate({
-    inputRange: [0, 300],
-    outputRange: [0, -80],
-    extrapolate: 'clamp',
-  });
 
+  const heroTranslateY = scrollY.interpolate({
+  inputRange: [0, 120],
+  outputRange: [0, -40],
+  extrapolate: 'clamp',
+});
   // Render category item
   const renderCategory = ({ item }: { item: typeof CATEGORIES[0] }) => {
     return (
@@ -118,7 +124,7 @@ export default function BakeryHomeScreen(){
     return (
       <Pressable style={styles.productCard} accessibilityRole="button">
         <View style={styles.productImageWrap}>
-          <Image source={{ uri: item.image }} style={styles.productImage} />
+          <Image source={ item.image as ImageSourcePropType} style={styles.productImage} />
           {item.tag ? (
             <View style={styles.tagBadge}>
               <Text style={styles.tagText}>{item.tag}</Text>
@@ -161,7 +167,7 @@ export default function BakeryHomeScreen(){
   };
 
   return (
-    <SafeAreaView style={styles.container}>
+    <SafeAreaView style={styles.container} edges={['left','right']}>
       <StatusBar barStyle="light-content" />
 
       {/* Animated Header (appears on scroll) */}
@@ -193,10 +199,7 @@ export default function BakeryHomeScreen(){
           style={[styles.heroContainer, { transform: [{ translateY: heroTranslateY }] }]}
         >
           <Image
-            source={{
-              uri:
-                'https://images.unsplash.com/photo-1558326567-8ec4f2d8d8e4?auto=format&fit=crop&w=1200&q=80',
-            }}
+            source={require('@/assets/images/pastry/heroImage.png')}
             style={styles.heroBg}
             resizeMode="cover"
           />
@@ -229,7 +232,7 @@ export default function BakeryHomeScreen(){
         </Animated.View>
 
         {/* Categories horizontal list */}
-        <View style={styles.section}>
+        <Animated.View style={[styles.section,{ transform: [{ translateY: heroTranslateY }] }]}>
           <FlatList
             data={CATEGORIES}
             horizontal
@@ -238,7 +241,7 @@ export default function BakeryHomeScreen(){
             contentContainerStyle={styles.categoryList}
             renderItem={renderCategory}
           />
-        </View>
+        </Animated.View>
 
         {/* Quick action tiles */}
         <View style={styles.quickActions}>
@@ -339,25 +342,7 @@ export default function BakeryHomeScreen(){
         </Pressable>
       )}
 
-      {/* Bottom Navigation */}
-      <View style={styles.bottomNav}>
-        <Pressable style={styles.navItem} accessibilityRole="button">
-          <Ionicons name="home" size={22} color="#FF6B6B" />
-          <Text style={styles.navLabelActive}>Home</Text>
-        </Pressable>
-        <Pressable style={styles.navItem} accessibilityRole="button">
-          <Ionicons name="search" size={22} color="#888" />
-          <Text style={styles.navLabel}>Search</Text>
-        </Pressable>
-        <Pressable style={styles.navItem} accessibilityRole="button">
-          <Ionicons name="receipt-outline" size={22} color="#888" />
-          <Text style={styles.navLabel}>Orders</Text>
-        </Pressable>
-        <Pressable style={styles.navItem} accessibilityRole="button">
-          <Ionicons name="person-outline" size={22} color="#888" />
-          <Text style={styles.navLabel}>Profile</Text>
-        </Pressable>
-      </View>
+     
     </SafeAreaView>
   );
 }
@@ -376,8 +361,9 @@ const styles = StyleSheet.create({
     right: 0,
     top: 0,
     zIndex: 40,
-    paddingTop: Platform.OS === 'android' ? StatusBar.currentHeight ?? 20 : 0,
-    backgroundColor: 'transparent',
+    paddingTop: 0,
+    paddingBottom:5,
+    backgroundColor: '#000000db',
   },
   headerInner: {
     flexDirection: 'row',
@@ -700,7 +686,7 @@ const styles = StyleSheet.create({
     position: 'absolute',
     left: 20,
     right: 20,
-    bottom: 110,
+    bottom: 70,
     borderRadius: 28,
     overflow: 'hidden',
     elevation: 12,
