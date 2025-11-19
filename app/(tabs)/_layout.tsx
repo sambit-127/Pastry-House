@@ -1,5 +1,5 @@
 
-import { Ionicons, MaterialIcons } from '@expo/vector-icons';
+import { Ionicons, MaterialCommunityIcons, MaterialIcons } from '@expo/vector-icons';
 import { Tabs } from 'expo-router';
 import React from 'react';
 import { StatusBar, Text } from 'react-native';
@@ -13,7 +13,7 @@ export default function TabLayout() {
       <Tabs
         screenOptions={{
           headerShown: false,
-          tabBarActiveTintColor: '#8B5CF6',
+          tabBarActiveTintColor: '#FF6B6B',
           tabBarInactiveTintColor: '#ffffffff',
           tabBarStyle: {
             backgroundColor: '#000',
@@ -52,7 +52,7 @@ export default function TabLayout() {
           name="offers"
           options={{
             tabBarIcon: ({ color, focused }) => (
-              <Ionicons  name={focused?"calendar-sharp":"calendar-outline"} size={20} color={color} />
+              <MaterialCommunityIcons  name={focused?"gift":"gift-outline"} size={20} color={color} />
             ),
             tabBarLabel: ({ focused, color }) => (
               <Text
@@ -62,7 +62,7 @@ export default function TabLayout() {
                   fontWeight: focused ? '800' : '600',
                 }}
               >
-                Attendance
+                Offers
               </Text>
             ),
           }}
@@ -71,27 +71,7 @@ export default function TabLayout() {
           name="profile"
           options={{
             tabBarIcon: ({ color, focused }) => (
-              <Ionicons name={focused?"card":"card-outline"} size={20} color={color} />
-            ),
-            tabBarLabel: ({ focused, color }) => (
-              <Text
-                style={{
-                  color,
-                  fontSize: 9,
-                  fontWeight: focused ? '800' : '600',
-                }}
-              >
-                Revenue
-              </Text>
-            ),
-          }}
-        />
-
-        <Tabs.Screen
-          name="cart"
-          options={{
-            tabBarIcon: ({ color }) => (
-              <Ionicons name="person" size={20} color={color} />
+              <Ionicons name={focused?"person":"person-outline"} size={20} color={color} />
             ),
             tabBarLabel: ({ focused, color }) => (
               <Text
@@ -102,6 +82,26 @@ export default function TabLayout() {
                 }}
               >
                 Profile
+              </Text>
+            ),
+          }}
+        />
+
+        <Tabs.Screen
+          name="cart"
+          options={{
+            tabBarIcon: ({ color, focused }) => (
+              <Ionicons name={focused?"bag":"bag-outline"} size={20} color={color} />
+            ),
+            tabBarLabel: ({ focused, color }) => (
+              <Text
+                style={{
+                  color,
+                  fontSize: 9,
+                  fontWeight: focused ? '800' : '600',
+                }}
+              >
+                Cart
               </Text>
             ),
           }}
