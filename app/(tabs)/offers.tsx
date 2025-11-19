@@ -1,6 +1,6 @@
 import { LinearGradient } from 'expo-linear-gradient';
 import React, { useEffect, useState } from 'react';
-import { Dimensions, Image, ImageSourcePropType, ScrollView, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
+import { Dimensions, Image, ImageBackground, ImageSourcePropType, ScrollView, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 
 
@@ -10,7 +10,7 @@ export default function OfferPage() {
   const [loading, setLoading] = useState(true);
   const [categories, setCategories] = useState([
     { id: '1', name: 'Cakes', offers: 6, image: require('@/assets/images/pastry/cake8.jpg') },
-    { id: '2', name: 'Pastries', offers: 4, image:require('@/assets/images/pastry/cake5.jpg') },
+    { id: '2', name: 'Pastries', offers: 4, image: require('@/assets/images/pastry/cake5.jpg') },
     { id: '3', name: 'Cookies', offers: 3, image: require('@/assets/images/pastry/bakery2.jpg') },
     { id: '4', name: 'Breads', offers: 5, image: require('@/assets/images/pastry/bakery6.jpg') },
     { id: '5', name: 'Combos', offers: 2, image: require('@/assets/images/pastry/cake6.jpg') },
@@ -28,7 +28,7 @@ export default function OfferPage() {
       <TouchableOpacity style={styles.categoryCard}>
         <View style={styles.categoryThumb}>
           {item.image ? (
-            <Image source={ item.image as ImageSourcePropType} style={styles.categoryImg} />
+            <Image source={item.image as ImageSourcePropType} style={styles.categoryImg} />
           ) : (
             <LinearGradient
               colors={["#2A2A2A", "#1A1A1A"]}
@@ -74,20 +74,21 @@ export default function OfferPage() {
             <ScrollView
               horizontal
               showsHorizontalScrollIndicator={false}
-              style={{ paddingLeft: 16 }}
+              // style={{ paddingHorizontal: 16 }}
+              contentContainerStyle={{paddingHorizontal:16}}
             >
               <View style={styles.banner}>
-                <LinearGradient colors={["#FF8A00", "#FF5E00"]} style={styles.bannerBg}>
+                <ImageBackground source={require('@/assets/images/pastry/heroImage.png')} style={styles.bannerBg}>
                   <Text style={styles.bannerTitle}>20% OFF on Cakes</Text>
                   <Text style={styles.bannerSub}>Fresh & Custom Designs</Text>
-                </LinearGradient>
+                </ImageBackground>
               </View>
 
               <View style={styles.banner}>
-                <LinearGradient colors={["#FF6BAA", "#E94587"]} style={styles.bannerBg}>
+                <ImageBackground source={require('@/assets/images/pastry/comboBanner.png')} style={styles.bannerBg}>
                   <Text style={styles.bannerTitle}>Buy 2 Get 1</Text>
                   <Text style={styles.bannerSub}>Pastries Combo</Text>
-                </LinearGradient>
+                </ImageBackground>
               </View>
             </ScrollView>
 
@@ -125,11 +126,14 @@ const styles = StyleSheet.create({
     marginVertical: 16,
     borderRadius: 16,
     overflow: 'hidden',
+    borderWidth:1,
+    borderColor: "#424242ff"
   },
   bannerBg: {
     flex: 1,
     padding: 18,
     justifyContent: 'flex-end',
+    borderRadius: 20,
   },
   bannerTitle: {
     color: '#FFF',
