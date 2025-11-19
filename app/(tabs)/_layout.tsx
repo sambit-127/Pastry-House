@@ -1,35 +1,112 @@
+
+import { Ionicons, MaterialIcons } from '@expo/vector-icons';
 import { Tabs } from 'expo-router';
 import React from 'react';
-
-import { HapticTab } from '@/components/haptic-tab';
-import { IconSymbol } from '@/components/ui/icon-symbol';
-import { Colors } from '@/constants/theme';
-import { useColorScheme } from '@/hooks/use-color-scheme';
+import { StatusBar, Text } from 'react-native';
+import { SafeAreaView } from 'react-native-safe-area-context';
 
 export default function TabLayout() {
-  const colorScheme = useColorScheme();
 
   return (
-    <Tabs
-      screenOptions={{
-        tabBarActiveTintColor: Colors[colorScheme ?? 'light'].tint,
-        headerShown: false,
-        tabBarButton: HapticTab,
-      }}>
-      <Tabs.Screen
-        name="index"
-        options={{
-          title: 'Home',
-          tabBarIcon: ({ color }) => <IconSymbol size={28} name="house.fill" color={color} />,
+    <SafeAreaView style={{ flex: 1, backgroundColor: '#000' }}>
+      <StatusBar barStyle={'dark-content'} />
+      <Tabs
+        screenOptions={{
+          headerShown: false,
+          tabBarActiveTintColor: '#8B5CF6',
+          tabBarInactiveTintColor: '#ffffffff',
+          tabBarStyle: {
+            backgroundColor: '#000',
+            paddingTop: 5,
+            height: 60,
+            borderTopWidth: 1,
+            borderTopColor: '#1F1F1F',
+            position: 'absolute',
+          },
+          tabBarLabelStyle: {
+            fontSize: 9,
+          },
         }}
-      />
-      <Tabs.Screen
-        name="explore"
-        options={{
-          title: 'Explore',
-          tabBarIcon: ({ color }) => <IconSymbol size={28} name="paperplane.fill" color={color} />,
-        }}
-      />
-    </Tabs>
+      >
+        <Tabs.Screen
+          name="home"
+          options={{
+            tabBarIcon: ({ color, focused }) => (
+              <MaterialIcons name={focused?"home":"home"} size={20} color={color} />
+            ),
+            tabBarLabel: ({ focused, color }) => (
+              <Text
+                style={{
+                  color,
+                  fontSize: 9,
+                  fontWeight: focused ? '800' : '600', 
+                }}
+              >
+                Home
+              </Text>
+            ),
+          }}
+        />
+
+        <Tabs.Screen
+          name="offers"
+          options={{
+            tabBarIcon: ({ color, focused }) => (
+              <Ionicons  name={focused?"calendar-sharp":"calendar-outline"} size={20} color={color} />
+            ),
+            tabBarLabel: ({ focused, color }) => (
+              <Text
+                style={{
+                  color,
+                  fontSize: 9,
+                  fontWeight: focused ? '800' : '600',
+                }}
+              >
+                Attendance
+              </Text>
+            ),
+          }}
+        />
+        <Tabs.Screen
+          name="profile"
+          options={{
+            tabBarIcon: ({ color, focused }) => (
+              <Ionicons name={focused?"card":"card-outline"} size={20} color={color} />
+            ),
+            tabBarLabel: ({ focused, color }) => (
+              <Text
+                style={{
+                  color,
+                  fontSize: 9,
+                  fontWeight: focused ? '800' : '600',
+                }}
+              >
+                Revenue
+              </Text>
+            ),
+          }}
+        />
+
+        <Tabs.Screen
+          name="cart"
+          options={{
+            tabBarIcon: ({ color }) => (
+              <Ionicons name="person" size={20} color={color} />
+            ),
+            tabBarLabel: ({ focused, color }) => (
+              <Text
+                style={{
+                  color,
+                  fontSize: 9,
+                  fontWeight: focused ? '800' : '600',
+                }}
+              >
+                Profile
+              </Text>
+            ),
+          }}
+        />
+      </Tabs>
+    </SafeAreaView>
   );
 }
