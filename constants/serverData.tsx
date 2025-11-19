@@ -1,0 +1,1 @@
+export const  ServerData='https://api.heallai.com/customer/';

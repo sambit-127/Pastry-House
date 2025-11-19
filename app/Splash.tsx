@@ -19,7 +19,7 @@ const Splash = () => {
 
     // Simulate navigation after 3 seconds (replace with real auth check or loading)
     const timer = setTimeout(() => {
-      router.push('/home')
+      router.push('/(auth)/login')
     }, 3000);
 
     return () => clearTimeout(timer);
