@@ -204,7 +204,7 @@ const OTP = () => {
                 keyboardType="number-pad"
                 maxLength={1}
                 textAlign="center"
-                selectionColor="#FC8019"
+                selectionColor="#FE5200"
                 editable={!loading}
               />
             ))}
@@ -342,7 +342,7 @@ const styles = StyleSheet.create({
   phoneNumber: {
     fontSize: 18,
     fontWeight: '600',
-    color: '#FC8019',
+    color: '#FE5200',
     textAlign: 'center',
     marginBottom: 40,
   },
@@ -364,7 +364,7 @@ const styles = StyleSheet.create({
     color: '#333',
   },
   otpBoxFilled: {
-    borderColor: '#FC8019',
+    borderColor: '#FE5200',
     backgroundColor: '#FFF5F0',
   },
   otpBoxError: {
@@ -384,10 +384,10 @@ const styles = StyleSheet.create({
     marginBottom: 30,
   },
   buttonActive: {
-    backgroundColor: '#FC8019',
+    backgroundColor: '#FE5200',
   },
   buttonDisabled: {
-    backgroundColor: '#f98f48ff',
+    backgroundColor: '#FE5200',
   },
   buttonText: {
     color: '#fff',
@@ -407,7 +407,7 @@ const styles = StyleSheet.create({
   },
   resendButton: {
     fontSize: 14,
-    color: '#FC8019',
+    color: '#FE5200',
     fontWeight: '600',
   },
   resendDisabled: {
@@ -419,7 +419,7 @@ const styles = StyleSheet.create({
     textAlign: 'center',
   },
   supportLink: {
-    color: '#FC8019',
+    color: '#FE5200',
     fontWeight: '600',
   },
 });

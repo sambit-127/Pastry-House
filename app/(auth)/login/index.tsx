@@ -114,7 +114,7 @@ const Login = () => {
               value={phone}
               onChangeText={(text) => setPhone(text.replace(/\D/g, ''))}
               maxLength={10}
-              selectionColor="#FC8019"
+              selectionColor="#FE5200"
             />
           </View>
 
@@ -122,7 +122,7 @@ const Login = () => {
           <View style={styles.counterContainer}>
             <Text style={[
               styles.counterText,
-              { color: isPhoneValid ? '#FC8019' : '#666' }
+              { color: isPhoneValid ? '#FE5200' : '#666' }
             ]}>
               {phone.length}/10
             </Text>
@@ -272,10 +272,11 @@ const styles = StyleSheet.create({
     marginBottom: 20,
   },
   buttonActive: {
-    backgroundColor: '#FC8019',
+    backgroundColor: '#FE5200',
   },
   buttonDisabled: {
-    backgroundColor: '#FC8019',
+    // backgroundColor: '#FC8019',
+    backgroundColor:"#FE5200"
   },
   buttonText: {
     color: '#fff',
@@ -290,7 +291,7 @@ const styles = StyleSheet.create({
     lineHeight: 18,
   },
   termsLink: {
-    color: '#FC8019',
+    color: '#FE5200',
     fontWeight: '500',
   },
 });

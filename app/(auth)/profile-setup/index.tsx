@@ -129,7 +129,7 @@ const ProfileSetup: React.FC = () => {
   }
 
   return (
-    <LinearGradient colors={['#000000', '#1a1a2e']} style={StyleSheet.absoluteFill}>
+    <LinearGradient colors={['#000000', '#000000']} style={StyleSheet.absoluteFill}>
       <StatusBar barStyle="light-content" />
       <SafeAreaView style={styles.safe}>
         <KeyboardAvoidingView 
@@ -326,7 +326,7 @@ const styles = StyleSheet.create({
     width: 120,
     height: 120,
     borderRadius: 60,
-    backgroundColor: '#1F2937',
+    backgroundColor: '#111111ff',
     borderWidth: 2,
     borderColor: PRIMARY_START,
     borderStyle: 'dashed',
@@ -355,7 +355,7 @@ const styles = StyleSheet.create({
 
   // Form Card
   formCard: {
-    backgroundColor: 'rgba(31, 41, 55, 0.6)',
+    backgroundColor: 'rgba(31, 41, 55, 0.4)',
     borderRadius: 20,
     padding: 24,
     marginBottom: 24,
@@ -379,7 +379,7 @@ const styles = StyleSheet.create({
     marginLeft: 8,
   },
   input: {
-    backgroundColor: 'rgba(17, 24, 39, 0.8)',
+    backgroundColor: '#111111ff',
     color: '#fff',
     paddingHorizontal: 16,
     paddingVertical: Platform.OS === 'ios' ? 16 : 12,
