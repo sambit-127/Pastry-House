@@ -1,5 +1,6 @@
 import { Ionicons, MaterialCommunityIcons } from '@expo/vector-icons';
 import { LinearGradient } from 'expo-linear-gradient';
+import { Href, useRouter } from 'expo-router';
 import React, { useRef, useState } from 'react';
 import {
     Animated,
@@ -116,6 +117,7 @@ const CATEGORIES = [
 ];
 
 export default function BakeryHomeScreen() {
+    const router = useRouter();
     const scrollY = useRef(new Animated.Value(0)).current;
     const [cartCount, setCartCount] = useState<number>(2);
     const [searchQuery, setSearchQuery] = useState<string>('');
@@ -266,7 +268,7 @@ export default function BakeryHomeScreen() {
                         <Pressable style={styles.headerIcon} accessibilityRole="button">
                             <Ionicons name="notifications-outline" size={22} color="#fff" />
                         </Pressable>
-                        <Pressable style={styles.headerIcon} accessibilityRole="button">
+                        <Pressable style={styles.headerIcon} accessibilityRole="button" onPress={()=>router.push("/edit-profile" as Href)}>
                             <Ionicons name="person-outline" size={22} color="#fff" />
                         </Pressable>
                     </View>

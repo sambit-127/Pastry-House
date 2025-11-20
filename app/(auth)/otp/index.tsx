@@ -204,7 +204,7 @@ const OTP = () => {
                 keyboardType="number-pad"
                 maxLength={1}
                 textAlign="center"
-                selectionColor="#FE5200"
+                selectionColor="#e55027ff"
                 editable={!loading}
               />
             ))}
@@ -280,13 +280,13 @@ const styles = StyleSheet.create({
     width: 40,
     height: 40,
     borderRadius: 20,
-    backgroundColor: 'rgba(255,255,255,0.3)',
+    backgroundColor: 'rgba(87, 86, 86, 0.3)',
     justifyContent: 'center',
     alignItems: 'center',
   },
   backButtonText: {
     color: '#fff',
-    fontSize: 24,
+    fontSize: 28,
     fontWeight: '600',
     marginTop: -2,
   },
@@ -342,7 +342,7 @@ const styles = StyleSheet.create({
   phoneNumber: {
     fontSize: 18,
     fontWeight: '600',
-    color: '#FE5200',
+    color: '#e55027ff',
     textAlign: 'center',
     marginBottom: 40,
   },
@@ -364,7 +364,7 @@ const styles = StyleSheet.create({
     color: '#333',
   },
   otpBoxFilled: {
-    borderColor: '#FE5200',
+    borderColor: '#e55027ff',
     backgroundColor: '#FFF5F0',
   },
   otpBoxError: {
@@ -384,10 +384,10 @@ const styles = StyleSheet.create({
     marginBottom: 30,
   },
   buttonActive: {
-    backgroundColor: '#FE5200',
+    backgroundColor: '#e55027ff',
   },
   buttonDisabled: {
-    backgroundColor: '#FE5200',
+    backgroundColor: '#e55027ff',
   },
   buttonText: {
     color: '#fff',
@@ -407,7 +407,7 @@ const styles = StyleSheet.create({
   },
   resendButton: {
     fontSize: 14,
-    color: '#FE5200',
+    color: '#e55027ff',
     fontWeight: '600',
   },
   resendDisabled: {
@@ -419,7 +419,7 @@ const styles = StyleSheet.create({
     textAlign: 'center',
   },
   supportLink: {
-    color: '#FE5200',
+    color: '#e55027ff',
     fontWeight: '600',
   },
 });

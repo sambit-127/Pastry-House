@@ -69,7 +69,7 @@ const Login = () => {
 
   return (
     <SafeAreaView style={styles.container}>
-      <StatusBar backgroundColor="#FC8019" barStyle="light-content" />
+      <StatusBar backgroundColor="#e55027ff" barStyle="light-content" />
      
       <KeyboardAvoidingView 
         style={styles.keyboardView}
@@ -114,7 +114,7 @@ const Login = () => {
               value={phone}
               onChangeText={(text) => setPhone(text.replace(/\D/g, ''))}
               maxLength={10}
-              selectionColor="#FE5200"
+              selectionColor="#e55027ff"
             />
           </View>
 
@@ -122,7 +122,7 @@ const Login = () => {
           <View style={styles.counterContainer}>
             <Text style={[
               styles.counterText,
-              { color: isPhoneValid ? '#FE5200' : '#666' }
+              { color: isPhoneValid ? '#e55027ff' : '#666' }
             ]}>
               {phone.length}/10
             </Text>
@@ -272,11 +272,12 @@ const styles = StyleSheet.create({
     marginBottom: 20,
   },
   buttonActive: {
-    backgroundColor: '#FE5200',
+    //backgroundColor: '#FE5200',
+     backgroundColor: '#e55027ff',
   },
   buttonDisabled: {
-    // backgroundColor: '#FC8019',
-    backgroundColor:"#FE5200"
+    backgroundColor: '#e55027ff',
+   // backgroundColor:"#FE5200"
   },
   buttonText: {
     color: '#fff',
@@ -291,7 +292,7 @@ const styles = StyleSheet.create({
     lineHeight: 18,
   },
   termsLink: {
-    color: '#FE5200',
+    color: '#e55027ff',
     fontWeight: '500',
   },
 });

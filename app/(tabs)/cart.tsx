@@ -1,5 +1,6 @@
 import { FontAwesome } from '@expo/vector-icons';
 import { LinearGradient } from 'expo-linear-gradient';
+import { Href, useRouter } from 'expo-router';
 import React, { useEffect, useMemo, useRef, useState } from 'react';
 import {
     Animated,
@@ -27,6 +28,7 @@ type CartItem = {
 const { width } = Dimensions.get('window');
 
 export default function CartScreen() {
+    const router = useRouter();
     const [loading, setLoading] = useState(true);
     const [items, setItems] = useState<CartItem[]>([]);
 
@@ -223,7 +225,7 @@ export default function CartScreen() {
 
                             <View style={{ height: 12 }} />
 
-                            <TouchableOpacity style={styles.checkoutBtn} disabled={items.length === 0} onPress={() => alert('Proceed to payment')}>
+                            <TouchableOpacity style={styles.checkoutBtn} disabled={items.length === 0} onPress={() =>  router.push("/delivery-location"as Href)}>
                                 <Text style={styles.checkoutText}>{items.length === 0 ? 'Cart is empty' : `Proceed to Payment`}</Text>
                             </TouchableOpacity>
 

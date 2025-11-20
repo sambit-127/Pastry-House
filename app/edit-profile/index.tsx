@@ -4,18 +4,18 @@ import { LinearGradient } from 'expo-linear-gradient';
 import { useRouter } from 'expo-router';
 import React, { useEffect, useState } from 'react';
 import {
-    ActivityIndicator,
-    Alert,
-    Image,
-    KeyboardAvoidingView,
-    Platform,
-    ScrollView,
-    StatusBar,
-    StyleSheet,
-    Text,
-    TextInput,
-    TouchableOpacity,
-    View,
+  ActivityIndicator,
+  Alert,
+  Image,
+  KeyboardAvoidingView,
+  Platform,
+  ScrollView,
+  StatusBar,
+  StyleSheet,
+  Text,
+  TextInput,
+  TouchableOpacity,
+  View,
 } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 
@@ -395,7 +395,7 @@ const EditProfile: React.FC = () => {
                   <LinearGradient 
                     start={{ x: 0, y: 0 }} 
                     end={{ x: 1, y: 0 }} 
-                    colors={[PRIMARY_START, PRIMARY_END]} 
+                    colors={['#be4b12ff', '#f4813fff']} 
                     style={styles.saveInner}
                   >
                     <Feather name="save" size={18} color="#fff" />
@@ -571,6 +571,7 @@ const styles = StyleSheet.create({
     gap: 12,
     marginTop: 20,
    
+   
   },
   resetButton: {
     flex: 1,
@@ -593,7 +594,7 @@ const styles = StyleSheet.create({
     overflow: 'hidden',
   },
   saveInner: {
-    paddingVertical: 14,
+    paddingVertical: 15,
     alignItems: 'center',
     justifyContent: 'center',
     flexDirection: 'row',

@@ -229,7 +229,7 @@ const ProfileSetup: React.FC = () => {
                 activeOpacity={0.9}
               >
                 <LinearGradient 
-                  colors={[PRIMARY_START, PRIMARY_END]} 
+                  colors={['#be4b12ff', '#f4813fff']} 
                   style={styles.saveButtonGradient}
                   start={{ x: 0, y: 0 }}
                   end={{ x: 1, y: 0 }}
