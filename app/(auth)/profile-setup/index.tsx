@@ -24,7 +24,7 @@ const PRIMARY_START = '#FF8E53';
 const PRIMARY_END = '#FF6B6B';
 const DISABLED_PRIMARY = '#FF8E5366';
 
-const ProfileSetup: React.FC = () => {
+const ProfileSetup= () => {
   const router = useRouter();
 
   // UI state

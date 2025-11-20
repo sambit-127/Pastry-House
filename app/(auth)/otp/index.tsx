@@ -1,4 +1,4 @@
-import { useLocalSearchParams, useRouter } from 'expo-router';
+import { Href, useLocalSearchParams, useRouter } from 'expo-router';
 import React, { useEffect, useRef, useState } from 'react';
 import {
   Alert,
@@ -110,7 +110,7 @@ const OTP = () => {
       if (code === '1234') { // Demo OTP
       
         // Navigate to next screen
-       router.replace('/(auth)/profile-setup');
+       router.replace('/profile-setup' as Href);
       } else {
         setError('Invalid OTP. Please try again.');
         // Shake animation for error

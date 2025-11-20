@@ -19,7 +19,13 @@ const Splash = () => {
 
     // Simulate navigation after 3 seconds (replace with real auth check or loading)
     const timer = setTimeout(() => {
-      router.push('/(auth)/login')
+      const token = '123r'
+      if (token) {
+        router.push('/home')
+      }
+      else {
+        router.push('/login')
+      }
     }, 3000);
 
     return () => clearTimeout(timer);
@@ -28,8 +34,8 @@ const Splash = () => {
   return (
     <View style={styles.container}>
       <Animated.View style={[styles.content, { opacity: fadeAnim }]}>
-       <Image source={require('@/assets/images/pastry/pastry2.png')} style={{height:250, width:250}} />
-      
+        <Image source={require('@/assets/images/pastry/pastry2.png')} style={{ height: 250, width: 250 }} />
+
       </Animated.View>
     </View>
   );
