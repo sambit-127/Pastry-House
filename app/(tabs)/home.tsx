@@ -1,5 +1,6 @@
 import { Ionicons, MaterialCommunityIcons } from '@expo/vector-icons';
 import { LinearGradient } from 'expo-linear-gradient';
+import { Href, router } from 'expo-router';
 import React, { useRef, useState } from 'react';
 import {
     Animated,
@@ -12,8 +13,8 @@ import {
     StatusBar,
     StyleSheet,
     Text,
-    TextInput,
-    View,
+    TouchableOpacity,
+    View
 } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 
@@ -107,12 +108,12 @@ const SAMPLE_BAKERY_ITEMS: Product[] = [
 
 
 const CATEGORIES = [
-    { id: 'c1', title: 'Cakes', icon: 'cake-variant', color: '#FF6B6B' },
-    { id: 'c2', title: 'Donuts', icon: 'circle-slice-8', color: '#FF8E53' },
-    { id: 'c3', title: 'Pastries', icon: 'food-croissant', color: '#FFB74D' },
-    { id: 'c4', title: 'Breads', icon: 'bread-slice', color: '#AED581' },
-    { id: 'c5', title: 'Custom', icon: 'palette', color: '#9C27B0' },
-    { id: 'c6', title: 'Gifts', icon: 'gift', color: '#E91E63' },
+    { id: 'c1', title: 'Cakes', icon: 'cake-variant', color: '#FF6B6B', onPress: () => router.push('/all-products' as Href) },
+    { id: 'c2', title: 'Donuts', icon: 'circle-slice-8', color: '#FF8E53', onPress: () => router.push('/all-products' as Href) },
+    { id: 'c3', title: 'Pastries', icon: 'food-croissant', color: '#FFB74D', onPress: () => router.push('/all-products' as Href) },
+    { id: 'c4', title: 'Breads', icon: 'bread-slice', color: '#AED581', onPress: () => router.push('/all-products' as Href) },
+    { id: 'c5', title: 'Custom', icon: 'palette', color: '#9C27B0', onPress: () => { } },
+
 ];
 
 export default function BakeryHomeScreen() {
@@ -145,7 +146,7 @@ export default function BakeryHomeScreen() {
     // Render category item
     const renderCategory = ({ item }: { item: typeof CATEGORIES[0] }) => {
         return (
-            <Pressable style={styles.categoryItem} accessibilityRole="button">
+            <TouchableOpacity style={styles.categoryItem} onPress={item.onPress}>
                 <LinearGradient
                     colors={[`${item.color}33`, `${item.color}66`]}
                     style={styles.categoryGradient}
@@ -153,14 +154,14 @@ export default function BakeryHomeScreen() {
                     <MaterialCommunityIcons name={item.icon as any} size={28} color={item.color} />
                 </LinearGradient>
                 <Text style={styles.categoryText}>{item.title}</Text>
-            </Pressable>
+            </TouchableOpacity>
         );
     };
 
     // Render product card
     const renderProduct = ({ item }: { item: Product }) => {
         return (
-            <Pressable style={styles.productCard} accessibilityRole="button">
+            <Pressable style={styles.productCard} onPress={() => router.push('/product-details' as Href)}>
                 <View style={styles.productImageWrap}>
                     <Image source={item.image as ImageSourcePropType} style={styles.productImage} />
                     {item.tag ? (
@@ -207,7 +208,7 @@ export default function BakeryHomeScreen() {
 
     const renderBakeryItem = ({ item }: { item: Product }) => {
         return (
-            <Pressable style={styles.bakeryCard} accessibilityRole="button">
+            <Pressable style={styles.bakeryCard} onPress={() => router.push('/product-details' as Href)}>
                 <View style={styles.bakeryImageWrap}>
                     <Image source={item.image as ImageSourcePropType} style={styles.bakeryImage} />
 
@@ -297,25 +298,24 @@ export default function BakeryHomeScreen() {
                     />
                     <View style={styles.heroContent}>
                         <Text style={styles.heroBadge}>HANDCRAFTED WITH LOVE</Text>
-                        <Text style={styles.heroTitle}>Artisanal Bakery Delights</Text>
+                        <Text style={styles.heroTitle}>Pure Goodness, Healthy :)</Text>
                         <Text style={styles.heroSubtitle}>
                             Fresh cakes, pastries & custom orders — luxury flavors inspired by Indian traditions.
                         </Text>
 
                         {/* Search (glass-like) */}
-                        <View style={styles.searchBox}>
+                        <TouchableOpacity style={styles.searchBox} onPress={() => router.push('/all-products' as Href)}>
                             <Ionicons name="search" size={20} color="#ccc" />
-                            <TextInput
+                            <Text
                                 style={styles.searchInput}
-                                placeholder="Search cakes, donuts, gifts..."
-                                placeholderTextColor="#bfbfbf"
-                                value={searchQuery}
-                                onChangeText={setSearchQuery}
-                            />
+
+                            >
+                                Search cakes, donuts, gifts...
+                            </Text>
                             <Pressable accessibilityRole="button">
                                 <Ionicons name="mic" size={20} color="#FF6B6B" />
                             </Pressable>
-                        </View>
+                        </TouchableOpacity>
                     </View>
                 </Animated.View>
 
@@ -331,37 +331,12 @@ export default function BakeryHomeScreen() {
                     />
                 </Animated.View>
 
-                {/* Quick action tiles */}
-                <View style={styles.quickActions}>
-                    <Pressable style={styles.quickCard} accessibilityRole="button">
-                        <LinearGradient colors={['#FF6B6B', '#FF8E53']} style={styles.quickIconWrap}>
-                            <MaterialCommunityIcons name="palette" size={26} color="#fff" />
-                        </LinearGradient>
-                        <Text style={styles.quickTitle}>Custom Cakes</Text>
-                        <Text style={styles.quickSubtitle}>Design yours</Text>
-                    </Pressable>
-
-                    <Pressable style={styles.quickCard} accessibilityRole="button">
-                        <LinearGradient colors={['#9C27B0', '#E91E63']} style={styles.quickIconWrap}>
-                            <MaterialCommunityIcons name="gift" size={26} color="#fff" />
-                        </LinearGradient>
-                        <Text style={styles.quickTitle}>Gift Boxes</Text>
-                        <Text style={styles.quickSubtitle}>Sweet surprises</Text>
-                    </Pressable>
-
-                    <Pressable style={styles.quickCard} accessibilityRole="button">
-                        <LinearGradient colors={['#4CAF50', '#8BC34A']} style={styles.quickIconWrap}>
-                            <Ionicons name="flash-outline" size={26} color="#fff" />
-                        </LinearGradient>
-                        <Text style={styles.quickTitle}>Express Delivery</Text>
-                        <Text style={styles.quickSubtitle}>45 mins or less</Text>
-                    </Pressable>
-                </View>
+               
 
                 {/* Section header: Fresh Bakes */}
                 <View style={styles.sectionHeaderRow}>
                     <Text style={styles.sectionHeaderTitle}>Fresh Healthy Cakes</Text>
-                    <Pressable accessibilityRole="button">
+                    <Pressable accessibilityRole="button" onPress={()=>router.push('/all-products' as Href)}>
                         <Text style={styles.sectionHeaderAction}>See all →</Text>
                     </Pressable>
                 </View>
@@ -381,7 +356,7 @@ export default function BakeryHomeScreen() {
                 {/* Bakery bites section */}
                 <View style={[styles.sectionHeaderRow, { paddingHorizontal: 16, marginTop: 18 }]}>
                     <Text style={styles.sectionHeaderTitle}>Bakery Bites</Text>
-                    <Pressable accessibilityRole="button">
+                    <Pressable accessibilityRole="button" onPress={()=>router.push('/all-products' as Href)}>
                         <Text style={styles.sectionHeaderAction}>See all →</Text>
                     </Pressable>
                 </View>
@@ -517,7 +492,7 @@ const styles = StyleSheet.create({
     },
     heroTitle: {
         color: '#fff',
-        fontSize: 30,
+        fontSize: 23,
         fontWeight: '900',
         marginTop: 8,
     },
