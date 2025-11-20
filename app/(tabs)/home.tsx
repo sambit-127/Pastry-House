@@ -264,7 +264,7 @@ export default function BakeryHomeScreen() {
                 <View style={styles.headerInner}>
                     <Text style={styles.headerTitle}>Sweet Atelier</Text>
                     <View style={styles.headerIconsRow}>
-                        <Pressable style={styles.headerIcon} accessibilityRole="button">
+                        <Pressable style={styles.headerIcon} accessibilityRole="button" onPress={()=>router.push("/custom-cakes"as Href)}>
                             <Ionicons name="notifications-outline" size={22} color="#fff" />
                         </Pressable>
                         <Pressable style={styles.headerIcon} accessibilityRole="button">
