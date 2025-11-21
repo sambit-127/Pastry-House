@@ -324,13 +324,12 @@ const DeliveryLocation = () => {
       <OrderSuccessModal
         visible={showSuccess}
         cakeName="Red Velvet Cake"
-        price="$32.99"
+        price="32.99"
         orderNumber="#CAKE-4821"
         estimatedTime="25-35 minutes"
-        onClose={() => setShowSuccess(false)}
-        onContinue={() => {
+        onClose={() => {
           setShowSuccess(false);
-          router.push('/');
+          router.push('/home');
         }}
       />
     </SafeAreaView>

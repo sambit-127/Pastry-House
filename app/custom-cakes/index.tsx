@@ -1,3 +1,6 @@
+import Calendar from '@/components/Calander'
+import CustomTimePicker from '@/components/CustomTimePicker'
+import { Ionicons } from '@expo/vector-icons'
 import * as ImagePicker from 'expo-image-picker'
 import { LinearGradient } from 'expo-linear-gradient'
 import { useRouter } from 'expo-router'
@@ -41,6 +44,30 @@ const CustomCakePage = () => {
 
   // Animation values
   const [modalAnimation] = useState(new Animated.Value(0))
+
+
+
+  // Inside your CustomCakePage component, add these states:
+const [showDatePicker, setShowDatePicker] = useState(false)
+const [showTimePicker, setShowTimePicker] = useState(false)
+const [selectedDateTime, setSelectedDateTime] = useState<Date | null>(null)
+
+// Helper: Format date as DD/MM/YYYY
+const formatDate = (date: Date) => {
+  const day = String(date.getDate()).padStart(2, '0')
+  const month = String(date.getMonth() + 1).padStart(2, '0')
+  const year = date.getFullYear()
+  return `${day}/${month}/${year}`
+}
+
+// Helper: Format time as hh:mm AM/PM
+const formatTime = (date: Date) => {
+  return date.toLocaleTimeString('en-US', {
+    hour: '2-digit',
+    minute: '2-digit',
+    hour12: true,
+  })
+}
 
   const colors = [
     { name: 'Pink', value: '#f18d9cff' },
@@ -418,11 +445,11 @@ const CustomCakePage = () => {
       {/* Modern Header */}
       <View style={styles.header}>
         <TouchableOpacity onPress={() => router.back()} style={styles.backButton}>
-          <Text style={styles.backButtonText}>‹</Text>
+         <Ionicons name="arrow-back" size={24} color="#fff" />
         </TouchableOpacity>
         <View style={styles.headerCenter}>
           <Text style={styles.headerTitle}>Custom Cake</Text>
-          <Text style={styles.headerSubtitle}>Design your masterpiece</Text>
+         
         </View>
         <View style={styles.headerRight} />
       </View>
@@ -559,40 +586,84 @@ const CustomCakePage = () => {
           </TouchableOpacity>
         </View>
 
-        {/* Delivery Information */}
-        <View style={styles.section}>
-          <View style={styles.sectionHeader}>
-            <Text style={styles.sectionTitle}>Delivery Details</Text>
-            <Text style={styles.sectionSubtitle}>When should we deliver?</Text>
-          </View>
-          <View style={styles.deliveryCards}>
-            <View style={styles.deliveryCard}>
-              <Text style={styles.deliveryLabel}>Delivery Date</Text>
-              <TextInput
-                value={deliveryDate}
-                onChangeText={handleDateChange}
-                placeholder="DD/MM/YYYY"
-                placeholderTextColor="#888"
-                keyboardType="numeric"                
-                maxLength={10}
-                style={styles.deliveryInput}
-              />
-            </View>
-            
-            <View style={styles.deliveryCard}>
-              <Text style={styles.deliveryLabel}>Delivery Time</Text>
-              <TextInput
-                value={deliveryTime}
-                onChangeText={handleTimeChange}
-                placeholder="HH:MM"
-                placeholderTextColor="#888"
-                style={styles.deliveryInput}
-                keyboardType="numeric"                
-                maxLength={5}
-              />
-            </View>
-          </View>
-        </View>
+        
+       {/* Delivery Information */}
+<View style={styles.section}>
+  <View style={styles.sectionHeader}>
+  <Text style={styles.sectionTitle}>Delivery Details</Text>
+  <Text style={styles.sectionSubtitle}>When should we deliver?</Text>
+</View>
+
+<View style={styles.deliveryCards}>
+  {/* Delivery Date Card */}
+  <TouchableOpacity
+    style={styles.deliveryCard}
+    onPress={() => setShowDatePicker(true)}
+    activeOpacity={0.8}
+  >
+    <Text style={styles.deliveryLabel}>Delivery Date</Text>
+    <View style={styles.deliveryInputContainer}>
+      <Text style={[
+        styles.deliveryInputText,
+        !deliveryDate && styles.placeholderText
+      ]}>
+        {deliveryDate || "DD/MM/YYYY"}
+      </Text>
+      <Ionicons name="calendar-outline" size={20} color="#FF6B35" />
+    </View>
+  </TouchableOpacity>
+
+  {/* Delivery Time Card */}
+  <TouchableOpacity
+    style={styles.deliveryCard}
+    onPress={() => setShowTimePicker(true)}
+    activeOpacity={0.8}
+  >
+    <Text style={styles.deliveryLabel}>Delivery Time</Text>
+    <View style={styles.deliveryInputContainer}>
+      <Text style={[
+        styles.deliveryInputText,
+        !deliveryTime && styles.placeholderText
+      ]}>
+        {deliveryTime || "HH:MM"}
+      </Text>
+      <Ionicons name="time-outline" size={20} color="#FF6B35" />
+    </View>
+  </TouchableOpacity>
+</View>
+</View>
+
+{/* Calendar Modal */}
+<Calendar
+  visible={showDatePicker}
+  initialDate={selectedDateTime || new Date()}
+  onConfirm={(date) => {
+    setSelectedDateTime(date)
+    setDeliveryDate(formatDate(date))
+    setShowDatePicker(false)
+  }}
+  onCancel={() => setShowDatePicker(false)}
+  restrictFutureDates={false} // Change to true if you don't want future dates
+/>
+
+{/* Time Picker Modal */}
+<CustomTimePicker
+  visible={showTimePicker}
+  initialTime={selectedDateTime || new Date()}
+  onConfirm={(time) => {
+    const newDateTime = selectedDateTime
+      ? new Date(selectedDateTime)
+      : new Date()
+
+    newDateTime.setHours(time.getHours())
+    newDateTime.setMinutes(time.getMinutes())
+
+    setSelectedDateTime(newDateTime)
+    setDeliveryTime(formatTime(time))
+    setShowTimePicker(false)
+  }}
+  onCancel={() => setShowTimePicker(false)}
+/>
 
         {/* Order Summary */}
         <View style={styles.summarySection}>
@@ -699,11 +770,12 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'space-between',
-    paddingHorizontal: 20,
-    paddingVertical: 12,
+    paddingHorizontal: 16,
+    paddingVertical: 8,
     borderBottomWidth: 1,
     borderBottomColor: '#1A1A1A',
     backgroundColor: '#000000',
+    marginBottom:10,
   },
   backButton: {
     padding: 8,
@@ -1272,6 +1344,25 @@ const styles = StyleSheet.create({
     textAlignVertical: 'top',
     minHeight: 80,
   },
+  deliveryInputContainer: {
+  flexDirection: 'row',
+  alignItems: 'center',
+  justifyContent: 'space-between',
+  backgroundColor: '#1A1A1A',
+  borderWidth: 1,
+  borderColor: '#333333',
+  borderRadius: 10,
+  paddingHorizontal: 16,
+  paddingVertical: 14,
+},
+deliveryInputText: {
+  color: '#FFFFFF',
+  fontSize: 16,
+  fontWeight: '500',
+},
+placeholderText: {
+  color: '#888888',
+},
 })
 
 export default CustomCakePage
