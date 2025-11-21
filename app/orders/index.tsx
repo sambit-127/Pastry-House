@@ -19,7 +19,7 @@ const theme = {
     surface: "#101012",
     card: "#18181B",
     border: "#262626",
-    gold: "#FF8E53",
+    gold: '#FF6B6B',
     accent: "#FF8E53",
     text: "#FFFFFF",
     muted: "#A1A1AA",
@@ -78,7 +78,7 @@ const getStatusColor = (status: OrderStatus) => {
         case "Out for Delivery":
             return theme.warning;
         case "Preparing":
-            return theme.accent;
+            return '#3585fe';
         case "Cancelled":
             return theme.danger;
         default:

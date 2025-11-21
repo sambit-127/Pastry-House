@@ -80,21 +80,23 @@ export default function ProductDetails() {
                             <View key={i} style={styles.imageWrapper}>
                                 <Image source={img} style={styles.galleryImage} />
                                 {/* Subtle gradient overlay for smoother transition - dark fade */}
-                                <View style={styles.imageOverlay} />
+                                {/* <View style={styles.imageOverlay} /> */}
                             </View>
                         ))}
                     </ScrollView>
                     {/* Pagination Dots */}
                     <View style={styles.paginationContainer}>
-                        {product.galleryImages.map((_, i) => (
-                            <View
-                                key={i}
-                                style={[
-                                    styles.paginationDot,
-                                    { opacity: currentImageIndex === i ? 1 : 0.35 },
-                                ]}
-                            />
-                        ))}
+                        <View style={{ flexDirection: "row", alignItems: "center",backgroundColor:"#00000060",padding:4, borderRadius:10, paddingHorizontal:2, }}>
+                            {product.galleryImages.map((_, i) => (
+                                <View
+                                    key={i}
+                                    style={[
+                                        styles.paginationDot,
+                                        { opacity: currentImageIndex === i ? 1 : 0.35 },
+                                    ]}
+                                />
+                            ))}
+                        </View>
                     </View>
                 </View>
 
@@ -194,10 +196,10 @@ export default function ProductDetails() {
 
             {/* Fixed Bottom Bar */}
             <View style={styles.bottomBar}>
-                <Pressable  onPress={() => router.push('/cart')}>
-                  <LinearGradient colors={['#FF6B6B','#FF8E53']} style={styles.cartBtn}>
-                      <Text style={styles.cartBtnText}>Add to Cart</Text>
-                  </LinearGradient>
+                <Pressable onPress={() => router.push('/cart')}>
+                    <LinearGradient colors={['#FF6B6B', '#FF8E53']} style={styles.cartBtn}>
+                        <Text style={styles.cartBtnText}>Add to Cart</Text>
+                    </LinearGradient>
                 </Pressable>
             </View>
         </SafeAreaView>
@@ -258,7 +260,7 @@ const styles = StyleSheet.create({
         width,
         height: height * 0.42,
         position: "relative",
-        zIndex:10,
+        zIndex: 10,
         borderBottomLeftRadius: 30,
         borderBottomRightRadius: 30,
         overflow: "hidden",

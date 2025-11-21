@@ -1,5 +1,4 @@
 // OrderDetails.tsx
-
 import { Ionicons, MaterialIcons } from "@expo/vector-icons";
 import { router } from "expo-router";
 import React from "react";
@@ -16,19 +15,18 @@ import { SafeAreaView } from "react-native-safe-area-context";
 
 const { width } = Dimensions.get("window");
 
-// App theme
 const theme = {
     bg: "#050506",
     surface: "#101012",
     card: "#18181B",
     border: "#262626",
-    gold: "#FF8E53",
-    accent: "#FF8E53",
+    gold: '#FF6B6B',
+    accent: '#FF6B6B',
     text: "#FFFFFF",
     muted: "#A1A1AA",
     success: "#4CAF50",
-    softPink: "#FF8E53",
-    gradientStart: "#FF8E53",
+    softPink: '#FF6B6B',
+    gradientStart:'#FF6B6B',
     gradientEnd: "#f7b4b4",
 };
 
@@ -121,7 +119,7 @@ export default function OrderDetails() {
                                         <Text
                                             style={[
                                                 styles.stepTitle,
-                                                active && { color: theme.accent },
+                                                active && { color: theme.accent  },
                                             ]}
                                         >
                                             {step.title}
@@ -230,9 +228,7 @@ export default function OrderDetails() {
     );
 }
 
-/* ===================================== */
 /* ===========  STYLES  ================= */
-/* ===================================== */
 
 const styles = StyleSheet.create({
     container: {
