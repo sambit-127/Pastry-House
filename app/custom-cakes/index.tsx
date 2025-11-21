@@ -27,6 +27,8 @@ const CustomCakePage = () => {
   const [selectedShape, setSelectedShape] = useState('')
   const [selectedColor, setSelectedColor] = useState('')
   const [message, setMessage] = useState('Happy Birthday!')
+  const [additionalDescription, setAdditionalDescription] = useState('')
+  const [customShapeText, setCustomShapeText] = useState('')
   const [deliveryDate, setDeliveryDate] = useState('')
   const [deliveryTime, setDeliveryTime] = useState('')
   const [referenceImage, setReferenceImage] = useState<string | null>(null)
@@ -41,12 +43,16 @@ const CustomCakePage = () => {
   const [modalAnimation] = useState(new Animated.Value(0))
 
   const colors = [
-    { name: 'Pink', value: '#FFB6C1' },
+    { name: 'Pink', value: '#f18d9cff' },
     { name: 'Mint', value: '#98FB98' },
     { name: 'Lavender', value: '#E6E6FA' },
     { name: 'Buttercream', value: '#FFF8DC' },
-    { name: 'Blue', value: '#ADD8E6' },
-    { name: 'Yellow', value: '#FFFFE0' }
+    { name: 'Blue', value: '#8bcee4ff' },
+    { name: 'Yellow', value: '#f0ea36ff' },
+    { name: 'Red', value: '#eb250bff' },
+    { name: 'Brown', value: '#4E3524' },
+    { name: 'Purple', value: '#6f217fff' },
+  
   ]
 
   const weights = [
@@ -155,12 +161,46 @@ const CustomCakePage = () => {
     console.log('Buy now')
   }
 
-  // Modern Selection Card Component - Updated to show selected values
-  const SelectionCard = ({ title, value, onPress, icon }: any) => (
+  // Get selected flavor emoji
+  const getSelectedFlavorEmoji = () => {
+    if (!selectedFlavor) return '🍰'
+    const flavor = flavors.find(f => f.name === selectedFlavor)
+    return flavor ? flavor.emoji : '🍰'
+  }
+
+  // Get selected shape emoji
+  const getSelectedShapeEmoji = () => {
+    if (!selectedShape) return '🔷'
+    const shape = shapes.find(s => s.name === selectedShape)
+    return shape ? shape.emoji : '🔷'
+  }
+
+  // Get selected color display - CORRECTED VERSION
+  const getSelectedColorDisplay = () => {
+    if (!selectedColor) {
+      return <Text style={styles.selectionCardEmoji}>🎨</Text>
+    }
+    return (
+      <View style={[styles.colorIcon, { backgroundColor: selectedColor }]} />
+    )
+  }
+
+  // Get shape display value
+  const getShapeDisplayValue = () => {
+    if (!selectedShape) return ''
+    if (selectedShape === 'Custom' && customShapeText) {
+      return customShapeText
+    }
+    return selectedShape
+  }
+
+  // Modern Selection Card Component - Updated to show selected values and dynamic icons
+  const SelectionCard = ({ title, value, onPress, icon, customIcon }: any) => (
     <TouchableOpacity 
       style={[
         styles.selectionCard,
-        value && styles.selectedCard
+        value && styles.selectedCard,
+        title === 'Color' && value && { borderColor: selectedColor }
       ]} 
       onPress={onPress}
       activeOpacity={0.7}
@@ -168,9 +208,10 @@ const CustomCakePage = () => {
       <View style={styles.selectionCardContent}>
         <View style={[
           styles.selectionCardIcon,
-          value && styles.selectedIcon
+          value && styles.selectedIcon,
+          title === 'Color' && value && { backgroundColor: 'transparent' }
         ]}>
-          <Text style={styles.selectionCardEmoji}>{icon}</Text>
+          {customIcon || <Text style={styles.selectionCardEmoji}>{icon}</Text>}
         </View>
         <View style={styles.selectionCardText}>
           <Text style={styles.selectionCardTitle}>{title}</Text>
@@ -322,13 +363,16 @@ const CustomCakePage = () => {
               setSelectedColor(color.value)
               closeModal()
             }}
-            style={styles.modalOptionCard}
+            style={[
+              styles.modalOptionCard,
+              selectedColor === color.value && [styles.selectedModalOptionCard, { borderColor: color.value }]
+            ]}
             activeOpacity={0.8}
           >
             <View style={[
               styles.colorCircle,
               { backgroundColor: color.value },
-              selectedColor === color.value && styles.selectedColorCircle
+              selectedColor === color.value && [styles.selectedColorCircle, { borderColor: color.value }]
             ]}>
               {selectedColor === color.value && (
                 <Text style={styles.checkmark}>✓</Text>
@@ -402,7 +446,7 @@ const CustomCakePage = () => {
               title="Flavor"
               value={selectedFlavor}
               onPress={() => openModal('flavor')}
-              icon="🍰"
+              icon={getSelectedFlavorEmoji()}
             />
             
             <SelectionCard
@@ -414,9 +458,9 @@ const CustomCakePage = () => {
             
             <SelectionCard
               title="Shape"
-              value={selectedShape}
+              value={getShapeDisplayValue()}
               onPress={() => openModal('shape')}
-              icon="🔷"
+              icon={getSelectedShapeEmoji()}
             />
             
             <SelectionCard
@@ -424,8 +468,25 @@ const CustomCakePage = () => {
               value={colors.find(c => c.value === selectedColor)?.name}
               onPress={() => openModal('color')}
               icon="🎨"
+              customIcon={getSelectedColorDisplay()}
             />
           </View>
+
+          {/* Custom Shape Input - Shows on main page when Custom shape is selected */}
+          {selectedShape === 'Custom' && (
+            <View style={styles.customShapeContainer}>
+              <Text style={styles.customShapeLabel}>Describe your custom shape</Text>
+              <TextInput
+                value={customShapeText}
+                onChangeText={setCustomShapeText}
+                placeholder="e.g., Number, Character, Animal shape, etc."
+                placeholderTextColor="#888"
+                style={styles.customShapeInput}
+                multiline
+                numberOfLines={3}
+              />
+            </View>
+          )}
         </View>
 
         {/* Message Input */}
@@ -446,6 +507,28 @@ const CustomCakePage = () => {
             />
             <View style={styles.messageIcon}>
               <Text style={styles.messageEmoji}>💌</Text>
+            </View>
+          </View>
+        </View>
+
+        {/* Additional Description Input */}
+        <View style={styles.section}>
+          <View style={styles.sectionHeader}>
+            <Text style={styles.sectionTitle}>Design Details</Text>
+            <Text style={styles.sectionSubtitle}>Complete your cake vision</Text>
+          </View>
+          <View style={styles.additionalDescriptionContainer}>
+            <TextInput
+              value={additionalDescription}
+              onChangeText={setAdditionalDescription}
+              placeholder="Describe your cake design..."
+              placeholderTextColor="#888"
+              style={styles.additionalDescriptionInput}
+              multiline
+              numberOfLines={3}
+            />
+            <View style={styles.additionalDescriptionIcon}>
+              <Text style={styles.additionalDescriptionEmoji}>📝</Text>
             </View>
           </View>
         </View>
@@ -741,7 +824,6 @@ const styles = StyleSheet.create({
     borderRadius: 16,
     padding: 16,
     marginBottom: 12,
-  
     borderWidth: 1,
     borderColor: '#333333',
   },
@@ -767,6 +849,13 @@ const styles = StyleSheet.create({
   },
   selectionCardEmoji: {
     fontSize: 20,
+  },
+  colorIcon: {
+    width: 24,
+    height: 24,
+    borderRadius: 12,
+    borderWidth: 2,
+    borderColor: '#FFFFFF',
   },
   selectionCardText: {
     flex: 1,
@@ -822,6 +911,30 @@ const styles = StyleSheet.create({
     top: 16,
   },
   messageEmoji: {
+    fontSize: 20,
+  },
+  // Additional Description
+  additionalDescriptionContainer: {
+    position: 'relative',
+  },
+  additionalDescriptionInput: {
+    borderWidth: 1,
+    borderColor: '#333333',
+    borderRadius: 16,
+    padding: 16,
+    paddingRight: 50,
+    color: '#FFFFFF',
+    backgroundColor: '#1A1A1A',
+    fontSize: 16,
+    textAlignVertical: 'top',
+    minHeight: 80,
+  },
+  additionalDescriptionIcon: {
+    position: 'absolute',
+    right: 16,
+    top: 16,
+  },
+  additionalDescriptionEmoji: {
     fontSize: 20,
   },
   // Upload Styles
@@ -934,7 +1047,7 @@ const styles = StyleSheet.create({
     color: '#FFFFFF',
   },
   summaryAmount: {
-    fontSize: 22,
+    fontSize: 20,
     fontWeight: 'bold',
     color: '#FF6B35',
   },
@@ -942,13 +1055,13 @@ const styles = StyleSheet.create({
     borderTopWidth: 1,
     borderTopColor: '#333333',
     paddingTop: 16,
-    marginBottom: 20,
+    marginBottom: 10,
   },
   summaryRow: {
     flexDirection: 'row',
     justifyContent: 'space-between',
     alignItems: 'center',
-    marginBottom: 8,
+    marginBottom: 5,
   },
   summaryLabel: {
     color: '#CCCCCC',
@@ -966,11 +1079,11 @@ const styles = StyleSheet.create({
   primaryButton: {
     flex: 1,
     marginLeft: 8,
-    borderRadius: 16,
+    borderRadius: 14,
     overflow: 'hidden',
   },
   primaryButtonGradient: {
-    padding: 18,
+    padding: 14,
     alignItems: 'center',
     justifyContent: 'center',
   },
@@ -981,8 +1094,8 @@ const styles = StyleSheet.create({
   },
   secondaryButton: {
     backgroundColor: '#333333',
-    borderRadius: 16,
-    padding: 18,
+    borderRadius: 14,
+    padding: 14,
     flex: 1,
     marginRight: 8,
     alignItems: 'center',
@@ -1132,6 +1245,32 @@ const styles = StyleSheet.create({
     fontSize: 16,
     fontWeight: 'bold',
     color: '#FF6B35',
+  },
+  // Custom Shape Input on Main Page
+  customShapeContainer: {
+    marginTop: 12,
+    padding: 16,
+    backgroundColor: '#1A1A1A',
+    borderRadius: 16,
+    borderWidth: 1,
+    borderColor: '#333333',
+  },
+  customShapeLabel: {
+    color: '#FFFFFF',
+    fontSize: 14,
+    fontWeight: '600',
+    marginBottom: 12,
+  },
+  customShapeInput: {
+    borderWidth: 1,
+    borderColor: '#333333',
+    borderRadius: 12,
+    padding: 16,
+    color: '#FFFFFF',
+    backgroundColor: '#0c0909',
+    fontSize: 14,
+    textAlignVertical: 'top',
+    minHeight: 80,
   },
 })
 

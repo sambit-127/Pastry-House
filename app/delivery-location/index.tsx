@@ -1,21 +1,20 @@
-import DeliveryMethodSelectionModal from '@/components/DeliveryMethodSelectionModal';
 import OrderSuccessModal from '@/components/OrderSuccessModal';
 import { Ionicons } from '@expo/vector-icons';
 import { LinearGradient } from 'expo-linear-gradient';
 import { useLocalSearchParams, useRouter } from 'expo-router';
 import React, { useEffect, useState } from 'react';
 import {
-    ActivityIndicator,
-    Alert,
-    Dimensions,
-    Linking,
-    Modal,
-    ScrollView,
-    StatusBar,
-    StyleSheet,
-    Text,
-    TouchableOpacity,
-    View
+  ActivityIndicator,
+  Alert,
+  Dimensions,
+  Linking,
+  Modal,
+  ScrollView,
+  StatusBar,
+  StyleSheet,
+  Text,
+  TouchableOpacity,
+  View
 } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 
@@ -73,7 +72,6 @@ const DeliveryLocation = () => {
     }
   ]);
   const [loading, setLoading] = useState(false);
-  const [deliveryModalVisible, setDeliveryModalVisible] = useState(false);
   const [showSuccess, setShowSuccess] = useState(false);
   const [isProcessing, setIsProcessing] = useState(false);
   const [callModalVisible, setCallModalVisible] = useState(false);
@@ -93,21 +91,11 @@ const DeliveryLocation = () => {
     setSelectedAddressId(addressId);
   };
 
-  const handleContinue = () => {
+  const handleContinue = async () => {
     if (!selectedAddressId) {
       Alert.alert('Error', 'Please select a delivery address');
       return;
     }
-
-    setDeliveryModalVisible(true);
-  };
-
-  const handleAddNewAddress = () => {
-    router.replace(`/add-address?seller=${seller}`);
-  };
-
-  const handleHomeDeliverySelect = async () => {
-    
 
     setIsProcessing(true);
 
@@ -115,16 +103,8 @@ const DeliveryLocation = () => {
       // Simulate API call delay
       await new Promise(resolve => setTimeout(resolve, 2000));
       
-      setDeliveryModalVisible(false);
-      setTimeout(() => {
-        router.push({
-          pathname: '/',
-          params: {
-            seller: encodeURIComponent(JSON.stringify(sellerData)),
-            addressId: selectedAddressId,
-          },
-        });
-      }, 100);
+      // Directly show success modal after processing
+      setShowSuccess(true);
     } catch (err) {
       Alert.alert('Error', 'Failed to process order. Please try again.');
     } finally {
@@ -132,23 +112,8 @@ const DeliveryLocation = () => {
     }
   };
 
-  const handleSelfPickupSelect = async () => {
-    
-    setIsProcessing(true);
-
-    try {
-      // Simulate API call delay
-      await new Promise(resolve => setTimeout(resolve, 2000));
-      
-      setDeliveryModalVisible(false);
-      setTimeout(() => {
-        setShowSuccess(true);
-      }, 100);
-    } catch (err) {
-      Alert.alert('Error', 'Failed to place order. Please try again.');
-    } finally {
-      setIsProcessing(false);
-    }
+  const handleAddNewAddress = () => {
+    router.replace(`/add-address?seller=${seller}`);
   };
 
   const CallSellerModal = ({ visible, onClose, sellerPhone }: { visible: boolean; onClose: () => void; sellerPhone: string }) => {
@@ -337,13 +302,6 @@ const DeliveryLocation = () => {
         </TouchableOpacity>
       </View>
 
-      <DeliveryMethodSelectionModal
-        visible={deliveryModalVisible}
-        onClose={() => setDeliveryModalVisible(false)}
-        onSelfPickupSelect={handleSelfPickupSelect}
-        onHomeDeleverySelect={handleHomeDeliverySelect}
-      />
-
       <CallSellerModal
         visible={callModalVisible}
         onClose={() => setCallModalVisible(false)}
@@ -363,38 +321,18 @@ const DeliveryLocation = () => {
         </View>
       </Modal>
 
-      {/* <OrderSuccessModal
+      <OrderSuccessModal
         visible={showSuccess}
-        onClose={() =>{
-          setTimeout(() => {
-            setShowSuccess(false)
-          }, 20);
-        }}
+        cakeName="Red Velvet Cake"
+        price="$32.99"
+        orderNumber="#CAKE-4821"
+        estimatedTime="25-35 minutes"
+        onClose={() => setShowSuccess(false)}
         onContinue={() => {
-         setTimeout(() => {
           setShowSuccess(false);
-         }, 20);
-          router.push('/home');
+          router.push('/');
         }}
-        onDownload={() => {
-         setTimeout(() => {
-          setShowSuccess(false);
-         }, 20);
-          // Your download logic
-        }}
-      /> */}
-<OrderSuccessModal
-  visible={showSuccess}
-  cakeName="Red Velvet Cake"
-  price="$32.99"
-  orderNumber="#CAKE-4821"
-  estimatedTime="25-35 minutes"
-  onClose={() => setShowSuccess(false)}
-  onContinue={() => {
-    setShowSuccess(false);
-    router.push('/');
-  }}
-/>
+      />
     </SafeAreaView>
   );
 };
