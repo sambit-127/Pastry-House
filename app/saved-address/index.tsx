@@ -715,21 +715,7 @@ const SavedAddress = () => {
           </LinearGradient>
         </TouchableOpacity>
 
-        {/* Continue Button */}
-        <TouchableOpacity
-          style={styles.continueButton}
-          onPress={()=>{}}
-          activeOpacity={0.8}
-        >
-          <LinearGradient
-            colors={['#ff5050ff' , '#ff5050ff'  ]}
-            style={styles.continueGradient}
-            start={{ x: 0, y: 0 }}
-            end={{ x: 1, y: 0 }}
-          >
-            <Text style={styles.continueButtonText}>Continue to Payment</Text>
-          </LinearGradient>
-        </TouchableOpacity>
+        
       </ScrollView>
 
       <UpdateAddressModal
@@ -873,10 +859,10 @@ const styles = StyleSheet.create({
     color: '#FF6B6B' ,
   },
   addAddressButton: {
-    marginTop: 20,
+    marginTop: 40,
     borderRadius: 12,
     overflow: 'hidden',
-    marginBottom: 20,
+   
   },
   addAddressGradient: {
     padding: 16,

@@ -110,7 +110,7 @@ const Calendar: React.FC<CalendarProps> = ({
     dateHeader: {
       height: 100,
       width: "100%",
-      backgroundColor: "#9D4EDD",
+      backgroundColor: "#ff5050ff",
       padding: 16,
       borderTopEndRadius: 10,
       borderTopLeftRadius: 10,
@@ -169,12 +169,12 @@ const Calendar: React.FC<CalendarProps> = ({
     },
     today: {
       borderWidth: 1,
-      borderColor: "#9D4EDD",
+      borderColor: "#ff5050ff",
       borderRadius: 20,
       padding: 5,
     },
     selected: {
-      backgroundColor: "#9D4EDD",
+      backgroundColor: "#ff5050ff",
       borderRadius: 20,
       padding: 5,
     },
@@ -186,7 +186,7 @@ const Calendar: React.FC<CalendarProps> = ({
       marginRight: 20,
     },
     buttonText: {
-      color: "#9D4EDD",
+      color: "#ff5050ff",
       fontSize: 16,
       fontWeight:"700"
     },
@@ -202,7 +202,7 @@ const Calendar: React.FC<CalendarProps> = ({
       borderRadius: 8,
     },
     selectedYearPressable: {
-      backgroundColor: "#9D4EDD",
+      backgroundColor: "#ff5050ff",
     },
     disabledPressable: {
       opacity: 0.5,

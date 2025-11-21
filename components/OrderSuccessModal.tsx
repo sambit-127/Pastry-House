@@ -1,16 +1,16 @@
 import { MaterialCommunityIcons } from "@expo/vector-icons";
 import { LinearGradient } from "expo-linear-gradient";
-import { useRouter } from "expo-router";
+import { Href, useRouter } from "expo-router";
 import React, { useEffect, useLayoutEffect, useRef } from "react";
 import {
-    Animated,
-    BackHandler,
-    Dimensions,
-    Modal,
-    StyleSheet,
-    Text,
-    TouchableOpacity,
-    View,
+  Animated,
+  BackHandler,
+  Dimensions,
+  Modal,
+  StyleSheet,
+  Text,
+  TouchableOpacity,
+  View,
 } from "react-native";
 
 const { width, height } = Dimensions.get("window");
@@ -22,15 +22,14 @@ interface OrderSuccessModalProps {
   orderNumber?: string;
   estimatedTime?: string;
   onClose?: () => void;
-  onContinue?: () => void;
+ 
 }
 
 const OrderSuccessModal: React.FC<OrderSuccessModalProps> = ({
   visible,
-  onContinue,
   onClose,
   cakeName = "Chocolate Fudge Cake",
-  price = "$24.99",
+  price = "24.99",
   orderNumber = "#CAKE-2837",
   estimatedTime = "20-30 minutes",
 }) => {
@@ -104,7 +103,7 @@ const OrderSuccessModal: React.FC<OrderSuccessModalProps> = ({
   }, [visible, onClose]);
 
   const handleContinue = () => {
-    onContinue?.() || onClose?.();
+    router.push("/order-details"as Href)
   };
 
   return (
@@ -193,11 +192,11 @@ const OrderSuccessModal: React.FC<OrderSuccessModalProps> = ({
 
               <View style={styles.orderDetails}>
                 <MaterialCommunityIcons
-                  name="currency-usd"
+                  name="currency-inr"
                   size={18}
                   color="#4CAF50"
                 />
-                <Text style={styles.orderPrice}>{price}</Text>
+                <Text style={styles.orderPrice}>₹{price}</Text>
               </View>
 
               <View style={styles.orderFooter}>
@@ -227,11 +226,11 @@ const OrderSuccessModal: React.FC<OrderSuccessModalProps> = ({
             {/* Additional Order Info */}
             <View style={styles.additionalInfo}>
               <View style={styles.infoRow}>
-                <MaterialCommunityIcons name="truck-delivery" size={20} color="#FF6B6B" />
+                <MaterialCommunityIcons name="truck-delivery" size={20} color="#FFf" />
                 <Text style={styles.infoText}>Free delivery to your location</Text>
               </View>
               <View style={styles.infoRow}>
-                <MaterialCommunityIcons name="bell-ring" size={20} color="#FF6B6B" />
+                <MaterialCommunityIcons name="bell-ring" size={20} color="#fff" />
                 <Text style={styles.infoText}>We'll notify you when ready</Text>
               </View>
             </View>
@@ -240,7 +239,7 @@ const OrderSuccessModal: React.FC<OrderSuccessModalProps> = ({
             <View style={styles.buttonContainer}>
               <TouchableOpacity style={styles.primaryBtn} onPress={handleContinue}>
                 <LinearGradient
-                  colors={["#FF6B6B", "#FF8E53"]}
+                  colors={["#f44f4fff", "#FF8E53"]}
                   start={{ x: 0, y: 0 }}
                   end={{ x: 1, y: 1 }}
                   style={styles.primaryBtnBg}
@@ -402,7 +401,7 @@ const styles = StyleSheet.create({
   },
   additionalInfo: {
     width: "100%",
-    backgroundColor: "rgba(255,255,255,0.1)",
+    backgroundColor: "rgba(161, 65, 65, 0.1)",
     borderRadius: 12,
     padding: 16,
     marginBottom: 20,
