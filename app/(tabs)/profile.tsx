@@ -15,7 +15,7 @@ export default function Profile() {
     { title: "My Orders", icon: "receipt-outline", onPress: () => router.push("/orders" as Href) },
     { title: "Saved Addresses", icon: "location-outline", onPress: () => router.push("/saved-address") },
     { title: "Privacy-Policy", icon: "shield-checkmark-outline", onPress: () => router.push("/privacy-policy" as Href) },
-    { title: "Help & Support", icon: "help-circle-outline", onPress: () => router.push("/help-support" as Href) },
+    { title: "Help & Support", icon: "help-circle-outline", onPress: () => router.push("/contact-us" as Href) },
   ];
 
   return (
@@ -35,7 +35,7 @@ export default function Profile() {
           {menuItems.map((item, index) => (
             <Pressable key={index} style={[styles.menuItem, { borderBottomWidth: index === menuItems.length - 1 ? 0 : 1 }]} onPress={item.onPress}>
               <View style={styles.menuLeft}>
-                <Ionicons name={item.icon as any} size={24} color="#FF8E53" />
+                <Ionicons name={item.icon as any} size={24} color='#FF6B6B' />
                 <Text style={styles.menuText}>{item.title}</Text>
               </View>
               <Ionicons name="chevron-forward" size={20} color="#777" />
@@ -73,7 +73,7 @@ const styles = StyleSheet.create({
     height: 110,
     borderRadius: 60,
     borderWidth: 3,
-    borderColor: "#FF8E53",
+    borderColor: '#FF6B6B',
   },
 
   name: {
@@ -125,7 +125,7 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     alignSelf: "center",
     marginTop: 40,
-    backgroundColor: "#C25A2C",
+    backgroundColor:'#ff5050ff',
     paddingVertical: 12,
     paddingHorizontal: 25,
     borderRadius: 16,
