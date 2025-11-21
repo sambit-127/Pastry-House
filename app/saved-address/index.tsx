@@ -187,7 +187,7 @@ const UpdateAddressModal: React.FC<UpdateAddressModalProps> = ({
         <Ionicons
           name={getAddressTypeIcon(type) as any}
           size={16}
-          color={isSelected ? '#FE5200' : '#999'}
+          color={isSelected ? '#FF6B6B'  : '#999'}
         />
         <Text style={[
           modalStyles.addressTypeText,
@@ -405,7 +405,7 @@ const UpdateAddressModal: React.FC<UpdateAddressModalProps> = ({
                     <Switch
                       value={showGSTFields}
                       onValueChange={setShowGSTFields}
-                      trackColor={{ false: '#333', true: '#FE5200' }}
+                      trackColor={{ false: '#333', true: '#FF6B6B'  }}
                       thumbColor={showGSTFields ? '#fff' : '#f4f3f4'}
                     />
                     <Text style={modalStyles.checkboxLabel}>Add GSTIN Details</Text>
@@ -450,7 +450,7 @@ const UpdateAddressModal: React.FC<UpdateAddressModalProps> = ({
                   activeOpacity={0.8}
                 >
                   <LinearGradient
-                    colors={['#FF512F', '#FE5200']}
+                    colors={['#FF6B6B' , '#FF6B6B' ]}
                     style={modalStyles.saveGradient}
                     start={{ x: 0, y: 0 }}
                     end={{ x: 1, y: 0 }}
@@ -585,13 +585,13 @@ const SavedAddress = () => {
   const getAddressTypeColor = (type: string) => {
     switch (type) {
       case 'home':
-        return '#FE5200';
+        return '#FF6B6B' ;
       case 'work':
-        return '#FE5200';
+        return '#FF6B6B' ;
       case 'hotel':
-        return '#FE5200';
+        return '#FF6B6B' ;
       default:
-        return '#FE5200';
+        return '#FF6B6B' ;
     }
   };
 
@@ -638,7 +638,7 @@ const SavedAddress = () => {
                 onPress={() => handleUpdateAddress(address)}
                 activeOpacity={0.7}
               >
-                <Ionicons name="pencil" size={20} color="#FE5200" />
+                <Ionicons name="pencil" size={20} color='#FF6B6B'  />
                 <Text style={styles.actionButtonText}>Edit</Text>
               </TouchableOpacity>
               <TouchableOpacity
@@ -646,8 +646,8 @@ const SavedAddress = () => {
                 onPress={() => handleDeleteAddress(address.id)}
                 activeOpacity={0.7}
               >
-                <Ionicons name="trash" size={20} color="#EF4444" />
-                <Text style={[styles.actionButtonText, { color: '#EF4444' }]}>Delete</Text>
+                <Ionicons name="trash" size={20} color='#FF6B6B'  />
+                <Text style={[styles.actionButtonText, { color: '#FF6B6B'  }]}>Delete</Text>
               </TouchableOpacity>
             </View>
           </View>
@@ -708,7 +708,7 @@ const SavedAddress = () => {
           >
             <View style={styles.addAddressContent}>
               <View style={styles.addAddressIcon}>
-                <Ionicons name="add" size={24} color="#FE5200" />
+                <Ionicons name="add" size={24} color='#FF6B6B'  />
               </View>
               <Text style={styles.addAddressText}>Add New Address</Text>
             </View>
@@ -718,11 +718,11 @@ const SavedAddress = () => {
         {/* Continue Button */}
         <TouchableOpacity
           style={styles.continueButton}
-          onPress={handleContinue}
+          onPress={()=>{}}
           activeOpacity={0.8}
         >
           <LinearGradient
-            colors={['#FF512F', '#FE5200']}
+            colors={['#ff5050ff' , '#ff5050ff'  ]}
             style={styles.continueGradient}
             start={{ x: 0, y: 0 }}
             end={{ x: 1, y: 0 }}
@@ -798,8 +798,8 @@ const styles = StyleSheet.create({
     borderColor: 'transparent',
   },
   selectedAddressCard: {
-   borderColor: '#C25A2C',
-    backgroundColor: '#050505ff',
+    borderColor: '#FF6B6B' ,
+    backgroundColor: '#2a1a0f',
   },
   addressHeader: {
     flexDirection: 'row',
@@ -826,7 +826,7 @@ const styles = StyleSheet.create({
     textTransform: 'uppercase',
   },
   defaultBadge: {
-    backgroundColor: '#FE5200',
+    backgroundColor: '#FF6B6B' ,
     paddingHorizontal: 8,
     paddingVertical: 2,
     borderRadius: 10,
@@ -870,7 +870,7 @@ const styles = StyleSheet.create({
   actionButtonText: {
     fontSize: 14,
     fontWeight: '600',
-    color: '#FE5200',
+    color: '#FF6B6B' ,
   },
   addAddressButton: {
     marginTop: 20,
@@ -898,7 +898,7 @@ const styles = StyleSheet.create({
   addAddressText: {
     fontSize: 16,
     fontWeight: '600',
-    color: '#FE5200',
+    color: '#FF6B6B' ,
   },
   loadingText: {
     fontSize: 16,
@@ -910,7 +910,7 @@ const styles = StyleSheet.create({
   errorText: {
     fontSize: 16,
     fontWeight: '400',
-    color: '#EF4444',
+    color: '#FF6B6B' ,
     textAlign: 'center',
     marginVertical: 20,
   },
@@ -988,7 +988,7 @@ const modalStyles = StyleSheet.create({
     gap: 8,
   },
   primaryBadge: {
-    backgroundColor: '#FE5200',
+    backgroundColor: '#FF6B6B' ,
     paddingHorizontal: 8,
     paddingVertical: 4,
     borderRadius: 10,
@@ -1004,12 +1004,12 @@ const modalStyles = StyleSheet.create({
     paddingVertical: 6,
     borderRadius: 10,
     borderWidth: 1,
-    borderColor: '#FE5200',
+    borderColor: '#FF6B6B' ,
   },
   makePrimaryButtonText: {
     fontSize: 12,
     fontWeight: '600',
-    color: '#FE5200',
+    color: '#FF6B6B' ,
   },
   closeButton: {
     width: 32,
@@ -1048,7 +1048,7 @@ const modalStyles = StyleSheet.create({
     gap: 6,
   },
   addressTypeButtonSelected: {
-    borderColor: '#FE5200',
+    borderColor: '#FF6B6B' ,
     backgroundColor: '#2a1a0f',
   },
   addressTypeText: {
@@ -1057,7 +1057,7 @@ const modalStyles = StyleSheet.create({
     color: '#999',
   },
   addressTypeTextSelected: {
-    color: '#FE5200',
+    color: '#FF6B6B' ,
   },
   fieldLabel: {
     fontSize: 14,

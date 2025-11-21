@@ -5,17 +5,17 @@ import { LinearGradient } from 'expo-linear-gradient';
 import { useLocalSearchParams, useRouter } from 'expo-router';
 import React, { useEffect, useState } from 'react';
 import {
-    ActivityIndicator,
-    Alert,
-    Dimensions,
-    Linking,
-    Modal,
-    ScrollView,
-    StatusBar,
-    StyleSheet,
-    Text,
-    TouchableOpacity,
-    View
+  ActivityIndicator,
+  Alert,
+  Dimensions,
+  Linking,
+  Modal,
+  ScrollView,
+  StatusBar,
+  StyleSheet,
+  Text,
+  TouchableOpacity,
+  View
 } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 
@@ -203,13 +203,13 @@ const DeliveryLocation = () => {
   const getAddressTypeColor = (type: string) => {
     switch (type) {
       case 'home':
-        return '#FE5200';
+        return '#FF6B6B';
       case 'work':
-        return '#FE5200';
+        return '#FF6B6B';
       case 'hotel':
-        return '#FE5200';
+        return '#FF6B6B';
       default:
-        return '#FE5200';
+        return '#FF6B6B';
     }
   };
 
@@ -242,7 +242,7 @@ const DeliveryLocation = () => {
 
           {isSelected && (
             <View style={styles.selectedIndicator}>
-              <Ionicons name="checkmark-circle" size={24} color="#FE5200" />
+              <Ionicons name="checkmark-circle" size={24} color='#FF6B6B' />
             </View>
           )}
         </View>
@@ -306,7 +306,7 @@ const DeliveryLocation = () => {
           >
             <View style={styles.addAddressContent}>
               <View style={styles.addAddressIcon}>
-                <Ionicons name="add" size={24} color="#FE5200" />
+                <Ionicons name="add" size={24} color='#FF6B6B' />
               </View>
               <Text style={styles.addAddressText}>Add New Address</Text>
             </View>
@@ -323,7 +323,7 @@ const DeliveryLocation = () => {
           activeOpacity={0.8}
         >
           <LinearGradient
-            colors={selectedAddressId ? ['#FF512F', '#FE5200'] : ['#333', '#222']}
+            colors={selectedAddressId ? ['#ff5050ff', '#ff5050ff'] : ['#333', '#222']}
             style={styles.continueGradient}
             start={{ x: 0, y: 0 }}
             end={{ x: 1, y: 0 }}
@@ -357,7 +357,7 @@ const DeliveryLocation = () => {
       >
         <View style={styles.loadingModalContainer}>
           <View style={styles.loadingContent}>
-            <ActivityIndicator size="large" color="#FE5200" />
+            <ActivityIndicator size="large" color='#ff5050ff' />
             <Text style={styles.loadingText}>Processing your order...</Text>
           </View>
         </View>
@@ -453,7 +453,7 @@ const styles = StyleSheet.create({
     borderColor: 'transparent',
   },
   selectedAddressCard: {
-    borderColor: '#C25A2C',
+    borderColor: '#FF6B6B',
     backgroundColor: '#050505ff',
   },
   addressHeader: {
@@ -481,7 +481,7 @@ const styles = StyleSheet.create({
     textTransform: 'uppercase',
   },
   defaultBadge: {
-    backgroundColor: '#FE5200',
+    backgroundColor: '#FF6B6B',
     paddingHorizontal: 8,
     paddingVertical: 2,
     borderRadius: 10,
@@ -542,7 +542,7 @@ const styles = StyleSheet.create({
   addAddressText: {
     fontSize: 16,
     fontWeight: '600',
-    color: '#FE5200',
+    color: '#FF6B6B',
   },
   bottomContainer: {
     padding: 20,
@@ -579,7 +579,7 @@ const styles = StyleSheet.create({
   errorText: {
     fontSize: 16,
     fontWeight: '400',
-    color: '#EF4444',
+    color: '#FF6B6B',
     textAlign: 'center',
     marginVertical: 20,
   },
@@ -621,11 +621,11 @@ const styles = StyleSheet.create({
   callModalPhone: {
     fontSize: 16,
     fontWeight: '700',
-    color: '#FE5200',
+    color: '#FF6B6B',
     marginBottom: 20,
   },
   callButton: {
-    backgroundColor: '#FE5200',
+    backgroundColor: '#FF6B6B',
     borderRadius: 8,
     paddingVertical: 12,
     paddingHorizontal: 24,

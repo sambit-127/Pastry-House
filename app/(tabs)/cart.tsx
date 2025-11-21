@@ -366,7 +366,7 @@ const styles = StyleSheet.create({
 
     checkoutBtn: {
         marginTop: 8,
-        backgroundColor: '#FE5200',
+        backgroundColor: '#ff5050ff',
         paddingVertical: 14,
         borderRadius: 12,
         alignItems: 'center',

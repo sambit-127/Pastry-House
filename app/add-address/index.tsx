@@ -5,12 +5,12 @@ import * as Location from 'expo-location';
 import { useLocalSearchParams, useRouter } from 'expo-router';
 import React, { useEffect, useRef, useState } from 'react';
 import {
-    Alert,
-    Dimensions,
-    StyleSheet,
-    Text,
-    TouchableOpacity,
-    View
+  Alert,
+  Dimensions,
+  StyleSheet,
+  Text,
+  TouchableOpacity,
+  View
 } from 'react-native';
 import MapView, { Marker } from 'react-native-maps';
 import { SafeAreaView } from 'react-native-safe-area-context';
@@ -226,7 +226,7 @@ const AddAddress = () => {
         showsUserLocation={true}
         showsMyLocationButton={false}
         loadingEnabled={true}
-        loadingIndicatorColor="#FE5200"
+        loadingIndicatorColor='#FF6B6B' 
         loadingBackgroundColor="#000"
       >
         {selectedLocation && (
@@ -237,7 +237,7 @@ const AddAddress = () => {
             }}
             title="Selected Location"
             description={selectedLocation.address}
-            pinColor="#FE5200"
+            pinColor='#FF6B6B' 
           />
         )}
       </MapView>
@@ -270,7 +270,7 @@ const AddAddress = () => {
           activeOpacity={0.8}
         >
           <LinearGradient
-            colors={['#FF512F', '#FE5200']}
+            colors={['#ff5050ff' , '#ff5050ff' ]}
             style={styles.currentLocationGradient}
             start={{ x: 0, y: 0 }}
             end={{ x: 1, y: 1 }}
@@ -288,7 +288,7 @@ const AddAddress = () => {
           
           <View style={styles.locationCard}>
             <View style={styles.locationIcon}>
-              <Ionicons name="location" size={20} color="#FE5200" />
+              <Ionicons name="location" size={20} color='#FF6B6B'  />
             </View>
             <View style={styles.locationDetails}>
               <Text style={styles.locationAddress}>{selectedLocation.address}</Text>
@@ -310,7 +310,7 @@ const AddAddress = () => {
           activeOpacity={0.8}
         >
           <LinearGradient
-            colors={selectedLocation ? ['#FF512F', '#FE5200'] : ['#333', '#222']}
+            colors={selectedLocation ? ['#ff5050ff' , '#ff5050ff' ] : ['#333', '#222']}
             style={styles.addDetailsGradient}
             start={{ x: 0, y: 0 }}
             end={{ x: 1, y: 0 }}
@@ -398,7 +398,7 @@ const styles = StyleSheet.create({
     marginTop: 16,
     paddingHorizontal: 20,
     paddingVertical: 10,
-    backgroundColor: '#FE5200',
+    backgroundColor: '#FF6B6B' ,
     borderRadius: 8,
   },
   retryButtonText: {

@@ -412,8 +412,8 @@ export default function BakeryHomeScreen() {
 
             {/* Floating Cart */}
             {cartCount > 0 && (
-                <Pressable style={styles.floatingCart} accessibilityRole="button">
-                    <LinearGradient colors={['#be4b12ff', '#f4813fff']} start={{ x: 0, y: 0 }} end={{ x: 1, y: 0 }} style={styles.cartGradient}>
+                <Pressable style={styles.floatingCart} accessibilityRole="button" onPress={()=>router.push('/cart')}>
+                    <LinearGradient colors={['#fd3939eb', '#fb6464ea']} start={{ x: 0, y: 0 }} end={{ x: 1, y: 0 }} style={styles.cartGradient}>
                         <Ionicons name="cart" size={20} color="#fff" />
                         <Text style={styles.cartText}>{cartCount} Items</Text>
                         <View style={styles.cartPriceBox}>

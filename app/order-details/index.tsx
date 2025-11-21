@@ -410,7 +410,7 @@ const styles = StyleSheet.create({
         flexDirection: "row",
         alignItems: "center",
         justifyContent: "center",
-        backgroundColor: theme.accent,
+        backgroundColor:'#ff5050ff',
         paddingVertical: 16,
         borderRadius: 14,
         marginBottom: 40,

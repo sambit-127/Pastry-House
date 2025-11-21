@@ -21,7 +21,7 @@ const PrivacyPolicy = () => {
       {/* Section Component */}
       <View style={styles.card}>
         <View style={styles.cardHeader}>
-          <Ionicons name="information-circle" size={20} color="#FF6B81" />
+          <Ionicons name="information-circle" size={20} color='#ff5050ff' />
           <Text style={styles.cardTitle}>Introduction</Text>
         </View>
         <Text style={styles.cardText}>
@@ -33,7 +33,7 @@ const PrivacyPolicy = () => {
 
       <View style={styles.card}>
         <View style={styles.cardHeader}>
-          <Ionicons name="list" size={20} color="#FF6B81" />
+          <Ionicons name="list" size={20} color='#ff5050ff'/>
           <Text style={styles.cardTitle}>Information We Collect</Text>
         </View>
         <Text style={styles.cardText}>We only gather what we need to make your experience deliciously smooth:</Text>
@@ -45,7 +45,7 @@ const PrivacyPolicy = () => {
 
       <View style={styles.card}>
         <View style={styles.cardHeader}>
-          <Ionicons name="cafe" size={20} color="#FF6B81" />
+          <Ionicons name="cafe" size={20} color='#ff5050ff' />
           <Text style={styles.cardTitle}>How We Use Your Information</Text>
         </View>
         <Text style={styles.listItem}>• Fulfill cake + pastry orders on time.</Text>
@@ -56,7 +56,7 @@ const PrivacyPolicy = () => {
 
       <View style={styles.card}>
         <View style={styles.cardHeader}>
-          <Ionicons name="share-social" size={20} color="#FF6B81" />
+          <Ionicons name="share-social" size={20} color='#ff5050ff'/>
           <Text style={styles.cardTitle}>Sharing Your Information</Text>
         </View>
         <Text style={styles.cardText}>We don’t sell your data—ever. We only share when necessary:</Text>
@@ -67,7 +67,7 @@ const PrivacyPolicy = () => {
 
       <View style={styles.card}>
         <View style={styles.cardHeader}>
-          <MaterialCommunityIcons name="cookie" size={20} color="#FF6B81" />
+          <MaterialCommunityIcons name="cookie" size={20} color='#ff5050ff' />
           <Text style={styles.cardTitle}>Cookies & Tracking</Text>
         </View>
         <Text style={styles.cardText}>
@@ -78,7 +78,7 @@ const PrivacyPolicy = () => {
 
       <View style={styles.card}>
         <View style={styles.cardHeader}>
-          <Ionicons name="shield-checkmark" size={20} color="#FF6B81" />
+          <Ionicons name="shield-checkmark" size={20} color='#ff5050ff'/>
           <Text style={styles.cardTitle}>Data Security</Text>
         </View>
         <Text style={styles.cardText}>
@@ -88,7 +88,7 @@ const PrivacyPolicy = () => {
 
       <View style={styles.card}>
         <View style={styles.cardHeader}>
-          <Ionicons name="key" size={20} color="#FF6B81" />
+          <Ionicons name="key" size={20} color='#ff5050ff' />
           <Text style={styles.cardTitle}>Your Rights</Text>
         </View>
         <Text style={styles.listItem}>• Access, update, or delete your info.</Text>
@@ -99,7 +99,7 @@ const PrivacyPolicy = () => {
 
       <View style={styles.card}>
         <View style={styles.cardHeader}>
-          <Ionicons name="happy" size={20} color="#FF6B81" />
+          <Ionicons name="happy" size={20} color='#ff5050ff' />
           <Text style={styles.cardTitle}>Children's Privacy</Text>
         </View>
         <Text style={styles.cardText}>
@@ -109,7 +109,7 @@ const PrivacyPolicy = () => {
 
       <View style={styles.card}>
         <View style={styles.cardHeader}>
-          <Ionicons name="refresh" size={20} color="#FF6B81" />
+          <Ionicons name="refresh" size={20} color='#ff5050ff' />
           <Text style={styles.cardTitle}>Changes to This Policy</Text>
         </View>
         <Text style={styles.cardText}>
