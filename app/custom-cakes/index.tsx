@@ -1,21 +1,20 @@
-
 import * as ImagePicker from 'expo-image-picker'
 import { LinearGradient } from 'expo-linear-gradient'
 import { useRouter } from 'expo-router'
 import React, { useState } from 'react'
 import {
-    Alert,
-    Animated,
-    Dimensions,
-    Image,
-    Modal,
-    ScrollView,
-    StatusBar,
-    StyleSheet,
-    Text,
-    TextInput,
-    TouchableOpacity,
-    View
+  Alert,
+  Animated,
+  Dimensions,
+  Image,
+  Modal,
+  ScrollView,
+  StatusBar,
+  StyleSheet,
+  Text,
+  TextInput,
+  TouchableOpacity,
+  View
 } from 'react-native'
 import { SafeAreaView } from 'react-native-safe-area-context'
 
@@ -156,25 +155,40 @@ const CustomCakePage = () => {
     console.log('Buy now')
   }
 
-  // Modern Selection Card Component
-  const SelectionCard = ({ title, value, onPress, icon,  }: any) => (
+  // Modern Selection Card Component - Updated to show selected values
+  const SelectionCard = ({ title, value, onPress, icon }: any) => (
     <TouchableOpacity 
-      style={[styles.selectionCard, ]} 
+      style={[
+        styles.selectionCard,
+        value && styles.selectedCard
+      ]} 
       onPress={onPress}
       activeOpacity={0.7}
     >
       <View style={styles.selectionCardContent}>
-        <View style={[styles.selectionCardIcon, ]}>
+        <View style={[
+          styles.selectionCardIcon,
+          value && styles.selectedIcon
+        ]}>
           <Text style={styles.selectionCardEmoji}>{icon}</Text>
         </View>
         <View style={styles.selectionCardText}>
           <Text style={styles.selectionCardTitle}>{title}</Text>
-          <Text style={styles.selectionCardValue} numberOfLines={1}>
-            {value || 'Tap to select'}
+          <Text 
+            style={[
+              styles.selectionCardValue,
+              value ? styles.selectedValue : styles.placeholderValue
+            ]}
+            numberOfLines={1}
+          >
+            {value || `Select ${title}`}
           </Text>
         </View>
         <View style={styles.selectionCardArrow}>
-          <Text style={styles.chevron}>›</Text>
+          <Text style={[
+            styles.chevron,
+            value && styles.selectedChevron
+          ]}>›</Text>
         </View>
       </View>
     </TouchableOpacity>
@@ -327,8 +341,7 @@ const CustomCakePage = () => {
     </ScrollView>
   )
 
-
-    // Auto-format Date → DD/MM/YYYY
+  // Auto-format Date → DD/MM/YYYY
   const handleDateChange = (text: string) => {
     let formatted = text.replace(/\D/g, '') // remove everything except numbers
     if (formatted.length > 8) formatted = formatted.slice(0, 8)
@@ -375,37 +388,7 @@ const CustomCakePage = () => {
         showsVerticalScrollIndicator={false}
         contentContainerStyle={styles.scrollContent}
       >
-        {/* Hero Section */}
-        <View style={styles.heroSection}>
-          <LinearGradient
-            colors={['#FF6B35', '#FF8E53']}
-            style={styles.heroGradient}
-            start={{ x: 0, y: 0 }}
-            end={{ x: 1, y: 0 }}
-          >
-            <View style={styles.heroContent}>
-              <Text style={styles.heroTitle}>Create Your Dream Cake</Text>
-              <Text style={styles.heroSubtitle}>
-                Customize every detail to make your celebration perfect
-              </Text>
-              <View style={styles.heroDecoration}>
-                <Text style={styles.heroEmoji}>🎂✨</Text>
-              </View>
-            </View>
-          </LinearGradient>
-        </View>
-
-        {/* Progress Indicator */}
-        <View style={styles.progressContainer}>
-          <View style={styles.progressBar}>
-            <View style={[styles.progressFill, { width: '50%' }]} />
-          </View>
-          <View style={styles.progressLabels}>
-            <Text style={styles.progressLabel}>Design</Text>
-            <Text style={styles.progressLabel}>Delivery</Text>
-            <Text style={styles.progressLabel}>Confirm</Text>
-          </View>
-        </View>
+        
 
         {/* Customization Grid */}
         <View style={styles.section}>
@@ -420,7 +403,6 @@ const CustomCakePage = () => {
               value={selectedFlavor}
               onPress={() => openModal('flavor')}
               icon="🍰"
-              color="#FF6B35"
             />
             
             <SelectionCard
@@ -428,7 +410,6 @@ const CustomCakePage = () => {
               value={selectedWeight}
               onPress={() => openModal('weight')}
               icon="📏"
-              color="#4ECDC4"
             />
             
             <SelectionCard
@@ -436,7 +417,6 @@ const CustomCakePage = () => {
               value={selectedShape}
               onPress={() => openModal('shape')}
               icon="🔷"
-              color="#45B7D1"
             />
             
             <SelectionCard
@@ -444,7 +424,6 @@ const CustomCakePage = () => {
               value={colors.find(c => c.value === selectedColor)?.name}
               onPress={() => openModal('color')}
               icon="🎨"
-              color="#FFA07A"
             />
           </View>
         </View>
@@ -579,7 +558,6 @@ const CustomCakePage = () => {
                 end={{ x: 1, y: 0 }}
               >
                 <Text style={styles.primaryButtonText}>Order Now</Text>
-                
               </LinearGradient>
             </TouchableOpacity>
           </View>
@@ -763,10 +741,13 @@ const styles = StyleSheet.create({
     borderRadius: 16,
     padding: 16,
     marginBottom: 12,
-    borderLeftWidth: 4,
-    borderLeftColor: '#FF6B35',
+  
     borderWidth: 1,
     borderColor: '#333333',
+  },
+  selectedCard: {
+    borderColor: '#f97008ff',
+    backgroundColor: '#1A1A1A',
   },
   selectionCardContent: {
     flexDirection: 'row',
@@ -776,9 +757,13 @@ const styles = StyleSheet.create({
     width: 40,
     height: 40,
     borderRadius: 12,
+    backgroundColor: '#333333',
     alignItems: 'center',
     justifyContent: 'center',
     marginRight: 12,
+  },
+  selectedIcon: {
+    backgroundColor: '#333333',
   },
   selectionCardEmoji: {
     fontSize: 20,
@@ -794,10 +779,26 @@ const styles = StyleSheet.create({
   },
   selectionCardValue: {
     fontSize: 12,
-    color: '#CCCCCC',
+    marginTop: 2,
+  },
+  selectedValue: {
+    color: '#f97008ff',
+    fontWeight: '600',
+  },
+  placeholderValue: {
+    color: '#888888',
+    fontStyle: 'italic',
   },
   selectionCardArrow: {
     marginLeft: 8,
+  },
+  chevron: {
+    fontSize: 18,
+    color: '#888888',
+    fontWeight: 'bold',
+  },
+  selectedChevron: {
+    color: '#f97008ff',
   },
   // Message Input
   messageContainer: {
@@ -813,7 +814,7 @@ const styles = StyleSheet.create({
     backgroundColor: '#1A1A1A',
     fontSize: 16,
     textAlignVertical: 'top',
-    minHeight: 100,
+    minHeight: 40,
   },
   messageIcon: {
     position: 'absolute',
@@ -890,13 +891,9 @@ const styles = StyleSheet.create({
   deliveryCards: {
     flexDirection: 'row',
     justifyContent: 'space-between',
-   
   },
   deliveryCard: {
     width: '46%',
-   
-   
-    
   },
   deliveryLabel: {
     color: '#FFFFFF',
@@ -911,8 +908,9 @@ const styles = StyleSheet.create({
     backgroundColor: '#1A1A1A',
     borderWidth: 1,
     borderColor: '#333333',
-     borderRadius: 10,
-     paddingHorizontal:16
+    borderRadius: 10,
+    paddingHorizontal: 16,
+    paddingVertical: 12,
   },
   // Summary Section
   summarySection: {
@@ -981,11 +979,6 @@ const styles = StyleSheet.create({
     fontSize: 16,
     fontWeight: 'bold',
   },
-  primaryButtonSubtext: {
-    color: 'rgba(255,255,255,0.8)',
-    fontSize: 10,
-    marginTop: 2,
-  },
   secondaryButton: {
     backgroundColor: '#333333',
     borderRadius: 16,
@@ -1000,30 +993,6 @@ const styles = StyleSheet.create({
     fontSize: 16,
     fontWeight: '600',
   },
-  // Footer
-  footer: {
-    alignItems: 'center',
-    paddingHorizontal: 20,
-  },
-  footerNote: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    backgroundColor: '#1A1A1A',
-    padding: 16,
-    borderRadius: 16,
-    borderWidth: 1,
-    borderColor: '#333333',
-  },
-  footerIcon: {
-    fontSize: 16,
-    marginRight: 12,
-  },
-  footerText: {
-    color: '#CCCCCC',
-    fontSize: 12,
-    flex: 1,
-    lineHeight: 16,
-  },
   // Bottom Sheet Styles
   bottomSheetOverlay: {
     flex: 1,
@@ -1034,7 +1003,7 @@ const styles = StyleSheet.create({
     flex: 1,
   },
   bottomSheetContainer: {
-    backgroundColor: '#141111ff',
+    backgroundColor: '#141111',
     borderTopLeftRadius: 24,
     borderTopRightRadius: 24,
     maxHeight: screenHeight * 0.85,
@@ -1088,13 +1057,13 @@ const styles = StyleSheet.create({
     borderColor: '#333333',
     borderRadius: 16,
     marginBottom: 12,
-    backgroundColor: '#0c0909ff',
+    backgroundColor: '#0c0909',
     alignItems: 'center',
     position: 'relative',
   },
   selectedModalOptionCard: {
     borderColor: '#FF6B35',
-    backgroundColor: '#130909ff',
+    backgroundColor: '#130909',
   },
   modalEmoji: {
     fontSize: 32,
@@ -1163,11 +1132,6 @@ const styles = StyleSheet.create({
     fontSize: 16,
     fontWeight: 'bold',
     color: '#FF6B35',
-  },
-  chevron: {
-    fontSize: 18,
-    color: '#888888',
-    fontWeight: 'bold',
   },
 })
 

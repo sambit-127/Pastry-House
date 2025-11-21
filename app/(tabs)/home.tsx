@@ -112,7 +112,7 @@ const CATEGORIES = [
     { id: 'c2', title: 'Donuts', icon: 'circle-slice-8', color: '#FF8E53', onPress: () => router.push('/all-products' as Href) },
     { id: 'c3', title: 'Pastries', icon: 'food-croissant', color: '#FFB74D', onPress: () => router.push('/all-products' as Href) },
     { id: 'c4', title: 'Breads', icon: 'bread-slice', color: '#AED581', onPress: () => router.push('/all-products' as Href) },
-    { id: 'c5', title: 'Custom', icon: 'palette', color: '#9C27B0', onPress: () => { } },
+    { id: 'c5', title: 'Custom', icon: 'palette', color: '#9C27B0', onPress: () => router.push("/custom-cakes" as Href) },
 
 ];
 
@@ -264,7 +264,7 @@ export default function BakeryHomeScreen() {
                 <View style={styles.headerInner}>
                     <Text style={styles.headerTitle}>Sweet Atelier</Text>
                     <View style={styles.headerIconsRow}>
-                        <Pressable style={styles.headerIcon} accessibilityRole="button" onPress={()=>router.push("/custom-cakes"as Href)}>
+                        <Pressable style={styles.headerIcon} accessibilityRole="button">
                             <Ionicons name="notifications-outline" size={22} color="#fff" />
                         </Pressable>
                         <Pressable style={styles.headerIcon} accessibilityRole="button">
