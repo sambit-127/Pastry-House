@@ -798,8 +798,8 @@ const styles = StyleSheet.create({
     borderColor: 'transparent',
   },
   selectedAddressCard: {
-    borderColor: '#FE5200',
-    backgroundColor: '#2a1a0f',
+   borderColor: '#C25A2C',
+    backgroundColor: '#050505ff',
   },
   addressHeader: {
     flexDirection: 'row',

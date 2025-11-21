@@ -99,11 +99,6 @@ const DeliveryLocation = () => {
       return;
     }
 
-    if (!sellerData) {
-      Alert.alert('Error', 'No seller data available');
-      return;
-    }
-
     setDeliveryModalVisible(true);
   };
 
@@ -112,10 +107,7 @@ const DeliveryLocation = () => {
   };
 
   const handleHomeDeliverySelect = async () => {
-    if (!sellerData || !selectedAddressId) {
-      Alert.alert('Error', 'Missing required information');
-      return;
-    }
+    
 
     setIsProcessing(true);
 
@@ -141,11 +133,7 @@ const DeliveryLocation = () => {
   };
 
   const handleSelfPickupSelect = async () => {
-    if (!sellerData || !selectedAddressId) {
-      Alert.alert('Error', 'Missing required information');
-      return;
-    }
-
+    
     setIsProcessing(true);
 
     try {
@@ -375,7 +363,7 @@ const DeliveryLocation = () => {
         </View>
       </Modal>
 
-      <OrderSuccessModal
+      {/* <OrderSuccessModal
         visible={showSuccess}
         onClose={() =>{
           setTimeout(() => {
@@ -394,7 +382,19 @@ const DeliveryLocation = () => {
          }, 20);
           // Your download logic
         }}
-      />
+      /> */}
+<OrderSuccessModal
+  visible={showSuccess}
+  cakeName="Red Velvet Cake"
+  price="$32.99"
+  orderNumber="#CAKE-4821"
+  estimatedTime="25-35 minutes"
+  onClose={() => setShowSuccess(false)}
+  onContinue={() => {
+    setShowSuccess(false);
+    router.push('/');
+  }}
+/>
     </SafeAreaView>
   );
 };
@@ -449,12 +449,12 @@ const styles = StyleSheet.create({
     backgroundColor: '#1a1a1a',
     borderRadius: 12,
     padding: 16,
-    borderWidth: 2,
+    borderWidth: 1,
     borderColor: 'transparent',
   },
   selectedAddressCard: {
-    borderColor: '#FE5200',
-    backgroundColor: '#2a1a0f',
+    borderColor: '#C25A2C',
+    backgroundColor: '#050505ff',
   },
   addressHeader: {
     flexDirection: 'row',

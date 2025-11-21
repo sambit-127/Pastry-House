@@ -94,14 +94,14 @@ const DeliveryMethodSelectionModal: React.FC<DeliveryMethodSelectionModalProps> 
                   'Self Pickup',
                   'Visit store and collect your order',
                   'self-pickup',
-                  ['#FF512F', '#FE5200']
+                  ['#a33a1fff', '#b2775dff']
                 )}
                 {renderDeliveryOption(
                   'car',
                   'Home Delivery',
                   'Get your order delivered to your doorstep',
                   'home-delivery',
-                  ['#FF512F', '#FE5200']
+                    ['#a33a1fff', '#b2775dff']
                 )}
               </View>
             </View>
