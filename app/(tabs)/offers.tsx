@@ -26,7 +26,7 @@ export default function OfferPage() {
 
   function CategoryCard({ item }: { item: Category }) {
     return (
-      <TouchableOpacity style={styles.categoryCard} onPress={()=>router.push('/all-products')}>
+      <TouchableOpacity style={styles.categoryCard} onPress={()=>router.push(`/all-products?category=${item.name}`)}>
         <View style={styles.categoryThumb}>
           {item.image ? (
             <Image source={item.image as ImageSourcePropType} style={styles.categoryImg} />
