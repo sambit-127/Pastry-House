@@ -1,3 +1,4 @@
+import NotificationModal from '@/components/NotificationModal';
 import { Ionicons, MaterialCommunityIcons } from '@expo/vector-icons';
 import { LinearGradient } from 'expo-linear-gradient';
 import { Href, router } from 'expo-router';
@@ -120,7 +121,7 @@ export default function BakeryHomeScreen() {
     const scrollY = useRef(new Animated.Value(0)).current;
     const [cartCount, setCartCount] = useState<number>(2);
     const [searchQuery, setSearchQuery] = useState<string>('');
-
+    const [showNotification, setShowNotification] = useState<boolean>(false);
     // Animated header opacity (fade in as user scrolls)
     const headerOpacity = scrollY.interpolate({
         inputRange: [0, 120],
@@ -264,10 +265,10 @@ export default function BakeryHomeScreen() {
                 <View style={styles.headerInner}>
                     <Text style={styles.headerTitle}>Sweet Atelier</Text>
                     <View style={styles.headerIconsRow}>
-                        <Pressable style={styles.headerIcon} accessibilityRole="button">
+                        <Pressable style={styles.headerIcon} accessibilityRole="button" onPress={()=>setShowNotification(true)}>
                             <Ionicons name="notifications-outline" size={22} color="#fff" />
                         </Pressable>
-                        <Pressable style={styles.headerIcon} accessibilityRole="button">
+                        <Pressable style={styles.headerIcon} accessibilityRole="button" onPress={()=>router.push('/profile')}>
                             <Ionicons name="person-outline" size={22} color="#fff" />
                         </Pressable>
                     </View>
@@ -423,7 +424,7 @@ export default function BakeryHomeScreen() {
                 </Pressable>
             )}
 
-
+            <NotificationModal visible={showNotification} onClose={() => setShowNotification(false)} />
         </SafeAreaView>
     );
 }
