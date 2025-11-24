@@ -1,4 +1,5 @@
 import { LinearGradient } from 'expo-linear-gradient';
+import { router } from 'expo-router';
 import React, { useEffect, useState } from 'react';
 import { Dimensions, Image, ImageBackground, ImageSourcePropType, ScrollView, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
@@ -25,7 +26,7 @@ export default function OfferPage() {
 
   function CategoryCard({ item }: { item: Category }) {
     return (
-      <TouchableOpacity style={styles.categoryCard}>
+      <TouchableOpacity style={styles.categoryCard} onPress={()=>router.push('/all-products')}>
         <View style={styles.categoryThumb}>
           {item.image ? (
             <Image source={item.image as ImageSourcePropType} style={styles.categoryImg} />
@@ -77,19 +78,19 @@ export default function OfferPage() {
               // style={{ paddingHorizontal: 16 }}
               contentContainerStyle={{paddingHorizontal:16}}
             >
-              <View style={styles.banner}>
+              <TouchableOpacity style={styles.banner} onPress={()=>router.push('/all-products')}>
                 <ImageBackground source={require('@/assets/images/pastry/heroImage.png')} style={styles.bannerBg}>
                   <Text style={styles.bannerTitle}>20% OFF on Cakes</Text>
                   <Text style={styles.bannerSub}>Fresh & Custom Designs</Text>
                 </ImageBackground>
-              </View>
+              </TouchableOpacity>
 
-              <View style={styles.banner}>
+              <TouchableOpacity style={styles.banner} onPress={()=>router.push('/all-products')}>
                 <ImageBackground source={require('@/assets/images/pastry/comboBanner.png')} style={styles.bannerBg}>
                   <Text style={styles.bannerTitle}>Buy 2 Get 1</Text>
                   <Text style={styles.bannerSub}>Pastries Combo</Text>
                 </ImageBackground>
-              </View>
+              </TouchableOpacity>
             </ScrollView>
 
             {/* -------- Category Offers -------- */}

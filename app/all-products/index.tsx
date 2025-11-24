@@ -1085,7 +1085,7 @@ const AllProducts: React.FC = () => {
             {/* Top header row */}
             <View style={styles.header}>
                 <View style={{ flexDirection: "row", alignItems: "center", gap: 12 }}>
-                    <TouchableOpacity onPress={() => { }}>
+                    <TouchableOpacity onPress={() => router.back()}>
                         <Ionicons name="arrow-back" size={22} color={theme.text} />
                     </TouchableOpacity>
                     <Text style={styles.headerTitle}>All Products</Text>
