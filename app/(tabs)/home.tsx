@@ -332,7 +332,6 @@ export default function BakeryHomeScreen() {
                         renderItem={renderCategory}
                     />
                 </Animated.View>
-
                
 
                 {/* Section header: Fresh Bakes */}
@@ -613,7 +612,7 @@ const styles = StyleSheet.create({
     },
     productCard: {
         width: width * 0.72,
-        backgroundColor: '#1E1E1E',
+        backgroundColor: appColors.main.Secondary,
         borderRadius: 18,
         marginRight: 16,
         overflow: 'hidden',
@@ -633,7 +632,7 @@ const styles = StyleSheet.create({
         position: 'absolute',
         top: 12,
         left: 12,
-        backgroundColor: 'rgba(255, 107, 107, 0.92)',
+        backgroundColor: appColors.main.ButtonColor,
         paddingHorizontal: 10,
         paddingVertical: 5,
         borderRadius: 18,
@@ -841,7 +840,7 @@ const styles = StyleSheet.create({
     bakeryCard: {
         width: width * 0.56, // about half of cake card -> smaller feel
         marginRight: 14,
-        backgroundColor: '#181818',
+        backgroundColor: appColors.main.Secondary,
         borderRadius: 14,
         overflow: 'hidden',
         elevation: 5,

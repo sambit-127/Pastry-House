@@ -1,3 +1,4 @@
+import appColors from "@/constants/Color";
 import { Ionicons, MaterialIcons } from "@expo/vector-icons";
 import { router, useLocalSearchParams } from "expo-router";
 import React, { useEffect, useMemo, useRef, useState } from "react";
@@ -335,7 +336,7 @@ const AllProducts: React.FC = () => {
                     <View style={styles.cardFooterRow}>
                         <Text style={styles.cardPrice}>₹{item.price}</Text>
                         <View style={styles.ratingRow}>
-                            <Ionicons name="star" size={14} color={theme.gold} />
+                            <Ionicons name="star" size={14} color={"#D4A017"} />
                             <Text style={styles.ratingText}>{item.rating.toFixed(1)}</Text>
                         </View>
                     </View>
@@ -352,30 +353,30 @@ const AllProducts: React.FC = () => {
             <View style={styles.header}>
                 <View style={{ flexDirection: "row", alignItems: "center", gap: 12 }}>
                     <TouchableOpacity onPress={() => router.back()}>
-                        <Ionicons name="arrow-back" size={22} color={theme.text} />
+                        <Ionicons name="arrow-back" size={22} color={appColors.main.TextColor} />
                     </TouchableOpacity>
                     <Text style={styles.headerTitle}>All Products</Text>
                 </View>
                 <TouchableOpacity style={styles.filterIconBtn} onPress={openFilter}>
-                    <Ionicons name="options" size={20} color={theme.text} />
+                    <Ionicons name="options" size={20} color={appColors.main.TextColor} />
                 </TouchableOpacity>
             </View>
 
             {/* Search bar */}
             <View style={styles.searchRow}>
                 <View style={styles.searchBox}>
-                    <Ionicons name="search" size={18} color={theme.muted} />
+                    <Ionicons name="search" size={18} color={appColors.main.IconColor} />
                     <TextInput
                         placeholder="Search cakes, donuts, breads..."
-                        placeholderTextColor={theme.muted}
+                        placeholderTextColor={appColors.main.IconColor}
                         value={search}
                         onChangeText={setSearch}
-                        cursorColor={theme.cta}
+                        cursorColor={appColors.main.ButtonColor}
                         style={styles.searchInput}
                     />
                     {search.length > 0 && (
                         <TouchableOpacity onPress={() => setSearch("")}>
-                            <MaterialIcons name="close" size={18} color={theme.muted} />
+                            <MaterialIcons name="close" size={18} color={appColors.main.IconColor} />
                         </TouchableOpacity>
                     )}
                 </View>
@@ -417,7 +418,7 @@ const AllProducts: React.FC = () => {
                 renderItem={renderProduct}
                 ListEmptyComponent={
                     <View style={styles.emptyState}>
-                        <Ionicons name="search" size={36} color={theme.muted} />
+                        <Ionicons name="search" size={36} color={appColors.main.IconColor} />
                         <Text style={styles.emptyTitle}>No items found</Text>
                         <Text style={styles.emptySubtitle}>
                             Try changing filters or search text.
@@ -445,7 +446,7 @@ const AllProducts: React.FC = () => {
                                 <MaterialIcons
                                     name="close"
                                     size={22}
-                                    color={theme.muted}
+                                    color={appColors.main.IconColor}
                                 />
                             </TouchableOpacity>
                         </View>
@@ -614,7 +615,7 @@ export default AllProducts;
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        backgroundColor: theme.bg,
+        backgroundColor: appColors.main.Background,
     },
 
     /* Header */
@@ -627,7 +628,7 @@ const styles = StyleSheet.create({
         justifyContent: "space-between",
     },
     headerTitle: {
-        color: theme.text,
+        color: appColors.main.TextColor,
         fontSize: 20,
         fontWeight: "700",
     },
@@ -635,7 +636,7 @@ const styles = StyleSheet.create({
         width: 36,
         height: 36,
         borderRadius: 18,
-        backgroundColor: theme.surface,
+        backgroundColor: appColors.main.Secondary,
         alignItems: "center",
         justifyContent: "center",
     },
@@ -648,17 +649,17 @@ const styles = StyleSheet.create({
     searchBox: {
         flexDirection: "row",
         alignItems: "center",
-        backgroundColor: theme.surface,
+        backgroundColor: appColors.main.Secondary,
         borderRadius: 14,
         paddingHorizontal: 12,
         paddingVertical: 10,
         gap: 8,
         borderWidth: 1,
-        borderColor: theme.border,
+        borderColor: appColors.main.IconColor+"20",
     },
     searchInput: {
         flex: 1,
-        color: theme.text,
+        color: appColors.main.TextColor,
         fontSize: 15,
     },
 
@@ -676,11 +677,14 @@ const styles = StyleSheet.create({
         paddingHorizontal: 14,
         paddingVertical: 8,
         borderRadius: 999,
-        backgroundColor: theme.chip,
+        backgroundColor: appColors.main.Secondary,
+        borderWidth: 1,
+        borderColor: "rgba(150, 150, 150, 0.35)",
         marginRight: 8,
     },
     chipActive: {
-        backgroundColor: theme.accent,
+        backgroundColor: appColors.main.ButtonColor,
+        borderColor: appColors.main.ButtonColor,
     },
     chipText: {
         color: '#fff',
@@ -702,7 +706,7 @@ const styles = StyleSheet.create({
         marginBottom: 14,
     },
     card: {
-        backgroundColor: theme.card,
+        backgroundColor: appColors.main.Secondary,
         borderRadius: 16,
         overflow: "hidden",
         borderWidth: 1,
@@ -732,13 +736,13 @@ const styles = StyleSheet.create({
         paddingVertical: 10,
     },
     cardTitle: {
-        color: theme.text,
+        color: appColors.main.TextColor,
         fontSize: 14,
         fontWeight: "700",
     },
     cardCategory: {
         marginTop: 4,
-        color: theme.muted,
+        color: appColors.main.IconColor,
         fontSize: 12,
     },
     cardFooterRow: {
@@ -748,7 +752,7 @@ const styles = StyleSheet.create({
         justifyContent: "space-between",
     },
     cardPrice: {
-        color: theme.accent,
+        color: appColors.main.ButtonColor,
         fontWeight: "800",
         fontSize: 15,
     },
@@ -758,7 +762,7 @@ const styles = StyleSheet.create({
         gap: 4,
     },
     ratingText: {
-        color: theme.muted,
+        color: appColors.main.TextColor,
         fontSize: 12,
         fontWeight: "600",
     },
@@ -771,12 +775,12 @@ const styles = StyleSheet.create({
         gap: 6,
     },
     emptyTitle: {
-        color: theme.text,
+        color: appColors.main.TextColor,
         fontSize: 16,
         fontWeight: "600",
     },
     emptySubtitle: {
-        color: theme.muted,
+        color: appColors.main.IconColor,
         fontSize: 13,
     },
 
@@ -791,7 +795,7 @@ const styles = StyleSheet.create({
         right: 0,
         bottom: 0,
         height: height * 0.7,
-        backgroundColor: theme.surface,
+        backgroundColor: appColors.main.Background,
         borderTopLeftRadius: 24,
         borderTopRightRadius: 24,
         paddingTop: 10,
@@ -805,7 +809,7 @@ const styles = StyleSheet.create({
         marginBottom: 6,
     },
     filterTitle: {
-        color: theme.text,
+        color: appColors.main.TextColor,
         fontSize: 18,
         fontWeight: "700",
     },
@@ -817,7 +821,7 @@ const styles = StyleSheet.create({
         paddingBottom: 16,
     },
     filterSectionTitle: {
-        color: theme.text,
+        color: appColors.main.TextColor,
         fontSize: 14,
         fontWeight: "700",
         marginTop: 14,
@@ -834,21 +838,21 @@ const styles = StyleSheet.create({
         height: 18,
         borderRadius: 9,
         borderWidth: 2,
-        borderColor: theme.border,
+        borderColor: appColors.main.IconColor,
         alignItems: "center",
         justifyContent: "center",
     },
     radioOuterActive: {
-        borderColor: theme.accent,
+        borderColor: appColors.main.ButtonColor,
     },
     radioInner: {
         width: 9,
         height: 9,
         borderRadius: 4.5,
-        backgroundColor: theme.accent,
+        backgroundColor: appColors.main.ButtonColor,
     },
     optionText: {
-        color: theme.text,
+        color: appColors.main.TextColor,
         fontSize: 14,
     },
 
@@ -861,13 +865,16 @@ const styles = StyleSheet.create({
         paddingHorizontal: 12,
         paddingVertical: 8,
         borderRadius: 999,
-        backgroundColor: theme.chip,
+        backgroundColor: appColors.main.Secondary,
+        borderWidth: 1,
+        borderColor: "rgba(150, 150, 150, 0.35)",
     },
     filterChipActive: {
-        backgroundColor: theme.accent,
+        backgroundColor: appColors.main.ButtonColor,
+        borderColor: appColors.main.ButtonColor,
     },
     filterChipText: {
-        color: theme.muted,
+        color: appColors.main.IconColor,
         fontSize: 13,
         fontWeight: "600",
     },
@@ -885,19 +892,19 @@ const styles = StyleSheet.create({
         flex: 1,
         borderRadius: 999,
         borderWidth: 1,
-        borderColor: theme.border,
+        borderColor:"rgba(150, 150, 150, 0.35)",
         alignItems: "center",
         justifyContent: "center",
         paddingVertical: 10,
     },
     resetText: {
-        color: theme.muted,
+        color: appColors.main.IconColor,
         fontWeight: "600",
     },
     applyBtn: {
         flex: 1,
         borderRadius: 999,
-        backgroundColor: theme.cta,
+        backgroundColor: appColors.main.ButtonColor,
         alignItems: "center",
         justifyContent: "center",
         paddingVertical: 10,
