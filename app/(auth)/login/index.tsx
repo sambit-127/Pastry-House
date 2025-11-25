@@ -1,3 +1,4 @@
+import appColors from '@/constants/Color';
 import { useRouter } from 'expo-router';
 import React, { useEffect, useRef, useState } from 'react';
 import {
@@ -69,7 +70,7 @@ const Login = () => {
 
   return (
     <SafeAreaView style={styles.container}>
-      <StatusBar backgroundColor="#e55027ff" barStyle="light-content" />
+      <StatusBar  barStyle="light-content" />
      
       <KeyboardAvoidingView 
         style={styles.keyboardView}
@@ -114,7 +115,7 @@ const Login = () => {
               value={phone}
               onChangeText={(text) => setPhone(text.replace(/\D/g, ''))}
               maxLength={10}
-              selectionColor="#e55027ff"
+              selectionColor={appColors.main.ButtonColor}
             />
           </View>
 
@@ -122,7 +123,7 @@ const Login = () => {
           <View style={styles.counterContainer}>
             <Text style={[
               styles.counterText,
-              { color: isPhoneValid ? '#e55027ff' : '#666' }
+              { color: isPhoneValid ? appColors.main.ButtonColor : '#666' }
             ]}>
               {phone.length}/10
             </Text>
@@ -159,7 +160,7 @@ const Login = () => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "#000",
+    backgroundColor: appColors.main.Background,
   },
   header: {
     height: height * 0.25,
@@ -273,11 +274,11 @@ const styles = StyleSheet.create({
   },
   buttonActive: {
     //backgroundColor: '#FE5200',
-     backgroundColor: '#e55027ff',
+     backgroundColor: appColors.main.ButtonColor,
   },
   buttonDisabled: {
-    backgroundColor: '#e55027ff',
-   // backgroundColor:"#FE5200"
+    backgroundColor: appColors.main.ButtonColor,
+ 
   },
   buttonText: {
     color: '#fff',
@@ -292,7 +293,7 @@ const styles = StyleSheet.create({
     lineHeight: 18,
   },
   termsLink: {
-    color: '#e55027ff',
+    color: appColors.main.ButtonColor,
     fontWeight: '500',
   },
 });

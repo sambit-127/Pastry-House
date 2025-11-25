@@ -1,3 +1,4 @@
+import appColors from '@/constants/Color';
 import { Feather } from '@expo/vector-icons';
 import * as ImagePicker from 'expo-image-picker';
 import { LinearGradient } from 'expo-linear-gradient';
@@ -20,7 +21,7 @@ import {
 import { SafeAreaView } from 'react-native-safe-area-context';
 
 // Primary brand colors
-const PRIMARY_START = '#FF8E53';
+const PRIMARY_START = appColors.main.ButtonColor;
 const PRIMARY_END = '#FF6B6B';
 const DISABLED_PRIMARY = '#FF8E5366';
 
@@ -129,7 +130,7 @@ const ProfileSetup= () => {
   }
 
   return (
-    <LinearGradient colors={['#000000', '#000000']} style={StyleSheet.absoluteFill}>
+    <LinearGradient colors={[appColors.main.Background, appColors.main.Background]} style={StyleSheet.absoluteFill}>
       <StatusBar barStyle="light-content" />
       <SafeAreaView style={styles.safe}>
         <KeyboardAvoidingView 
@@ -229,7 +230,7 @@ const ProfileSetup= () => {
                 activeOpacity={0.9}
               >
                 <LinearGradient 
-                  colors={['#be4b12ff', '#f4813fff']} 
+                  colors={[appColors.main.ButtonColor, appColors.main.ButtonColor]} 
                   style={styles.saveButtonGradient}
                   start={{ x: 0, y: 0 }}
                   end={{ x: 1, y: 0 }}
@@ -294,7 +295,7 @@ const styles = StyleSheet.create({
   headerTitle: {
     fontSize: 28,
     fontWeight: '800',
-    color: '#fff',
+    color: appColors.main.TextColor,
     marginBottom: 8,
     textAlign: 'center',
   },
@@ -380,7 +381,7 @@ const styles = StyleSheet.create({
   },
   input: {
     backgroundColor: '#111111ff',
-    color: '#fff',
+    color: appColors.main.TextColor,
     paddingHorizontal: 16,
     paddingVertical: Platform.OS === 'ios' ? 16 : 12,
     borderRadius: 12,

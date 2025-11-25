@@ -1,3 +1,4 @@
+import appColors from '@/constants/Color';
 import { Href, useLocalSearchParams, useRouter } from 'expo-router';
 import React, { useEffect, useRef, useState } from 'react';
 import {
@@ -138,7 +139,7 @@ const OTP = () => {
 
   return (
     <SafeAreaView style={styles.container}>
-      <StatusBar backgroundColor="#FC8019" barStyle="light-content" />
+      <StatusBar  barStyle="light-content" />
       
       {/* Header with Back Button */}
       <View style={styles.header}>
@@ -204,7 +205,7 @@ const OTP = () => {
                 keyboardType="number-pad"
                 maxLength={1}
                 textAlign="center"
-                selectionColor="#e55027ff"
+                selectionColor={appColors.main.ButtonColor}
                 editable={!loading}
               />
             ))}
@@ -259,7 +260,7 @@ const OTP = () => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#000',
+    backgroundColor: appColors.main.Background,
   },
   header: {
    paddingTop:10,
@@ -342,7 +343,7 @@ const styles = StyleSheet.create({
   phoneNumber: {
     fontSize: 18,
     fontWeight: '600',
-    color: '#e55027ff',
+    color: appColors.main.ButtonColor,
     textAlign: 'center',
     marginBottom: 40,
   },
@@ -364,7 +365,7 @@ const styles = StyleSheet.create({
     color: '#333',
   },
   otpBoxFilled: {
-    borderColor: '#e55027ff',
+    borderColor: appColors.main.ButtonColor,
     backgroundColor: '#FFF5F0',
   },
   otpBoxError: {
@@ -384,13 +385,13 @@ const styles = StyleSheet.create({
     marginBottom: 30,
   },
   buttonActive: {
-    backgroundColor: '#e55027ff',
+    backgroundColor: appColors.main.ButtonColor,
   },
   buttonDisabled: {
-    backgroundColor: '#e55027ff',
+    backgroundColor: appColors.main.ButtonColor,
   },
   buttonText: {
-    color: '#fff',
+    color: appColors.main.TextColor,
     fontSize: 16,
     fontWeight: '700',
     textAlign: 'center',
@@ -407,7 +408,7 @@ const styles = StyleSheet.create({
   },
   resendButton: {
     fontSize: 14,
-    color: '#e55027ff',
+    color: appColors.main.ButtonColor,
     fontWeight: '600',
   },
   resendDisabled: {
@@ -419,7 +420,7 @@ const styles = StyleSheet.create({
     textAlign: 'center',
   },
   supportLink: {
-    color: '#e55027ff',
+    color: appColors.main.ButtonColor,
     fontWeight: '600',
   },
 });

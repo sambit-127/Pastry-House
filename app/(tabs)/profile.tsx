@@ -1,8 +1,9 @@
 import appColors from "@/constants/Color";
 import { Ionicons, MaterialIcons } from "@expo/vector-icons";
+import AsyncStorage from "@react-native-async-storage/async-storage";
 import { Href, router } from "expo-router";
 import React from "react";
-import { Image, Pressable, ScrollView, StyleSheet, Text, View } from "react-native";
+import { Alert, Image, Pressable, ScrollView, StyleSheet, Text, View } from "react-native";
 
 export default function Profile() {
   const user = {
@@ -18,6 +19,36 @@ export default function Profile() {
     { title: "Privacy-Policy", icon: "shield-checkmark-outline", onPress: () => router.push("/privacy-policy" as Href) },
     { title: "Help & Support", icon: "help-circle-outline", onPress: () => router.push("/contact-us" as Href) },
   ];
+  // Logout Handler
+  const handleLogout = async () => {
+    Alert.alert(
+      "Logout",
+      "Are you sure you want to logout?",
+      [
+        { text: "Cancel", style: "cancel" },
+        {
+          text: "Logout",
+          style: "destructive",
+          onPress: async () => {
+            try {
+              // Clear all stored data (or specific keys like 'userToken', 'userData')
+              await AsyncStorage.clear(); 
+              // Or more selectively:
+              // await AsyncStorage.multiRemove(['userToken', 'userData', 'isLoggedIn']);
+
+              console.log("Logged out successfully & storage cleared");
+
+              // Navigate to login screen (adjust path based on your auth flow)
+              router.replace("/(auth)/login"); // or "/(auth)/login" depending on your folder structure
+            } catch (error) {
+              console.error("Error during logout:", error);
+              Alert.alert("Error", "Failed to logout. Please try again.");
+            }
+          },
+        },
+      ]
+    );
+  };
 
   return (
     <View style={styles.container}>
@@ -45,7 +76,7 @@ export default function Profile() {
         </View>
 
         {/* --- Logout Button --- */}
-        <Pressable style={styles.logoutBtn}>
+        <Pressable style={styles.logoutBtn}onPress={handleLogout}>
           <MaterialIcons name="logout" size={22} color="#ffffffff" />
           <Text style={styles.logoutText}>Logout</Text>
         </Pressable>
