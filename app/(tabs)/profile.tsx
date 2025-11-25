@@ -1,3 +1,4 @@
+import appColors from "@/constants/Color";
 import { Ionicons, MaterialIcons } from "@expo/vector-icons";
 import { Href, router } from "expo-router";
 import React from "react";
@@ -35,10 +36,10 @@ export default function Profile() {
           {menuItems.map((item, index) => (
             <Pressable key={index} style={[styles.menuItem, { borderBottomWidth: index === menuItems.length - 1 ? 0 : 1 }]} onPress={item.onPress}>
               <View style={styles.menuLeft}>
-                <Ionicons name={item.icon as any} size={24} color='#FF6B6B' />
+                <Ionicons name={item.icon as any} size={24} color={appColors.main.ButtonColor} />
                 <Text style={styles.menuText}>{item.title}</Text>
               </View>
-              <Ionicons name="chevron-forward" size={20} color="#777" />
+              <Ionicons name="chevron-forward" size={20} color={appColors.main.IconColor} />
             </Pressable>
           ))}
         </View>
@@ -59,7 +60,7 @@ export default function Profile() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "#0D0D0D",
+    backgroundColor: appColors.main.Background,
     paddingTop: 50,
   },
 
@@ -73,11 +74,11 @@ const styles = StyleSheet.create({
     height: 110,
     borderRadius: 60,
     borderWidth: 3,
-    borderColor: '#FF6B6B',
+    borderColor: appColors.main.ButtonColor,
   },
 
   name: {
-    color: "#fff",
+    color: appColors.main.TextColor,
     fontSize: 24,
     fontWeight: "700",
     marginTop: 12,
@@ -92,7 +93,7 @@ const styles = StyleSheet.create({
   menuContainer: {
     marginHorizontal: 20,
     marginTop: 10,
-    backgroundColor: "#121212",
+    backgroundColor: appColors.main.Secondary,
     borderRadius: 20,
     paddingVertical: 10,
   },
@@ -114,7 +115,7 @@ const styles = StyleSheet.create({
   },
 
   menuText: {
-    color: "#fff",
+    color: appColors.main.TextColor,
     fontSize: 17,
     fontWeight: "500",
   },
@@ -125,7 +126,7 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     alignSelf: "center",
     marginTop: 40,
-    backgroundColor:'#ff5050ff',
+    backgroundColor:appColors.main.ButtonColor,
     paddingVertical: 12,
     paddingHorizontal: 25,
     borderRadius: 16,

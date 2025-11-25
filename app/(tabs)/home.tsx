@@ -1,4 +1,5 @@
 import NotificationModal from '@/components/NotificationModal';
+import appColors from '@/constants/Color';
 import { Ionicons, MaterialCommunityIcons } from '@expo/vector-icons';
 import { LinearGradient } from 'expo-linear-gradient';
 import { Href, router } from 'expo-router';
@@ -433,7 +434,7 @@ const styles = StyleSheet.create({
     // overall
     container: {
         flex: 1,
-        backgroundColor: '#0F0F0F',
+        backgroundColor: appColors.main.Background,
     },
 
     // header (fades in)

@@ -1,1 +1,0 @@
-export const ImageData ="https://imagedelivery.net/kGaNaQWbvOG-ZHiCeIi4BA/"
