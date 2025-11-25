@@ -1,3 +1,4 @@
+import appColors from '@/constants/Color';
 import { Feather } from '@expo/vector-icons';
 import * as ImagePicker from 'expo-image-picker';
 import { LinearGradient } from 'expo-linear-gradient';
@@ -40,7 +41,7 @@ const EditProfile: React.FC = () => {
   const [deliveryAddress, setDeliveryAddress] = useState('123 Sweet Street, Apt 4B');
   const [pincode, setPincode] = useState('751001');
   const [city, setCity] = useState('Bhubaneswar');
-  
+
   // Additional bakery-specific fields
   const [favoriteItems, setFavoriteItems] = useState('Chocolate Croissants, Red Velvet Cake');
   const [dietaryPreferences, setDietaryPreferences] = useState('None');
@@ -150,270 +151,269 @@ const EditProfile: React.FC = () => {
   }
 
   return (
-    <LinearGradient colors={['#000000ff', '#030005ff']} style={StyleSheet.absoluteFill}>
+
+    <SafeAreaView style={styles.safe}>
       <StatusBar barStyle="light-content" />
-      <SafeAreaView style={styles.safe}>
-        <KeyboardAvoidingView behavior={Platform.OS === 'ios' ? 'padding' : 'height'} style={{ flex: 1 }}>
-            {/* Header with Back Button */}
-            <View style={styles.header}>
-              <TouchableOpacity style={styles.backButton} onPress={() => router.back()}>
-                <Feather name="arrow-left" size={24} color="#fff" />
-              </TouchableOpacity>
-              <Text style={styles.headerTitle}>Edit Profile</Text>
-             
-            </View>
-          <ScrollView showsVerticalScrollIndicator={false} contentContainerStyle={styles.scrollContent} keyboardShouldPersistTaps="handled">
-            
-          
+      <KeyboardAvoidingView behavior={Platform.OS === 'ios' ? 'padding' : 'height'} style={{ flex: 1 }}>
+        {/* Header with Back Button */}
+        <View style={styles.header}>
+          <TouchableOpacity style={styles.backButton} onPress={() => router.back()}>
+            <Feather name="arrow-left" size={24} color="#fff" />
+          </TouchableOpacity>
+          <Text style={styles.headerTitle}>Edit Profile</Text>
 
-            {/* Profile Photo Section */}
-            <View style={styles.headerCard}>
-              <View style={styles.headerLeft}>
-                <TouchableOpacity style={styles.avatarWrap} onPress={pickImage}>
-                  {profilePhoto ? (
-                    <Image source={{ uri: profilePhoto }} style={styles.avatar} />
-                  ) : (
-                    <View style={styles.avatarPlaceholder}>
-                      <Feather name="user" size={36} color={PRIMARY_START} />
-                    </View>
-                  )}
-                  <View style={styles.editPhotoBadge}>
-                    <Feather name="camera" size={14} color="#fff" />
-                  </View>
-                </TouchableOpacity>
+        </View>
+        <ScrollView showsVerticalScrollIndicator={false} contentContainerStyle={styles.scrollContent} keyboardShouldPersistTaps="handled">
 
-                <View style={{ flex: 1, marginLeft: 12 }}>
-                  <Text style={styles.title}>Update Your Profile</Text>
-                  <Text style={styles.sub}>Keep your bakery preferences fresh</Text>
-                </View>
-              </View>
-            </View>
 
-            {/* Personal Information Card */}
-            <View style={styles.card}>
-              <Text style={styles.cardTitle}>Personal Information</Text>
 
-              <View style={{ marginTop: 6 }}>
-                <Text style={styles.label}>Full name *</Text>
-                <TextInput
-                  style={[styles.input, errors.fullName && styles.inputError]}
-                  placeholder="Full name"
-                  placeholderTextColor="#6B7280"
-                  cursorColor={PRIMARY_START}
-                  selectionColor={PRIMARY_START}
-                  value={fullName}
-                  onChangeText={(t) => {
-                    setFullName(t);
-                    if (errors.fullName) setErrors((s) => ({ ...s, fullName: '' }));
-                  }}
-                />
-                {errors.fullName && <Text style={styles.errorText}>{errors.fullName}</Text>}
-              </View>
-
-              <View style={{ marginTop: 12 }}>
-                <Text style={styles.label}>Email *</Text>
-                <TextInput
-                  style={[styles.input, errors.email && styles.inputError]}
-                  placeholder="you@domain.com"
-                  placeholderTextColor="#6B7280"
-                  value={email}
-                  cursorColor={PRIMARY_START}
-                  selectionColor={PRIMARY_START}
-                  onChangeText={(t) => {
-                    setEmail(t);
-                    if (errors.email) setErrors((s) => ({ ...s, email: '' }));
-                  }}
-                  keyboardType="email-address"
-                  autoCapitalize="none"
-                />
-                {errors.email && <Text style={styles.errorText}>{errors.email}</Text>}
-              </View>
-
-              <View style={{ marginTop: 12 }}>
-                <Text style={styles.label}>Phone number *</Text>
-                <TextInput
-                  style={[styles.input, errors.phone && styles.inputError]}
-                  placeholder="+1 (555) 123-4567"
-                  placeholderTextColor="#6B7280"
-                  value={phone}
-                  cursorColor={PRIMARY_START}
-                  selectionColor={PRIMARY_START}
-                  onChangeText={(t) => {
-                    setPhone(t);
-                    if (errors.phone) setErrors((s) => ({ ...s, phone: '' }));
-                  }}
-                  keyboardType="phone-pad"
-                />
-                {errors.phone && <Text style={styles.errorText}>{errors.phone}</Text>}
-              </View>
-            </View>
-
-            {/* Delivery Information Card */}
-            <View style={styles.card}>
-              <Text style={styles.cardTitle}>Delivery Information</Text>
-
-              <View style={{ marginTop: 6 }}>
-                <Text style={styles.label}>Delivery address *</Text>
-                <TextInput
-                  style={[styles.input, styles.multilineInput, errors.deliveryAddress && styles.inputError]}
-                  placeholder="Apartment, building, street, landmark..."
-                  placeholderTextColor="#6B7280"
-                  cursorColor={PRIMARY_START}
-                  selectionColor={PRIMARY_START}
-                  value={deliveryAddress}
-                  onChangeText={(t) => {
-                    setDeliveryAddress(t);
-                    if (errors.deliveryAddress) setErrors((s) => ({ ...s, deliveryAddress: '' }));
-                  }}
-                  multiline
-                />
-                {errors.deliveryAddress && <Text style={styles.errorText}>{errors.deliveryAddress}</Text>}
-              </View>
-
-              <View style={{ marginTop: 12, flexDirection: 'row' }}>
-                <View style={{ flex: 1, marginRight: 8 }}>
-                  <Text style={styles.label}>Pincode *</Text>
-                  <TextInput
-                    style={[styles.input, errors.pincode && styles.inputError]}
-                    placeholder="e.g. 751001"
-                    placeholderTextColor="#6B7280"
-                    cursorColor={PRIMARY_START}
-                    selectionColor={PRIMARY_START}
-                    value={pincode}
-                    onChangeText={(t) => {
-                      const v = t.replace(/\D/g, '');
-                      setPincode(v);
-                      if (errors.pincode) setErrors((s) => ({ ...s, pincode: '' }));
-                    }}
-                    keyboardType="numeric"
-                    maxLength={6}
-                  />
-                  {errors.pincode && <Text style={styles.errorText}>{errors.pincode}</Text>}
-                </View>
-
-                <View style={{ flex: 1 }}>
-                  <Text style={styles.label}>City *</Text>
-                  <TextInput
-                    style={[styles.input, errors.city && styles.inputError]}
-                    placeholder="e.g. Bhubaneswar"
-                    placeholderTextColor="#6B7280"
-                    cursorColor={PRIMARY_START}
-                    selectionColor={PRIMARY_START}
-                    value={city}
-                    onChangeText={(t) => {
-                      setCity(t);
-                      if (errors.city) setErrors((s) => ({ ...s, city: '' }));
-                    }}
-                  />
-                  {errors.city && <Text style={styles.errorText}>{errors.city}</Text>}
-                </View>
-              </View>
-            </View>
-
-            {/* Bakery Preferences Card */}
-            <View style={styles.card}>
-              <Text style={styles.cardTitle}>Bakery Preferences</Text>
-
-              <View style={{ marginTop: 6 }}>
-                <Text style={styles.label}>Favorite Items</Text>
-                <TextInput
-                  style={[styles.input, styles.multilineInput]}
-                  placeholder="What treats do you love most?"
-                  placeholderTextColor="#6B7280"
-                  cursorColor={PRIMARY_START}
-                  selectionColor={PRIMARY_START}
-                  value={favoriteItems}
-                  onChangeText={setFavoriteItems}
-                  multiline
-                />
-                <Text style={styles.helperText}>Separate items with commas</Text>
-              </View>
-
-              <View style={{ marginTop: 12 }}>
-                <Text style={styles.label}>Dietary Preferences</Text>
-                <View style={styles.dietaryOptions}>
-                  {['None', 'Vegetarian', 'Vegan', 'Gluten-Free', 'Dairy-Free'].map((option) => (
-                    <TouchableOpacity
-                      key={option}
-                      style={[
-                        styles.dietaryOption,
-                        dietaryPreferences === option && styles.dietaryOptionSelected
-                      ]}
-                      onPress={() => setDietaryPreferences(option)}
-                    >
-                      <Text style={[
-                        styles.dietaryOptionText,
-                        dietaryPreferences === option && styles.dietaryOptionTextSelected
-                      ]}>
-                        {option}
-                      </Text>
-                    </TouchableOpacity>
-                  ))}
-                </View>
-              </View>
-
-              <View style={{ marginTop: 16 }}>
-                <TouchableOpacity 
-                  style={styles.checkboxContainer}
-                  onPress={() => setNewsletterSubscribed(!newsletterSubscribed)}
-                >
-                  <View style={[
-                    styles.checkbox,
-                    newsletterSubscribed && styles.checkboxSelected
-                  ]}>
-                    {newsletterSubscribed && <Feather name="check" size={14} color="#fff" />}
-                  </View>
-                  <Text style={styles.checkboxLabel}>
-                    Subscribe to bakery newsletter & special offers
-                  </Text>
-                </TouchableOpacity>
-              </View>
-            </View>
-
-            {/* Action Buttons */}
-            <View style={styles.actionButtons}>
-              <TouchableOpacity 
-                style={styles.resetButton} 
-                onPress={handleReset}
-                disabled={saving}
-              >
-                <Text style={styles.resetButtonText}>Reset</Text>
-              </TouchableOpacity>
-
-              <TouchableOpacity 
-                style={styles.saveBtn} 
-                onPress={handleSave} 
-                disabled={saving}
-                activeOpacity={0.9}
-              >
-                {saving ? (
-                  <View style={styles.saveInner}>
-                    <ActivityIndicator color="#fff" />
-                    <Text style={[styles.saveText, { marginLeft: 12 }]}>Updating…</Text>
-                  </View>
+          {/* Profile Photo Section */}
+          <View style={styles.headerCard}>
+            <View style={styles.headerLeft}>
+              <TouchableOpacity style={styles.avatarWrap} onPress={pickImage}>
+                {profilePhoto ? (
+                  <Image source={{ uri: profilePhoto }} style={styles.avatar} />
                 ) : (
-                  <LinearGradient 
-                    start={{ x: 0, y: 0 }} 
-                    end={{ x: 1, y: 0 }} 
-                    colors={['#be4b12ff', '#f4813fff']} 
-                    style={styles.saveInner}
-                  >
-                    <Feather name="save" size={18} color="#fff" />
-                    <Text style={styles.saveText}>Update Profile</Text>
-                  </LinearGradient>
+                  <View style={styles.avatarPlaceholder}>
+                    <Feather name="user" size={36} color={appColors.main.ButtonColor} />
+                  </View>
                 )}
+                <View style={styles.editPhotoBadge}>
+                  <Feather name="camera" size={14} color="#fff" />
+                </View>
               </TouchableOpacity>
+
+              <View style={{ flex: 1, marginLeft: 12 }}>
+                <Text style={styles.title}>Update Your Profile</Text>
+                <Text style={styles.sub}>Keep your bakery preferences fresh</Text>
+              </View>
+            </View>
+          </View>
+
+          {/* Personal Information Card */}
+          <View style={styles.card}>
+            <Text style={styles.cardTitle}>Personal Information</Text>
+
+            <View style={{ marginTop: 6 }}>
+              <Text style={styles.label}>Full name *</Text>
+              <TextInput
+                style={[styles.input, errors.fullName && styles.inputError]}
+                placeholder="Full name"
+                placeholderTextColor="#6B7280"
+                cursorColor={PRIMARY_START}
+                selectionColor={PRIMARY_START}
+                value={fullName}
+                onChangeText={(t) => {
+                  setFullName(t);
+                  if (errors.fullName) setErrors((s) => ({ ...s, fullName: '' }));
+                }}
+              />
+              {errors.fullName && <Text style={styles.errorText}>{errors.fullName}</Text>}
             </View>
 
-          </ScrollView>
-        </KeyboardAvoidingView>
-      </SafeAreaView>
-    </LinearGradient>
+            <View style={{ marginTop: 12 }}>
+              <Text style={styles.label}>Email *</Text>
+              <TextInput
+                style={[styles.input, errors.email && styles.inputError]}
+                placeholder="you@domain.com"
+                placeholderTextColor="#6B7280"
+                value={email}
+                cursorColor={PRIMARY_START}
+                selectionColor={PRIMARY_START}
+                onChangeText={(t) => {
+                  setEmail(t);
+                  if (errors.email) setErrors((s) => ({ ...s, email: '' }));
+                }}
+                keyboardType="email-address"
+                autoCapitalize="none"
+              />
+              {errors.email && <Text style={styles.errorText}>{errors.email}</Text>}
+            </View>
+
+            <View style={{ marginTop: 12 }}>
+              <Text style={styles.label}>Phone number *</Text>
+              <TextInput
+                style={[styles.input, errors.phone && styles.inputError]}
+                placeholder="+1 (555) 123-4567"
+                placeholderTextColor="#6B7280"
+                value={phone}
+                cursorColor={PRIMARY_START}
+                selectionColor={PRIMARY_START}
+                onChangeText={(t) => {
+                  setPhone(t);
+                  if (errors.phone) setErrors((s) => ({ ...s, phone: '' }));
+                }}
+                keyboardType="phone-pad"
+              />
+              {errors.phone && <Text style={styles.errorText}>{errors.phone}</Text>}
+            </View>
+          </View>
+
+          {/* Delivery Information Card */}
+          <View style={styles.card}>
+            <Text style={styles.cardTitle}>Delivery Information</Text>
+
+            <View style={{ marginTop: 6 }}>
+              <Text style={styles.label}>Delivery address *</Text>
+              <TextInput
+                style={[styles.input, styles.multilineInput, errors.deliveryAddress && styles.inputError]}
+                placeholder="Apartment, building, street, landmark..."
+                placeholderTextColor="#6B7280"
+                cursorColor={PRIMARY_START}
+                selectionColor={PRIMARY_START}
+                value={deliveryAddress}
+                onChangeText={(t) => {
+                  setDeliveryAddress(t);
+                  if (errors.deliveryAddress) setErrors((s) => ({ ...s, deliveryAddress: '' }));
+                }}
+                multiline
+              />
+              {errors.deliveryAddress && <Text style={styles.errorText}>{errors.deliveryAddress}</Text>}
+            </View>
+
+            <View style={{ marginTop: 12, flexDirection: 'row' }}>
+              <View style={{ flex: 1, marginRight: 8 }}>
+                <Text style={styles.label}>Pincode *</Text>
+                <TextInput
+                  style={[styles.input, errors.pincode && styles.inputError]}
+                  placeholder="e.g. 751001"
+                  placeholderTextColor="#6B7280"
+                  cursorColor={PRIMARY_START}
+                  selectionColor={PRIMARY_START}
+                  value={pincode}
+                  onChangeText={(t) => {
+                    const v = t.replace(/\D/g, '');
+                    setPincode(v);
+                    if (errors.pincode) setErrors((s) => ({ ...s, pincode: '' }));
+                  }}
+                  keyboardType="numeric"
+                  maxLength={6}
+                />
+                {errors.pincode && <Text style={styles.errorText}>{errors.pincode}</Text>}
+              </View>
+
+              <View style={{ flex: 1 }}>
+                <Text style={styles.label}>City *</Text>
+                <TextInput
+                  style={[styles.input, errors.city && styles.inputError]}
+                  placeholder="e.g. Bhubaneswar"
+                  placeholderTextColor="#6B7280"
+                  cursorColor={PRIMARY_START}
+                  selectionColor={PRIMARY_START}
+                  value={city}
+                  onChangeText={(t) => {
+                    setCity(t);
+                    if (errors.city) setErrors((s) => ({ ...s, city: '' }));
+                  }}
+                />
+                {errors.city && <Text style={styles.errorText}>{errors.city}</Text>}
+              </View>
+            </View>
+          </View>
+
+          {/* Bakery Preferences Card */}
+          <View style={styles.card}>
+            <Text style={styles.cardTitle}>Bakery Preferences</Text>
+
+            <View style={{ marginTop: 6 }}>
+              <Text style={styles.label}>Favorite Items</Text>
+              <TextInput
+                style={[styles.input, styles.multilineInput]}
+                placeholder="What treats do you love most?"
+                placeholderTextColor="#6B7280"
+                cursorColor={PRIMARY_START}
+                selectionColor={PRIMARY_START}
+                value={favoriteItems}
+                onChangeText={setFavoriteItems}
+                multiline
+              />
+              <Text style={styles.helperText}>Separate items with commas</Text>
+            </View>
+
+            <View style={{ marginTop: 12 }}>
+              <Text style={styles.label}>Dietary Preferences</Text>
+              <View style={styles.dietaryOptions}>
+                {['None', 'Vegetarian', 'Vegan', 'Gluten-Free', 'Dairy-Free'].map((option) => (
+                  <TouchableOpacity
+                    key={option}
+                    style={[
+                      styles.dietaryOption,
+                      dietaryPreferences === option && styles.dietaryOptionSelected
+                    ]}
+                    onPress={() => setDietaryPreferences(option)}
+                  >
+                    <Text style={[
+                      styles.dietaryOptionText,
+                      dietaryPreferences === option && styles.dietaryOptionTextSelected
+                    ]}>
+                      {option}
+                    </Text>
+                  </TouchableOpacity>
+                ))}
+              </View>
+            </View>
+
+            <View style={{ marginTop: 16 }}>
+              <TouchableOpacity
+                style={styles.checkboxContainer}
+                onPress={() => setNewsletterSubscribed(!newsletterSubscribed)}
+              >
+                <View style={[
+                  styles.checkbox,
+                  newsletterSubscribed && styles.checkboxSelected
+                ]}>
+                  {newsletterSubscribed && <Feather name="check" size={14} color="#fff" />}
+                </View>
+                <Text style={styles.checkboxLabel}>
+                  Subscribe to bakery newsletter & special offers
+                </Text>
+              </TouchableOpacity>
+            </View>
+          </View>
+
+          {/* Action Buttons */}
+          <View style={styles.actionButtons}>
+            <TouchableOpacity
+              style={styles.resetButton}
+              onPress={handleReset}
+              disabled={saving}
+            >
+              <Text style={styles.resetButtonText}>Reset</Text>
+            </TouchableOpacity>
+
+            <TouchableOpacity
+              style={styles.saveBtn}
+              onPress={handleSave}
+              disabled={saving}
+              activeOpacity={0.9}
+            >
+              {saving ? (
+                <View style={styles.saveInner}>
+                  <ActivityIndicator color="#fff" />
+                  <Text style={[styles.saveText, { marginLeft: 12 }]}>Updating…</Text>
+                </View>
+              ) : (
+                <LinearGradient
+                  start={{ x: 0, y: 0 }}
+                  end={{ x: 1, y: 0 }}
+                  colors={[appColors.main.ButtonColor, appColors.main.ButtonColor]}
+                  style={styles.saveInner}
+                >
+                  <Feather name="save" size={18} color="#fff" />
+                  <Text style={styles.saveText}>Update Profile</Text>
+                </LinearGradient>
+              )}
+            </TouchableOpacity>
+          </View>
+
+        </ScrollView>
+      </KeyboardAvoidingView>
+    </SafeAreaView>
   );
 };
 
 const styles = StyleSheet.create({
-  safe: { flex: 1 },
+  safe: { flex: 1, backgroundColor: appColors.main.Background },
   scrollContent: { paddingHorizontal: 16, paddingBottom: 30 },
 
   // Header
@@ -421,19 +421,19 @@ const styles = StyleSheet.create({
     paddingHorizontal: 16,
     flexDirection: 'row',
     alignItems: 'center',
-  gap:15,
+    gap: 15,
     marginBottom: 16,
   },
   backButton: {
-   
-   
+
+
   },
   headerTitle: {
     color: '#fff',
     fontSize: 18,
     fontWeight: '800',
   },
- 
+
   loadingContainer: { flex: 1, justifyContent: 'center', alignItems: 'center' },
   loadingText: { color: '#D1D5DB', marginTop: 12, fontSize: 16 },
 
@@ -452,25 +452,25 @@ const styles = StyleSheet.create({
   avatarWrap: {
     width: 76,
     height: 76,
-    borderRadius: 18,
+    borderRadius: 10,
     overflow: 'hidden',
     borderWidth: 0.5,
-    borderColor: '#a38888ff',
+    borderColor: "#424242ff",
     justifyContent: 'center',
     alignItems: 'center',
     backgroundColor: '#0A0A0A',
     position: 'relative',
   },
-  avatar: { width: 76, height: 76, borderRadius: 12 },
+  avatar: { width: 76, height: 76, borderRadius: 10 },
   avatarPlaceholder: { width: 76, height: 76, alignItems: 'center', justifyContent: 'center' },
   editPhotoBadge: {
     position: 'absolute',
     bottom: 4,
     right: 4,
-    backgroundColor: PRIMARY_START,
-    width: 24,
-    height: 24,
-    borderRadius: 12,
+    backgroundColor: appColors.main.ButtonColor,
+    width: 28,
+    height: 28,
+    borderRadius: 8,
     justifyContent: 'center',
     alignItems: 'center',
     borderWidth: 2,
@@ -508,8 +508,8 @@ const styles = StyleSheet.create({
     textAlignVertical: 'top',
   },
 
-  inputError: { borderColor: '#EF4444' },
-  errorText: { color: '#EF4444', marginTop: 6, fontSize: 12 },
+  inputError: { borderColor: appColors.main.ButtonColor },
+  errorText: { color: appColors.main.ButtonColor, marginTop: 6, fontSize: 12 },
 
   // Dietary Preferences
   dietaryOptions: {
@@ -528,8 +528,8 @@ const styles = StyleSheet.create({
     backgroundColor: '#0F1114',
   },
   dietaryOptionSelected: {
-    borderColor: PRIMARY_START,
-    backgroundColor: PRIMARY_START + '20',
+    borderColor: appColors.main.ButtonColor,
+    backgroundColor: appColors.main.ButtonColor + '20',
   },
   dietaryOptionText: {
     color: '#9CA3AF',
@@ -537,7 +537,7 @@ const styles = StyleSheet.create({
     fontWeight: '600',
   },
   dietaryOptionTextSelected: {
-    color: PRIMARY_START,
+    color: appColors.main.ButtonColor,
   },
 
   // Checkbox
@@ -556,8 +556,8 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   checkboxSelected: {
-    borderColor: PRIMARY_START,
-    backgroundColor: PRIMARY_START,
+    borderColor: appColors.main.ButtonColor,
+    backgroundColor: appColors.main.ButtonColor,
   },
   checkboxLabel: {
     color: '#D1D5DB',
@@ -570,8 +570,8 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     gap: 12,
     marginTop: 20,
-   
-   
+
+
   },
   resetButton: {
     flex: 1,

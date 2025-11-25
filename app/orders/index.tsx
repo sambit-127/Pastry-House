@@ -1,3 +1,4 @@
+import appColors from "@/constants/Color";
 import { Ionicons } from "@expo/vector-icons";
 import { Href, router } from "expo-router";
 import React from "react";
@@ -13,20 +14,6 @@ import {
 import { SafeAreaView } from "react-native-safe-area-context";
 const { width } = Dimensions.get("window");
 
-// ---- THEME ----
-const theme = {
-    bg: "#050506",
-    surface: "#101012",
-    card: "#18181B",
-    border: "#262626",
-    gold: '#FF6B6B',
-    accent: "#FF8E53",
-    text: "#FFFFFF",
-    muted: "#A1A1AA",
-    success: "#4CAF50",
-    warning: "#FF8E53",
-    danger: "#FF4D4D",
-};
 
 // ---- DUMMY ORDERS ----
 type OrderStatus = "Delivered" | "Out for Delivery" | "Preparing" | "Cancelled";
@@ -74,15 +61,15 @@ const ORDERS: OrderItem[] = [
 const getStatusColor = (status: OrderStatus) => {
     switch (status) {
         case "Delivered":
-            return theme.success;
+            return "#4CAF50";
         case "Out for Delivery":
-            return theme.warning;
+            return "#FF8E53";
         case "Preparing":
             return '#3585fe';
         case "Cancelled":
-            return theme.danger;
+            return "#FF4D4D";
         default:
-            return theme.muted;
+            return "#A1A1AA";
     }
 };
 
@@ -92,7 +79,7 @@ const Orders = () => {
             <Pressable style={styles.orderCard} onPress={() => router.push('/order-details' as Href)}>
                 <View style={styles.orderLeft}>
                     <View style={styles.placeholderBox}>
-                        <Ionicons name="cube" size={28} color={theme.gold} />
+                        <Ionicons name="cube" size={28} color={appColors.main.ButtonColor} />
                     </View>
                 </View>
 
@@ -129,16 +116,16 @@ const Orders = () => {
             <View style={styles.headerRow}>
                 <View style={{ flexDirection: "row", alignItems: "center", gap: 14 }}>
                     <TouchableOpacity onPress={() => router.back()}>
-                        <Ionicons name="arrow-back" size={22} color={theme.text} />
+                        <Ionicons name="arrow-back" size={22} color={appColors.main.TextColor} />
                     </TouchableOpacity>
                     <Text style={styles.headerTitle}>My Orders</Text>
                 </View>
-                <Ionicons name="receipt" size={22} color={theme.text} />
+                <Ionicons name="receipt" size={22} color={appColors.main.TextColor} />
             </View>
 
             {ORDERS.length === 0 ? (
                 <View style={styles.emptyBox}>
-                    <Ionicons name="bag-outline" size={60} color={theme.muted} />
+                    <Ionicons name="bag-outline" size={60} color={appColors.main.IconColor} />
                     <Text style={styles.emptyTitle}>No Orders Yet</Text>
                     <Text style={styles.emptySubtitle}>Start adding your favorites.</Text>
                 </View>
@@ -161,7 +148,7 @@ export default Orders;
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        backgroundColor: theme.bg,
+        backgroundColor: appColors.main.Background,
         paddingHorizontal: 16,
     },
 
@@ -173,14 +160,14 @@ const styles = StyleSheet.create({
     },
 
     headerTitle: {
-        color: theme.text,
+        color: appColors.main.TextColor,
         fontSize: 20,
         fontWeight: "700",
     },
 
     orderCard: {
         flexDirection: "row",
-        backgroundColor: theme.card,
+        backgroundColor: appColors.main.Secondary,
         marginBottom: 14,
         padding: 14,
         borderRadius: 16,
@@ -208,13 +195,13 @@ const styles = StyleSheet.create({
     orderTitle: {
         fontSize: 15,
         fontWeight: "700",
-        color: theme.text,
+        color: appColors.main.TextColor,
         marginBottom: 4,
     },
 
     orderDate: {
         fontSize: 12,
-        color: theme.muted,
+        color: appColors.main.IconColor,
         marginBottom: 8,
     },
 
@@ -227,7 +214,7 @@ const styles = StyleSheet.create({
     orderPrice: {
         fontSize: 16,
         fontWeight: "700",
-        color: theme.gold,
+        color:appColors.main.ButtonColor,
     },
 
     statusBadge: {
@@ -249,13 +236,13 @@ const styles = StyleSheet.create({
     },
 
     emptyTitle: {
-        color: theme.text,
+        color: appColors.main.TextColor,
         fontSize: 18,
         fontWeight: "700",
     },
 
     emptySubtitle: {
-        color: theme.muted,
+        color: appColors.main.IconColor,
         fontSize: 14,
     },
 });

@@ -4,7 +4,8 @@ const appColors = {
       Secondary: "#171717",
       IconColor: "#777",
       TextColor:"#FFFFFF",
-      ButtonColor:"#ff5050ff"
+      ButtonColor:"#ff5050ff",
+      success:"#4CAF50",
     },
  
   };
