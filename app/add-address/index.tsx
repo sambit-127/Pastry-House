@@ -1,4 +1,5 @@
 import CreateNewAddressModal from '@/components/CreateNewAddressModal';
+import appColors from '@/constants/Color';
 import { Ionicons } from '@expo/vector-icons';
 import { LinearGradient } from 'expo-linear-gradient';
 import * as Location from 'expo-location';
@@ -253,7 +254,7 @@ const AddAddress = () => {
           onPress={() => router.back()}
           activeOpacity={0.7}
         >
-          <Ionicons name="arrow-back" size={24} color="#fff" />
+          <Ionicons name="arrow-back" size={24} color={appColors.main.TextColor} />
         </TouchableOpacity>
         <Text style={styles.headerTitle}>Add Address</Text>
         <View style={styles.headerSpacer} />
@@ -270,12 +271,12 @@ const AddAddress = () => {
           activeOpacity={0.8}
         >
           <LinearGradient
-            colors={['#ff5050ff' , '#ff5050ff' ]}
+            colors={[appColors.main.ButtonColor , appColors.main.ButtonColor ]}
             style={styles.currentLocationGradient}
             start={{ x: 0, y: 0 }}
             end={{ x: 1, y: 1 }}
           >
-            <Ionicons name="locate" size={20} color="#fff" />
+            <Ionicons name="locate" size={20} color={appColors.main.TextColor} />
             <Text style={styles.currentLocationText}>Use current location</Text>
           </LinearGradient>
         </TouchableOpacity>
@@ -310,7 +311,7 @@ const AddAddress = () => {
           activeOpacity={0.8}
         >
           <LinearGradient
-            colors={selectedLocation ? ['#ff5050ff' , '#ff5050ff' ] : ['#333', '#222']}
+            colors={selectedLocation ? [appColors.main.ButtonColor , appColors.main.ButtonColor  ] : ['#333', '#222']}
             style={styles.addDetailsGradient}
             start={{ x: 0, y: 0 }}
             end={{ x: 1, y: 0 }}
@@ -339,7 +340,7 @@ const AddAddress = () => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#000',
+    backgroundColor: appColors.main.Background,
   },
   header: {
     flexDirection: 'row',
@@ -347,7 +348,7 @@ const styles = StyleSheet.create({
     justifyContent: 'space-between',
     paddingHorizontal: 20,
     paddingBottom: 16,
-    backgroundColor: '#000',
+    backgroundColor: appColors.main.Background,
     borderBottomWidth: 1,
     borderBottomColor: '#333',
   },
@@ -362,7 +363,7 @@ const styles = StyleSheet.create({
   headerTitle: {
     fontSize: 18,
     fontWeight: '700',
-    color: '#fff',
+    color: appColors.main.TextColor,
   },
   headerSpacer: {
     width: 40,
@@ -378,12 +379,12 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
-    backgroundColor: '#1a1a1a',
+    backgroundColor: appColors.main.Background,
   },
   mapPlaceholderText: {
     fontSize: 18,
     fontWeight: '700',
-    color: '#fff',
+    color: appColors.main.TextColor,
     marginTop: 12,
   },
   mapPlaceholderSubtext: {
@@ -402,7 +403,7 @@ const styles = StyleSheet.create({
     borderRadius: 8,
   },
   retryButtonText: {
-    color: '#fff',
+    color: appColors.main.TextColor,
     fontSize: 14,
     fontWeight: '600',
   },
@@ -420,13 +421,13 @@ const styles = StyleSheet.create({
     paddingVertical: 12,
   },
   currentLocationText: {
-    color: '#fff',
+    color: appColors.main.TextColor,
     fontSize: 14,
     fontWeight: '600',
     marginLeft: 8,
   },
   locationConfirmation: {
-    backgroundColor: '#000',
+    backgroundColor: appColors.main.Background,
     paddingHorizontal: 20,
     paddingVertical: 16,
     borderTopWidth: 1,
@@ -435,7 +436,7 @@ const styles = StyleSheet.create({
   confirmationTitle: {
     fontSize: 16,
     fontWeight: '700',
-    color: '#fff',
+    color: appColors.main.TextColor,
     marginBottom: 12,
   },
   locationCard: {
@@ -452,7 +453,7 @@ const styles = StyleSheet.create({
     width: 40,
     height: 40,
     borderRadius: 20,
-    backgroundColor: '#2a1a0f',
+    backgroundColor: '#1a1816ff',
     justifyContent: 'center',
     alignItems: 'center',
     marginRight: 12,
@@ -463,7 +464,7 @@ const styles = StyleSheet.create({
   locationAddress: {
     fontSize: 16,
     fontWeight: '700',
-    color: '#fff',
+    color: appColors.main.TextColor,
     marginBottom: 2,
   },
   locationCity: {
@@ -473,7 +474,7 @@ const styles = StyleSheet.create({
   },
   bottomContainer: {
     padding: 20,
-    backgroundColor: '#000',
+    backgroundColor: appColors.main.Background,
     borderTopWidth: 1,
     borderTopColor: '#333',
   },
@@ -491,7 +492,7 @@ const styles = StyleSheet.create({
   addDetailsText: {
     fontSize: 16,
     fontWeight: '700',
-    color: '#fff',
+    color: appColors.main.TextColor,
   },
   addDetailsTextDisabled: {
     color: '#999',

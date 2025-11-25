@@ -1,19 +1,20 @@
+import appColors from '@/constants/Color';
 import { Ionicons } from '@expo/vector-icons';
 import { LinearGradient } from 'expo-linear-gradient';
 import { router } from 'expo-router';
 import React, { useEffect, useRef, useState } from 'react';
 import {
-    Alert,
-    Animated,
-    Dimensions,
-    Modal,
-    ScrollView,
-    StyleSheet,
-    Switch,
-    Text,
-    TextInput,
-    TouchableOpacity,
-    View
+  Alert,
+  Animated,
+  Dimensions,
+  Modal,
+  ScrollView,
+  StyleSheet,
+  Switch,
+  Text,
+  TextInput,
+  TouchableOpacity,
+  View
 } from 'react-native';
 import { GestureHandlerRootView } from 'react-native-gesture-handler';
 import { SafeAreaView } from 'react-native-safe-area-context';
@@ -189,7 +190,7 @@ const CreateNewAddressModal: React.FC<CreateNewAddressModalProps> = ({
         <Ionicons
           name={getAddressTypeIcon(type) as any}
           size={16}
-          color={isSelected ? '#FE5200' : '#999'}
+          color={isSelected ? appColors.main.ButtonColor : '#999'}
         />
         <Text style={[
           styles.addressTypeText,
@@ -393,8 +394,8 @@ const CreateNewAddressModal: React.FC<CreateNewAddressModalProps> = ({
                     <Switch
                       value={showGSTFields}
                       onValueChange={setShowGSTFields}
-                      trackColor={{ false: '#333', true: '#FE5200' }}
-                      thumbColor={showGSTFields ? '#fff' : '#f4f3f4'}
+                      trackColor={{ false: '#333', true: appColors.main.ButtonColor}}
+                      thumbColor={showGSTFields ? appColors.main.TextColor : '#f4f3f4'}
                     />
                     <Text style={styles.checkboxLabel}>Add GSTIN Details</Text>
                   </View>
@@ -438,7 +439,7 @@ const CreateNewAddressModal: React.FC<CreateNewAddressModalProps> = ({
                   activeOpacity={0.8}
                 >
                   <LinearGradient
-                    colors={['#FF512F', '#FE5200']}
+                    colors={[appColors.main.ButtonColor, appColors.main.ButtonColor]}
                     style={styles.saveGradient}
                     start={{ x: 0, y: 0 }}
                     end={{ x: 1, y: 0 }}
@@ -498,7 +499,7 @@ const styles = StyleSheet.create({
   headerTitle: {
     fontSize: 18,
     fontWeight: '700',
-    color: '#fff',
+    color: appColors.main.TextColor,
   },
   closeButton: {
     width: 32,
@@ -518,7 +519,7 @@ const styles = StyleSheet.create({
   sectionTitle: {
     fontSize: 16,
     fontWeight: '700',
-    color: '#fff',
+    color: appColors.main.TextColor,
     marginBottom: 12,
   },
   addressTypeContainer: {
@@ -537,8 +538,8 @@ const styles = StyleSheet.create({
     gap: 6,
   },
   addressTypeButtonSelected: {
-    borderColor: '#FE5200',
-    backgroundColor: '#2a1a0f',
+    borderColor: appColors.main.ButtonColor,
+    backgroundColor: '#140f10ff',
   },
   addressTypeText: {
     fontSize: 14,
@@ -546,7 +547,7 @@ const styles = StyleSheet.create({
     color: '#999',
   },
   addressTypeTextSelected: {
-    color: '#FE5200',
+    color: appColors.main.ButtonColor,
   },
   fieldLabel: {
     fontSize: 14,
@@ -562,8 +563,8 @@ const styles = StyleSheet.create({
     paddingVertical: 12,
     fontSize: 16,
     fontWeight: '400',
-    color: '#fff',
-    backgroundColor: '#1a1a1a',
+    color: appColors.main.TextColor,
+    backgroundColor: appColors.main.Secondary,
   },
   phoneContainer: {
     flexDirection: 'row',
@@ -614,7 +615,7 @@ const styles = StyleSheet.create({
   saveButtonText: {
     fontSize: 16,
     fontWeight: '700',
-    color: '#fff',
+    color: appColors.main.TextColor,
   },
 });
 
