@@ -1,4 +1,5 @@
 import OrderSuccessModal from '@/components/OrderSuccessModal';
+import appColors from '@/constants/Color';
 import { Ionicons } from '@expo/vector-icons';
 import { LinearGradient } from 'expo-linear-gradient';
 import { useLocalSearchParams, useRouter } from 'expo-router';
@@ -168,13 +169,13 @@ const DeliveryLocation = () => {
   const getAddressTypeColor = (type: string) => {
     switch (type) {
       case 'home':
-        return '#FF6B6B';
+        return appColors.main.ButtonColor;
       case 'work':
-        return '#FF6B6B';
+        return appColors.main.ButtonColor;
       case 'hotel':
-        return '#FF6B6B';
+        return appColors.main.ButtonColor;
       default:
-        return '#FF6B6B';
+        return appColors.main.ButtonColor;
     }
   };
 
@@ -233,7 +234,7 @@ const DeliveryLocation = () => {
           onPress={() => router.back()}
           activeOpacity={0.7}
         >
-          <Ionicons name="arrow-back" size={24} color="#fff" />
+          <Ionicons name="arrow-back" size={24} color={appColors.main.TextColor} />
         </TouchableOpacity>
         <Text style={styles.headerTitle}>Select Delivery Address</Text>
         <View style={styles.headerSpacer} />
@@ -264,14 +265,14 @@ const DeliveryLocation = () => {
           activeOpacity={0.8}
         >
           <LinearGradient
-            colors={['#333', '#222']}
+            colors={[appColors.main.Secondary, appColors.main.Secondary]}
             style={styles.addAddressGradient}
             start={{ x: 0, y: 0 }}
             end={{ x: 1, y: 1 }}
           >
             <View style={styles.addAddressContent}>
               <View style={styles.addAddressIcon}>
-                <Ionicons name="add" size={24} color='#FF6B6B' />
+                <Ionicons name="add" size={24} color={appColors.main.ButtonColor} />
               </View>
               <Text style={styles.addAddressText}>Add New Address</Text>
             </View>
@@ -288,7 +289,7 @@ const DeliveryLocation = () => {
           activeOpacity={0.8}
         >
           <LinearGradient
-            colors={selectedAddressId ? ['#ff5050ff', '#ff5050ff'] : ['#333', '#222']}
+            colors={selectedAddressId ? [appColors.main.ButtonColor,appColors.main.ButtonColor] : ['#333', '#222']}
             style={styles.continueGradient}
             start={{ x: 0, y: 0 }}
             end={{ x: 1, y: 0 }}
@@ -315,7 +316,7 @@ const DeliveryLocation = () => {
       >
         <View style={styles.loadingModalContainer}>
           <View style={styles.loadingContent}>
-            <ActivityIndicator size="large" color='#ff5050ff' />
+            <ActivityIndicator size="large" color={appColors.main.ButtonColor} />
             <Text style={styles.loadingText}>Processing your order...</Text>
           </View>
         </View>
@@ -339,7 +340,7 @@ const DeliveryLocation = () => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#000',
+    backgroundColor: appColors.main.Background,
   },
   header: {
     flexDirection: 'row',
@@ -347,7 +348,7 @@ const styles = StyleSheet.create({
     justifyContent: 'space-between',
     paddingHorizontal: 20,
     paddingBottom: 16,
-    backgroundColor: '#000',
+    backgroundColor: appColors.main.Background,
     borderBottomWidth: 1,
     borderBottomColor: '#333',
   },
@@ -362,7 +363,7 @@ const styles = StyleSheet.create({
   headerTitle: {
     fontSize: 18,
     fontWeight: '700',
-    color: '#fff',
+    color: appColors.main.TextColor,
   },
   headerSpacer: {
     width: 40,
@@ -376,21 +377,21 @@ const styles = StyleSheet.create({
   sectionTitle: {
     fontSize: 18,
     fontWeight: '700',
-    color: '#fff',
+    color: appColors.main.TextColor,
     marginBottom: 16,
   },
   addressesContainer: {
     gap: 12,
   },
   addressCard: {
-    backgroundColor: '#1a1a1a',
+    backgroundColor: appColors.main.Secondary,
     borderRadius: 12,
     padding: 16,
     borderWidth: 1,
     borderColor: 'transparent',
   },
   selectedAddressCard: {
-    borderColor: '#FF6B6B',
+    borderColor: appColors.main.ButtonColor,
     backgroundColor: '#050505ff',
   },
   addressHeader: {
@@ -418,7 +419,7 @@ const styles = StyleSheet.create({
     textTransform: 'uppercase',
   },
   defaultBadge: {
-    backgroundColor: '#FF6B6B',
+    backgroundColor: appColors.main.ButtonColor,
     paddingHorizontal: 8,
     paddingVertical: 2,
     borderRadius: 10,
@@ -427,7 +428,7 @@ const styles = StyleSheet.create({
   defaultBadgeText: {
     fontSize: 10,
     fontWeight: '600',
-    color: '#fff',
+    color: appColors.main.TextColor,
   },
   selectedIndicator: {
     width: 24,
@@ -441,7 +442,7 @@ const styles = StyleSheet.create({
   addressName: {
     fontSize: 16,
     fontWeight: '700',
-    color: '#fff',
+    color: appColors.main.TextColor,
   },
   addressPhone: {
     fontSize: 14,
@@ -479,11 +480,11 @@ const styles = StyleSheet.create({
   addAddressText: {
     fontSize: 16,
     fontWeight: '600',
-    color: '#FF6B6B',
+    color: appColors.main.ButtonColor,
   },
   bottomContainer: {
     padding: 20,
-    backgroundColor: '#000',
+    backgroundColor: appColors.main.Background,
     borderTopWidth: 1,
     borderTopColor: '#333',
   },
@@ -501,7 +502,7 @@ const styles = StyleSheet.create({
   continueButtonText: {
     fontSize: 16,
     fontWeight: '700',
-    color: '#fff',
+    color: appColors.main.TextColor,
   },
   continueButtonTextDisabled: {
     color: '#999',
@@ -545,7 +546,7 @@ const styles = StyleSheet.create({
   callModalTitle: {
     fontSize: 18,
     fontWeight: '700',
-    color: '#fff',
+    color: appColors.main.TextColor,
     marginBottom: 12,
   },
   callModalText: {
@@ -558,11 +559,11 @@ const styles = StyleSheet.create({
   callModalPhone: {
     fontSize: 16,
     fontWeight: '700',
-    color: '#FF6B6B',
+    color: appColors.main.ButtonColor,
     marginBottom: 20,
   },
   callButton: {
-    backgroundColor: '#FF6B6B',
+    backgroundColor: appColors.main.ButtonColor,
     borderRadius: 8,
     paddingVertical: 12,
     paddingHorizontal: 24,
@@ -573,7 +574,7 @@ const styles = StyleSheet.create({
   callButtonText: {
     fontSize: 16,
     fontWeight: '600',
-    color: '#fff',
+    color: appColors.main.TextColor,
   },
   cancelButton: {
     paddingVertical: 12,
