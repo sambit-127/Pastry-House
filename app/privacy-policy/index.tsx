@@ -1,3 +1,4 @@
+import appColors from '@/constants/Color';
 import { Ionicons, MaterialCommunityIcons } from '@expo/vector-icons';
 import { router } from 'expo-router';
 import React from 'react';
@@ -6,7 +7,7 @@ import { SafeAreaView } from 'react-native-safe-area-context';
 
 const PrivacyPolicy = () => {
   return (
-    <SafeAreaView style={{ flex: 1, backgroundColor: '#1A1A1A' }}>
+    <SafeAreaView style={{ flex: 1, backgroundColor: appColors.main.Background }}>
     <ScrollView style={styles.container} showsVerticalScrollIndicator={false}>
 
      <View style={{ flexDirection: 'row', alignItems: 'center', marginBottom: 10, gap: 12, }}>
@@ -21,7 +22,7 @@ const PrivacyPolicy = () => {
       {/* Section Component */}
       <View style={styles.card}>
         <View style={styles.cardHeader}>
-          <Ionicons name="information-circle" size={20} color='#ff5050ff' />
+          <Ionicons name="information-circle" size={20} color={appColors.main.ButtonColor} />
           <Text style={styles.cardTitle}>Introduction</Text>
         </View>
         <Text style={styles.cardText}>
@@ -33,7 +34,7 @@ const PrivacyPolicy = () => {
 
       <View style={styles.card}>
         <View style={styles.cardHeader}>
-          <Ionicons name="list" size={20} color='#ff5050ff'/>
+          <Ionicons name="list" size={20} color={appColors.main.ButtonColor}/>
           <Text style={styles.cardTitle}>Information We Collect</Text>
         </View>
         <Text style={styles.cardText}>We only gather what we need to make your experience deliciously smooth:</Text>
@@ -45,7 +46,7 @@ const PrivacyPolicy = () => {
 
       <View style={styles.card}>
         <View style={styles.cardHeader}>
-          <Ionicons name="cafe" size={20} color='#ff5050ff' />
+          <Ionicons name="cafe" size={20} color={appColors.main.ButtonColor} />
           <Text style={styles.cardTitle}>How We Use Your Information</Text>
         </View>
         <Text style={styles.listItem}>• Fulfill cake + pastry orders on time.</Text>
@@ -56,7 +57,7 @@ const PrivacyPolicy = () => {
 
       <View style={styles.card}>
         <View style={styles.cardHeader}>
-          <Ionicons name="share-social" size={20} color='#ff5050ff'/>
+          <Ionicons name="share-social" size={20} color={appColors.main.ButtonColor}/>
           <Text style={styles.cardTitle}>Sharing Your Information</Text>
         </View>
         <Text style={styles.cardText}>We don’t sell your data—ever. We only share when necessary:</Text>
@@ -67,7 +68,7 @@ const PrivacyPolicy = () => {
 
       <View style={styles.card}>
         <View style={styles.cardHeader}>
-          <MaterialCommunityIcons name="cookie" size={20} color='#ff5050ff' />
+          <MaterialCommunityIcons name="cookie" size={20} color={appColors.main.ButtonColor} />
           <Text style={styles.cardTitle}>Cookies & Tracking</Text>
         </View>
         <Text style={styles.cardText}>
@@ -78,7 +79,7 @@ const PrivacyPolicy = () => {
 
       <View style={styles.card}>
         <View style={styles.cardHeader}>
-          <Ionicons name="shield-checkmark" size={20} color='#ff5050ff'/>
+          <Ionicons name="shield-checkmark" size={20} color={appColors.main.ButtonColor}/>
           <Text style={styles.cardTitle}>Data Security</Text>
         </View>
         <Text style={styles.cardText}>
@@ -88,7 +89,7 @@ const PrivacyPolicy = () => {
 
       <View style={styles.card}>
         <View style={styles.cardHeader}>
-          <Ionicons name="key" size={20} color='#ff5050ff' />
+          <Ionicons name="key" size={20} color={appColors.main.ButtonColor} />
           <Text style={styles.cardTitle}>Your Rights</Text>
         </View>
         <Text style={styles.listItem}>• Access, update, or delete your info.</Text>
@@ -99,7 +100,7 @@ const PrivacyPolicy = () => {
 
       <View style={styles.card}>
         <View style={styles.cardHeader}>
-          <Ionicons name="happy" size={20} color='#ff5050ff' />
+          <Ionicons name="happy" size={20} color={appColors.main.ButtonColor} />
           <Text style={styles.cardTitle}>Children's Privacy</Text>
         </View>
         <Text style={styles.cardText}>
@@ -109,7 +110,7 @@ const PrivacyPolicy = () => {
 
       <View style={styles.card}>
         <View style={styles.cardHeader}>
-          <Ionicons name="refresh" size={20} color='#ff5050ff' />
+          <Ionicons name="refresh" size={20} color={appColors.main.ButtonColor} />
           <Text style={styles.cardTitle}>Changes to This Policy</Text>
         </View>
         <Text style={styles.cardText}>
@@ -131,7 +132,7 @@ const PrivacyPolicy = () => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#1A1A1A',
+    backgroundColor:appColors.main.Background,
     paddingHorizontal: 20,
     paddingTop: 20,
   },
@@ -154,7 +155,7 @@ const styles = StyleSheet.create({
     marginBottom: 20,
   },
   card: {
-    backgroundColor: '#2A2A2A',
+    backgroundColor:appColors.main.Secondary,
     padding: 16,
     borderRadius: 16,
     marginBottom: 18,

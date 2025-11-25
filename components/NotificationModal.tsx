@@ -1,3 +1,4 @@
+import appColors from '@/constants/Color';
 import { Ionicons } from '@expo/vector-icons';
 import LottieView from 'lottie-react-native';
 import React, { useEffect } from 'react';
@@ -277,7 +278,7 @@ const NotificationModal: React.FC<Props> = ({ visible, onClose, notifications = 
         } else {
             return (
 
-                <Shadow startColor='#191919ff' endColor='#000000ff' offset={[0, 1]} >
+                <Shadow startColor='#191919ff' endColor='#000000ff' offset={[0,1]} distance={10} >
                     <View style={styles.sheetContainer}>
                         <View style={styles.header}>
                             <View style={styles.handle} />
@@ -447,7 +448,7 @@ const styles = StyleSheet.create({
     },
     notificationCard: {
         // backgroundColor: '#1F2937',
-        backgroundColor: '#0A0A0A',
+        backgroundColor: appColors.main.Background,
         borderWidth: 2,
         borderColor: '#1F1F1F',
         padding: 16,

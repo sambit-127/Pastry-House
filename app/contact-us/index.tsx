@@ -1,3 +1,4 @@
+import appColors from '@/constants/Color';
 import { Ionicons, MaterialCommunityIcons } from '@expo/vector-icons';
 import { router } from 'expo-router';
 import React from 'react';
@@ -6,11 +7,11 @@ import { SafeAreaView } from 'react-native-safe-area-context';
 
 const ContactUs = () => {
     return (
-        <SafeAreaView style={{ flex: 1, backgroundColor: '#1A1A1A' }}>
+        <SafeAreaView style={{ flex: 1, backgroundColor: appColors.main.Background }}>
             <ScrollView style={styles.container} showsVerticalScrollIndicator={false}>
 
                 {/* Send Message Section */}
-                <View style={{ flexDirection: 'row', alignItems: 'center', marginBottom: 10, gap: 12, }}>
+                <View style={{ flexDirection: 'row', alignItems: 'center',  gap: 12, }}>
                     <TouchableOpacity onPress={() => router.back()} style={{ padding: 3, }}>
                         <Ionicons name="arrow-back" size={24} color="#FFFFFF" />
                     </TouchableOpacity>
@@ -35,7 +36,7 @@ const ContactUs = () => {
                 <Text style={styles.sectionTitle}>Or Reach Us</Text>
 
                 <View style={styles.card}>
-                    <Ionicons name="location-sharp" size={22} color="#FF6B81" />
+                    <Ionicons name="location-sharp" size={22} color={appColors.main.ButtonColor} />
                     <View style={styles.cardContent}>
                         <Text style={styles.cardTitle}>Address</Text>
                         <Text style={styles.cardText}>123 Dessert Lane, Bhubaneswar, Odisha, India</Text>
@@ -43,7 +44,7 @@ const ContactUs = () => {
                 </View>
 
                 <View style={styles.card}>
-                    <Ionicons name="call" size={22} color='#FF6B6B' />
+                    <Ionicons name="call" size={22} color={appColors.main.ButtonColor} />
                     <View style={styles.cardContent}>
                         <Text style={styles.cardTitle}>Phone</Text>
                         <Text style={styles.cardText}>+91 98765 43210</Text>
@@ -51,7 +52,7 @@ const ContactUs = () => {
                 </View>
 
                 <View style={styles.card}>
-                    <MaterialCommunityIcons name="email" size={22} color='#FF6B6B' />
+                    <MaterialCommunityIcons name="email" size={22} color={appColors.main.ButtonColor} />
                     <View style={styles.cardContent}>
                         <Text style={styles.cardTitle}>Email</Text>
                         <Text style={styles.cardText}>hello@sweetbite.com</Text>
@@ -59,7 +60,7 @@ const ContactUs = () => {
                 </View>
 
                 <View style={styles.card}>
-                    <MaterialCommunityIcons name="clock-time-four" size={22} color='#FF6B6B' />
+                    <MaterialCommunityIcons name="clock-time-four" size={22} color={appColors.main.ButtonColor} />
                     <View style={styles.cardContent}>
                         <Text style={styles.cardTitle}>Timings</Text>
                         <Text style={styles.cardText}>Mon - Sun, 9:00 AM to 9:00 PM</Text>
@@ -71,22 +72,22 @@ const ContactUs = () => {
 
                 <View style={styles.socialRow}>
                     <View style={styles.socialCard}>
-                        <Ionicons name="logo-instagram" size={24} color='#FF6B6B' />
+                        <Ionicons name="logo-instagram" size={24} color={appColors.main.ButtonColor} />
                         <Text style={styles.socialText}>Instagram</Text>
                     </View>
                     <View style={styles.socialCard}>
-                        <Ionicons name="logo-facebook" size={24} color='#FF6B6B' />
+                        <Ionicons name="logo-facebook" size={24} color={appColors.main.ButtonColor} />
                         <Text style={styles.socialText}>Facebook</Text>
                     </View>
                 </View>
 
                 <View style={styles.socialRow}>
                     <View style={styles.socialCard}>
-                        <Ionicons name="logo-whatsapp" size={24} color='#FF6B6B'/>
+                        <Ionicons name="logo-whatsapp" size={24} color={appColors.main.ButtonColor}/>
                         <Text style={styles.socialText}>WhatsApp</Text>
                     </View>
                     <View style={styles.socialCard}>
-                        <Ionicons name="logo-youtube" size={24} color='#FF6B6B' />
+                        <Ionicons name="logo-youtube" size={24} color={appColors.main.ButtonColor} />
                         <Text style={styles.socialText}>YouTube</Text>
                     </View>
                 </View>
@@ -99,7 +100,7 @@ const ContactUs = () => {
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        backgroundColor: '#1A1A1A',
+        backgroundColor:appColors.main.Background,
         paddingHorizontal: 20,
         paddingTop: 10,
     },
@@ -116,7 +117,7 @@ const styles = StyleSheet.create({
         marginTop: 4,
     },
     formBox: {
-        backgroundColor: '#2A2A2A',
+        backgroundColor: appColors.main.Secondary,
         padding: 18,
         borderRadius: 18,
         marginBottom: 30,
@@ -134,7 +135,7 @@ const styles = StyleSheet.create({
         height: 100,
     },
     button: {
-        backgroundColor: '#FF6B6B',
+        backgroundColor: appColors.main.ButtonColor,
         paddingVertical: 14,
         borderRadius: 14,
         marginTop: 5,
@@ -155,7 +156,7 @@ const styles = StyleSheet.create({
     card: {
         flexDirection: 'row',
         alignItems: 'flex-start',
-        backgroundColor: '#2A2A2A',
+        backgroundColor:appColors.main.Secondary,
         padding: 14,
         borderRadius: 16,
         marginBottom: 14,

@@ -1,4 +1,5 @@
 // OrderDetails.tsx
+import appColors from "@/constants/Color";
 import { Ionicons, MaterialIcons } from "@expo/vector-icons";
 import { router } from "expo-router";
 import React from "react";
@@ -86,7 +87,7 @@ export default function OrderDetails() {
                 <View style={styles.headerRow}>
                  <View style={{ flexDirection: "row", alignItems: "center", gap: 8 }}>
                     <TouchableOpacity onPress={() => router.back()}>
-                        <Ionicons name="arrow-back" size={24} color={theme.text} />
+                        <Ionicons name="arrow-back" size={24} color={appColors.main.TextColor} />
                     </TouchableOpacity>
                        <Text style={styles.headerTitle}>Your treat is on its way 🍰🚚</Text>
                  </View>
@@ -105,13 +106,13 @@ export default function OrderDetails() {
                                     <View
                                         style={[
                                             styles.stepIconCircle,
-                                            active && { backgroundColor: theme.accent + "33" },
+                                            active && { backgroundColor: appColors.main.ButtonColor + "33" },
                                         ]}
                                     >
                                         <Ionicons
                                             name={step.icon as any}
                                             size={20}
-                                            color={active ? theme.accent : theme.muted}
+                                            color={active ? appColors.main.ButtonColor : appColors.main.IconColor}
                                         />
                                     </View>
 
@@ -119,7 +120,7 @@ export default function OrderDetails() {
                                         <Text
                                             style={[
                                                 styles.stepTitle,
-                                                active && { color: theme.accent  },
+                                                active && { color: appColors.main.ButtonColor  },
                                             ]}
                                         >
                                             {step.title}
@@ -133,7 +134,7 @@ export default function OrderDetails() {
                                     <View
                                         style={[
                                             styles.timelineLine,
-                                            active && { borderColor: theme.accent },
+                                            active && { borderColor: appColors.main.ButtonColor },
                                         ]}
                                     />
                                 )}
@@ -151,7 +152,7 @@ export default function OrderDetails() {
                     {ORDER_ITEMS.map((item) => (
                         <View key={item.id} style={styles.itemRow}>
                             <View style={styles.itemIconWrapper}>
-                                <Ionicons name="fast-food" size={26} color={theme.gold} />
+                                <Ionicons name="fast-food" size={26} color={appColors.main.ButtonColor} />
                             </View>
 
                             <View style={{ flex: 1 }}>
@@ -167,7 +168,7 @@ export default function OrderDetails() {
                 {/* DELIVERY INFO */}
                 <View style={styles.card}>
                     <View style={styles.infoRow}>
-                        <Ionicons name="location" size={20} color={theme.gold} />
+                        <Ionicons name="location" size={20} color={appColors.main.ButtonColor} />
                         <View>
                             <Text style={styles.infoTitle}>Delivery Address</Text>
                             <Text style={styles.infoText}>
@@ -179,7 +180,7 @@ export default function OrderDetails() {
                     <View style={styles.line} />
 
                     <View style={styles.infoRow}>
-                        <Ionicons name="calendar" size={20} color={theme.gold} />
+                        <Ionicons name="calendar" size={20} color={appColors.main.ButtonColor} />
                         <View>
                             <Text style={styles.infoTitle}>Delivery Date & Time</Text>
                             <Text style={styles.infoText}>Nov 12, 2025, 3:00 PM</Text>
@@ -189,7 +190,7 @@ export default function OrderDetails() {
                     <View style={styles.line} />
 
                     <View style={styles.infoRow}>
-                        <MaterialIcons name="payments" size={20} color={theme.gold} />
+                        <MaterialIcons name="payments" size={20} color={appColors.main.ButtonColor} />
                         <View>
                             <Text style={styles.infoTitle}>Payment Method</Text>
                             <Text style={styles.infoText}>UPI</Text>
@@ -205,7 +206,7 @@ export default function OrderDetails() {
                     </View>
                     <View style={styles.totalRow}>
                         <Text style={styles.totalLabel}>Delivery</Text>
-                        <Text style={[styles.totalAmount, { color: theme.success }]}>
+                        <Text style={[styles.totalAmount, { color: appColors.main.success }]}>
                             FREE
                         </Text>
                     </View>
@@ -233,7 +234,7 @@ export default function OrderDetails() {
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        backgroundColor: theme.bg,
+        backgroundColor: appColors.main.Background,
         paddingHorizontal: 16,
     },
 
@@ -243,13 +244,13 @@ const styles = StyleSheet.create({
     },
 
     headerTitle: {
-        color: theme.text,
+        color: appColors.main.TextColor,
         fontSize: 20,
         fontWeight: "700",
     },
 
     orderId: {
-        color: theme.muted,
+        color: appColors.main.IconColor,
         marginTop: 4,
     },
 
@@ -270,19 +271,19 @@ const styles = StyleSheet.create({
         width: 38,
         height: 38,
         borderRadius: 19,
-        backgroundColor: theme.card,
+        backgroundColor: appColors.main.Secondary,
         alignItems: "center",
         justifyContent: "center",
     },
 
     stepTitle: {
-        color: theme.muted,
+        color: appColors.main.IconColor,
         fontSize: 16,
         fontWeight: "700",
     },
 
     stepSub: {
-        color: theme.muted,
+        color: appColors.main.IconColor,
         fontSize: 12,
         marginTop: 2,
     },
@@ -291,19 +292,19 @@ const styles = StyleSheet.create({
         height: 22,
         borderLeftWidth: 2,
         marginLeft: 18,
-        borderColor: theme.border,
+        borderColor: appColors.main.IconColor,
     },
 
     /* ORDER ITEMS */
     sectionTitle: {
-        color: theme.text,
+        color: appColors.main.TextColor,
         fontSize: 20,
         fontWeight: "700",
         marginBottom: 12,
     },
 
     card: {
-        backgroundColor: theme.card,
+        backgroundColor: appColors.main.Secondary,
         borderRadius: 14,
         padding: 16,
         marginBottom: 18,
@@ -312,7 +313,7 @@ const styles = StyleSheet.create({
     },
 
     cardHeading: {
-        color: theme.text,
+        color: appColors.main.TextColor,
         fontSize: 16,
         fontWeight: "700",
         marginBottom: 12,
@@ -335,19 +336,19 @@ const styles = StyleSheet.create({
     },
 
     itemName: {
-        color: theme.text,
+        color:  appColors.main.TextColor,
         fontSize: 15,
         fontWeight: "700",
     },
 
     itemQty: {
-        color: theme.muted,
+        color: appColors.main.IconColor,
         fontSize: 12,
         marginTop: 2,
     },
 
     itemPrice: {
-        color: theme.gold,
+        color: appColors.main.ButtonColor,
         fontWeight: "700",
         fontSize: 16,
     },
@@ -361,19 +362,19 @@ const styles = StyleSheet.create({
     },
 
     infoTitle: {
-        color: theme.text,
+        color: appColors.main.TextColor,
         fontWeight: "700",
     },
 
     infoText: {
-        color: theme.muted,
+        color: appColors.main.IconColor,
         width: width * 0.75,
         marginTop: 3,
     },
 
     line: {
         height: 1,
-        backgroundColor: theme.border,
+        backgroundColor: appColors.main.IconColor + "20",
         marginVertical: 10,
     },
 
@@ -385,22 +386,22 @@ const styles = StyleSheet.create({
     },
 
     totalLabel: {
-        color: theme.muted,
+        color: appColors.main.TextColor,
     },
 
     totalAmount: {
-        color: theme.text,
+        color: appColors.main.TextColor,
         fontWeight: "600",
     },
 
     totalLabelBold: {
-        color: theme.text,
+        color: appColors.main.TextColor,
         fontWeight: "700",
         fontSize: 16,
     },
 
     totalAmountBold: {
-        color: theme.gold,
+        color: appColors.main.ButtonColor,
         fontWeight: "800",
         fontSize: 18,
     },
@@ -410,7 +411,7 @@ const styles = StyleSheet.create({
         flexDirection: "row",
         alignItems: "center",
         justifyContent: "center",
-        backgroundColor:'#ff5050ff',
+        backgroundColor: appColors.main.ButtonColor,
         paddingVertical: 16,
         borderRadius: 14,
         marginBottom: 40,

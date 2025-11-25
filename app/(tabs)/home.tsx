@@ -690,7 +690,7 @@ const styles = StyleSheet.create({
     addToCartBtn: {
         width: 42,
         height: 42,
-        backgroundColor: '#FF6B6B',
+        backgroundColor: appColors.main.ButtonColor,
         borderRadius: 21,
         alignItems: 'center',
         justifyContent: 'center',
@@ -919,7 +919,7 @@ const styles = StyleSheet.create({
         width: 36,
         height: 36,
         borderRadius: 18,
-        backgroundColor: '#FF6B6B',
+        backgroundColor: appColors.main.ButtonColor,
         alignItems: 'center',
         justifyContent: 'center',
     },

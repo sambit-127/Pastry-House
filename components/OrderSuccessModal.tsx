@@ -1,3 +1,4 @@
+import appColors from "@/constants/Color";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
 import { LinearGradient } from "expo-linear-gradient";
 import { Href, useRouter } from "expo-router";
@@ -126,7 +127,7 @@ const OrderSuccessModal: React.FC<OrderSuccessModalProps> = ({
           ]}
         >
           <LinearGradient
-            colors={["#FF9A8B", "#FF6B6B", "#FF8E53"]}
+            colors={[appColors.main.ButtonColor, "#FF6B6B", "#FF8E53"]}
             start={{ x: 0, y: 0 }}
             end={{ x: 1, y: 1 }}
             style={StyleSheet.absoluteFillObject}
@@ -308,7 +309,7 @@ const styles = StyleSheet.create({
     height: 100,
     borderRadius: 50,
     borderWidth: 3,
-    borderColor: "#FF6B6B",
+    borderColor: "#caed1dff",
   },
   title: {
     color: "#FFFFFF",
