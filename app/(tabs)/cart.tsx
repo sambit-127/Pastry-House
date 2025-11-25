@@ -1,3 +1,4 @@
+import appColors from '@/constants/Color';
 import { FontAwesome } from '@expo/vector-icons';
 import { LinearGradient } from 'expo-linear-gradient';
 import { Href, useRouter } from 'expo-router';
@@ -278,7 +279,7 @@ function Shimmer({ width, height = 12, style }: { width?: number | string; heigh
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        backgroundColor: '#0F0F10',
+        backgroundColor: appColors.main.Background,
     },
     header: {
         height: 56,
@@ -289,7 +290,7 @@ const styles = StyleSheet.create({
         paddingHorizontal: 16,
     },
     headerTitle: {
-        color: '#F7F7F7',
+        color: appColors.main.TextColor,
         fontSize: 18,
         fontWeight: '700',
     },
@@ -299,7 +300,7 @@ const styles = StyleSheet.create({
     rowContainer: {
         flexDirection: 'row',
         alignItems: 'center',
-        backgroundColor: '#171717ff',
+        backgroundColor: appColors.main.Secondary,
         padding: 12,
         borderRadius: 12,
     },
@@ -324,14 +325,14 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         justifyContent: 'center',
     },
-    thumbInitial: { color: '#FFF', fontWeight: '700', fontSize: 18 },
+    thumbInitial: { color: appColors.main.TextColor, fontWeight: '700', fontSize: 18 },
 
     rowBody: { flex: 1 },
-    itemTitle: { color: '#F7F7F7', fontSize: 15, fontWeight: '600' },
+    itemTitle: { color: appColors.main.TextColor, fontSize: 15, fontWeight: '600' },
     itemDesc: { color: 'rgba(255,255,255,0.55)', fontSize: 12, marginTop: 4 },
     rowFooter: { flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', marginTop: 10 },
 
-    price: { color: '#F7F7F7', fontSize: 15, fontWeight: '700' },
+    price: { color: appColors.main.TextColor, fontSize: 15, fontWeight: '700' },
     qtyWrap: { flexDirection: 'row', alignItems: 'center' },
     qtyBtn: {
         width: 32,
@@ -342,9 +343,9 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
         marginHorizontal: 6,
     },
-    qtyText: { color: '#FFF', fontSize: 18, fontWeight: '600' },
+    qtyText: { color: appColors.main.TextColor, fontSize: 18, fontWeight: '600' },
     qtyNumWrap: { minWidth: 24, alignItems: 'center' },
-    qtyNum: { color: '#FFF', fontSize: 14, fontWeight: '700' },
+    qtyNum: { color: appColors.main.TextColor, fontSize: 14, fontWeight: '700' },
 
     removeBtn: { marginLeft: 8 },
     removeText: { color: 'rgba(255,255,255,0.45)' },
@@ -362,17 +363,17 @@ const styles = StyleSheet.create({
     },
     summaryRow: { flexDirection: 'row', justifyContent: 'space-between', marginVertical: 4 },
     summaryLabel: { color: 'rgba(255,255,255,0.65)' },
-    summaryValue: { color: '#F7F7F7' },
+    summaryValue: { color: appColors.main.TextColor },
 
     checkoutBtn: {
         marginTop: 8,
-        backgroundColor: '#ff5050ff',
+        backgroundColor: appColors.main.ButtonColor,
         paddingVertical: 14,
         borderRadius: 12,
         alignItems: 'center',
         marginBottom: 60
     },
-    checkoutText: { color: '#ffffffff', fontWeight: '800' },
+    checkoutText: { color: appColors.main.TextColor, fontWeight: '800' },
 
     primaryBtn: {
         marginTop: 18,
@@ -393,6 +394,6 @@ const styles = StyleSheet.create({
     // Empty state
     emptyContainer: { flex: 1, alignItems: 'center', justifyContent: 'center', paddingHorizontal: 30 },
     emptyGraphic: { width: 150, height: 141, borderRadius: 20, },
-    emptyTitle: { color: '#F7F7F7', fontSize: 18, fontWeight: '700' },
+    emptyTitle: { color: appColors.main.TextColor, fontSize: 18, fontWeight: '700' },
     emptySubtitle: { color: 'rgba(255,255,255,0.6)', marginTop: 6, textAlign: 'center' },
 });

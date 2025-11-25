@@ -1,4 +1,5 @@
 
+import appColors from '@/constants/Color';
 import { Ionicons, MaterialCommunityIcons, MaterialIcons } from '@expo/vector-icons';
 import { Tabs } from 'expo-router';
 import React from 'react';
@@ -13,8 +14,8 @@ export default function TabLayout() {
       <Tabs
         screenOptions={{
           headerShown: false,
-          tabBarActiveTintColor: '#ff5050ff',
-          tabBarInactiveTintColor: '#ffffffff',
+          tabBarActiveTintColor: appColors.main.ButtonColor,
+          tabBarInactiveTintColor: appColors.main.TextColor,
           tabBarStyle: {
             backgroundColor: '#000',
             paddingTop: 5,

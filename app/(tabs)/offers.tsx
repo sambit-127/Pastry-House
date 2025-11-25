@@ -1,3 +1,4 @@
+import appColors from '@/constants/Color';
 import { LinearGradient } from 'expo-linear-gradient';
 import { router } from 'expo-router';
 import React, { useEffect, useState } from 'react';
@@ -111,10 +112,10 @@ export default function OfferPage() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#0E0E0F',
+    backgroundColor: appColors.main.Background,
   },
   pageTitle: {
-    color: '#FFFFFF',
+    color: appColors.main.TextColor,
     fontSize: 20,
     fontWeight: '700',
     marginTop: 10,
@@ -137,7 +138,7 @@ const styles = StyleSheet.create({
     borderRadius: 20,
   },
   bannerTitle: {
-    color: '#FFF',
+    color: appColors.main.TextColor,
     fontSize: 18,
     fontWeight: '700',
   },
@@ -146,7 +147,7 @@ const styles = StyleSheet.create({
     marginTop: 4,
   },
   sectionTitle: {
-    color: '#FFF',
+    color: appColors.main.TextColor,
     fontSize: 16,
     fontWeight: '700',
     marginTop: 10,
@@ -161,7 +162,7 @@ const styles = StyleSheet.create({
   },
   categoryCard: {
     width: (width - 48) / 2,
-    backgroundColor: '#171717',
+    backgroundColor: appColors.main.Secondary,
     borderRadius: 14,
     padding: 12,
     marginBottom: 14,
@@ -178,7 +179,7 @@ const styles = StyleSheet.create({
     height: '100%',
   },
   catName: {
-    color: '#FFF',
+    color: appColors.main.TextColor,
     fontSize: 15,
     fontWeight: '600',
     marginTop: 10,
